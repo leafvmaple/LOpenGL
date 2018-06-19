@@ -31,5 +31,5 @@
 *.out
 *.app
 
-/LOpenGL.xcodeproj/xcuserdata/
-/LOpenGL.xcodeproj/project.xcworkspace/xcuserdata/
+LOpenGL.xcodeproj/xcuserdata/
+LOpenGL.xcodeproj/project.xcworkspace/xcuserdata/
