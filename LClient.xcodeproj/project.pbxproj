@@ -38,9 +38,10 @@
 		49EE95FD20D9DB710071C153 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
 		49EE95FE20D9DB710071C153 /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
 		49EE95FF20D9DB820071C153 /* Include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Include; sourceTree = "<group>"; };
-		49EE960120D9DBC40071C153 /* KHR */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KHR; path = Include/KHR; sourceTree = SOURCE_ROOT; };
-		49EE960220D9DBC40071C153 /* glad */ = {isa = PBXFileReference; lastKnownFileType = folder; name = glad; path = Include/glad; sourceTree = SOURCE_ROOT; };
-		49EE960320D9DBC40071C153 /* GLFW */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLFW; path = Include/GLFW; sourceTree = SOURCE_ROOT; };
+		49EE960720DA20DA0071C153 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		49EE960920DA20DA0071C153 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		49EE960B20DA20DA0071C153 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		49EE960C20DA20DA0071C153 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
 		49F33ABD20D16A7D001A93F8 /* LOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F33AC820D16A8E001A93F8 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		49F33ACA20D16A94001A93F8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -160,21 +161,45 @@
 			path = GLFW;
 			sourceTree = "<group>";
 		};
-		49EE960020D9DB8E0071C153 /* Include */ = {
+		49EE960520DA20DA0071C153 /* Include */ = {
 			isa = PBXGroup;
 			children = (
-				49EE960220D9DBC40071C153 /* glad */,
-				49EE960320D9DBC40071C153 /* GLFW */,
-				49EE960120D9DBC40071C153 /* KHR */,
+				49EE960620DA20DA0071C153 /* KHR */,
+				49EE960820DA20DA0071C153 /* glad */,
+				49EE960A20DA20DA0071C153 /* GLFW */,
 			);
-			name = Include;
-			path = "New Group";
+			path = Include;
+			sourceTree = "<group>";
+		};
+		49EE960620DA20DA0071C153 /* KHR */ = {
+			isa = PBXGroup;
+			children = (
+				49EE960720DA20DA0071C153 /* khrplatform.h */,
+			);
+			path = KHR;
+			sourceTree = "<group>";
+		};
+		49EE960820DA20DA0071C153 /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				49EE960920DA20DA0071C153 /* glad.h */,
+			);
+			path = glad;
+			sourceTree = "<group>";
+		};
+		49EE960A20DA20DA0071C153 /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+				49EE960B20DA20DA0071C153 /* glfw3.h */,
+				49EE960C20DA20DA0071C153 /* glfw3native.h */,
+			);
+			path = GLFW;
 			sourceTree = "<group>";
 		};
 		49F33AB420D16A7D001A93F8 = {
 			isa = PBXGroup;
 			children = (
-				49EE960020D9DB8E0071C153 /* Include */,
+				49EE960520DA20DA0071C153 /* Include */,
 				49EE95E620D92E530071C153 /* GLAD */,
 				49F33ABF20D16A7D001A93F8 /* LOpenGL */,
 				49F33ABE20D16A7D001A93F8 /* Products */,
