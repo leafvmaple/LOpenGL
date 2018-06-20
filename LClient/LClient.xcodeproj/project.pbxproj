@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49EE95E320D9246F0071C153 /* LGLMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE95E120D9246F0071C153 /* LGLMain.cpp */; };
-		49EE95E520D92C590071C153 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE95E420D92C590071C153 /* libglfw.3.2.dylib */; };
-		49EE95EE20D92E530071C153 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 49EE95ED20D92E530071C153 /* glad.c */; };
+		49EE96AA20DA40340071C153 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96A920DA40340071C153 /* libglfw.3.2.dylib */; };
 		49F33ACB20D16A95001A93F8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F33ACA20D16A94001A93F8 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,24 +24,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		49EE95E120D9246F0071C153 /* LGLMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LGLMain.cpp; sourceTree = "<group>"; };
-		49EE95E420D92C590071C153 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		49EE95ED20D92E530071C153 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
-		49EE95F120D9DB550071C153 /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
-		49EE95F320D9DB550071C153 /* glad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
-		49EE95F520D9DB550071C153 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
-		49EE95F620D9DB550071C153 /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
-		49EE95F920D9DB710071C153 /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
-		49EE95FB20D9DB710071C153 /* glad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
-		49EE95FD20D9DB710071C153 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
-		49EE95FE20D9DB710071C153 /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
-		49EE95FF20D9DB820071C153 /* Include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Include; sourceTree = "<group>"; };
-		49EE960720DA20DA0071C153 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
-		49EE960920DA20DA0071C153 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
-		49EE960B20DA20DA0071C153 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
-		49EE960C20DA20DA0071C153 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
-		49F33ABD20D16A7D001A93F8 /* LOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
-		49F33AC820D16A8E001A93F8 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		49EE969C20DA3EB90071C153 /* LEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEngine.h; sourceTree = "<group>"; };
+		49EE969E20DA3EB90071C153 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		49EE96A020DA3EB90071C153 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		49EE96A120DA3EB90071C153 /* LExports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LExports.h; sourceTree = "<group>"; };
+		49EE96A320DA3EB90071C153 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		49EE96A420DA3EB90071C153 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
+		49EE96A520DA3EB90071C153 /* LAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAssert.h; sourceTree = "<group>"; };
+		49EE96A620DA3EB90071C153 /* LInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LInterface.h; sourceTree = "<group>"; };
+		49EE96A820DA3EC80071C153 /* LClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LClient.cpp; sourceTree = "<group>"; };
+		49EE96A920DA40340071C153 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
+		49F33ABD20D16A7D001A93F8 /* LClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LClient; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F33ACA20D16A94001A93F8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -53,155 +44,66 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F33ACB20D16A95001A93F8 /* OpenGL.framework in Frameworks */,
-				49EE95E520D92C590071C153 /* libglfw.3.2.dylib in Frameworks */,
+				49EE96AA20DA40340071C153 /* libglfw.3.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49EE95D920D924120071C153 /* src */ = {
+		49EE969B20DA3EB90071C153 /* Include */ = {
 			isa = PBXGroup;
 			children = (
-				49EE95E120D9246F0071C153 /* LGLMain.cpp */,
+				49EE969C20DA3EB90071C153 /* LEngine.h */,
+				49EE969D20DA3EB90071C153 /* KHR */,
+				49EE969F20DA3EB90071C153 /* glad */,
+				49EE96A120DA3EB90071C153 /* LExports.h */,
+				49EE96A220DA3EB90071C153 /* GLFW */,
+				49EE96A520DA3EB90071C153 /* LAssert.h */,
+				49EE96A620DA3EB90071C153 /* LInterface.h */,
+			);
+			name = Include;
+			path = ../Include;
+			sourceTree = "<group>";
+		};
+		49EE969D20DA3EB90071C153 /* KHR */ = {
+			isa = PBXGroup;
+			children = (
+				49EE969E20DA3EB90071C153 /* khrplatform.h */,
+			);
+			path = KHR;
+			sourceTree = "<group>";
+		};
+		49EE969F20DA3EB90071C153 /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				49EE96A020DA3EB90071C153 /* glad.h */,
+			);
+			path = glad;
+			sourceTree = "<group>";
+		};
+		49EE96A220DA3EB90071C153 /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+				49EE96A320DA3EB90071C153 /* glfw3.h */,
+				49EE96A420DA3EB90071C153 /* glfw3native.h */,
+			);
+			path = GLFW;
+			sourceTree = "<group>";
+		};
+		49EE96A720DA3EC80071C153 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				49EE96A820DA3EC80071C153 /* LClient.cpp */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		49EE95DB20D924130071C153 /* include */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		49EE95E620D92E530071C153 /* GLAD */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95EC20D92E530071C153 /* src */,
-			);
-			path = GLAD;
-			sourceTree = "<group>";
-		};
-		49EE95EC20D92E530071C153 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95ED20D92E530071C153 /* glad.c */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		49EE95EF20D9DB550071C153 /* Include */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95F020D9DB550071C153 /* KHR */,
-				49EE95F220D9DB550071C153 /* glad */,
-				49EE95F420D9DB550071C153 /* GLFW */,
-			);
-			path = Include;
-			sourceTree = "<group>";
-		};
-		49EE95F020D9DB550071C153 /* KHR */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95F120D9DB550071C153 /* khrplatform.h */,
-			);
-			path = KHR;
-			sourceTree = "<group>";
-		};
-		49EE95F220D9DB550071C153 /* glad */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95F320D9DB550071C153 /* glad.h */,
-			);
-			path = glad;
-			sourceTree = "<group>";
-		};
-		49EE95F420D9DB550071C153 /* GLFW */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95F520D9DB550071C153 /* glfw3.h */,
-				49EE95F620D9DB550071C153 /* glfw3native.h */,
-			);
-			path = GLFW;
-			sourceTree = "<group>";
-		};
-		49EE95F720D9DB710071C153 /* Include */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95F820D9DB710071C153 /* KHR */,
-				49EE95FA20D9DB710071C153 /* glad */,
-				49EE95FC20D9DB710071C153 /* GLFW */,
-			);
-			path = Include;
-			sourceTree = "<group>";
-		};
-		49EE95F820D9DB710071C153 /* KHR */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95F920D9DB710071C153 /* khrplatform.h */,
-			);
-			path = KHR;
-			sourceTree = "<group>";
-		};
-		49EE95FA20D9DB710071C153 /* glad */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95FB20D9DB710071C153 /* glad.h */,
-			);
-			path = glad;
-			sourceTree = "<group>";
-		};
-		49EE95FC20D9DB710071C153 /* GLFW */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95FD20D9DB710071C153 /* glfw3.h */,
-				49EE95FE20D9DB710071C153 /* glfw3native.h */,
-			);
-			path = GLFW;
-			sourceTree = "<group>";
-		};
-		49EE960520DA20DA0071C153 /* Include */ = {
-			isa = PBXGroup;
-			children = (
-				49EE960620DA20DA0071C153 /* KHR */,
-				49EE960820DA20DA0071C153 /* glad */,
-				49EE960A20DA20DA0071C153 /* GLFW */,
-			);
-			path = Include;
-			sourceTree = "<group>";
-		};
-		49EE960620DA20DA0071C153 /* KHR */ = {
-			isa = PBXGroup;
-			children = (
-				49EE960720DA20DA0071C153 /* khrplatform.h */,
-			);
-			path = KHR;
-			sourceTree = "<group>";
-		};
-		49EE960820DA20DA0071C153 /* glad */ = {
-			isa = PBXGroup;
-			children = (
-				49EE960920DA20DA0071C153 /* glad.h */,
-			);
-			path = glad;
-			sourceTree = "<group>";
-		};
-		49EE960A20DA20DA0071C153 /* GLFW */ = {
-			isa = PBXGroup;
-			children = (
-				49EE960B20DA20DA0071C153 /* glfw3.h */,
-				49EE960C20DA20DA0071C153 /* glfw3native.h */,
-			);
-			path = GLFW;
 			sourceTree = "<group>";
 		};
 		49F33AB420D16A7D001A93F8 = {
 			isa = PBXGroup;
 			children = (
-				49EE960520DA20DA0071C153 /* Include */,
-				49EE95E620D92E530071C153 /* GLAD */,
-				49F33ABF20D16A7D001A93F8 /* LOpenGL */,
+				49EE96A720DA3EC80071C153 /* src */,
+				49EE969B20DA3EB90071C153 /* Include */,
 				49F33ABE20D16A7D001A93F8 /* Products */,
 				49F33AC720D16A8E001A93F8 /* Frameworks */,
 			);
@@ -210,29 +112,16 @@
 		49F33ABE20D16A7D001A93F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49F33ABD20D16A7D001A93F8 /* LOpenGL */,
+				49F33ABD20D16A7D001A93F8 /* LClient */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		49F33ABF20D16A7D001A93F8 /* LOpenGL */ = {
-			isa = PBXGroup;
-			children = (
-				49EE95DB20D924130071C153 /* include */,
-				49EE95D920D924120071C153 /* src */,
-			);
-			path = LOpenGL;
 			sourceTree = "<group>";
 		};
 		49F33AC720D16A8E001A93F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49EE95EF20D9DB550071C153 /* Include */,
-				49EE95F720D9DB710071C153 /* Include */,
-				49EE95FF20D9DB820071C153 /* Include */,
-				49EE95E420D92C590071C153 /* libglfw.3.2.dylib */,
+				49EE96A920DA40340071C153 /* libglfw.3.2.dylib */,
 				49F33ACA20D16A94001A93F8 /* OpenGL.framework */,
-				49F33AC820D16A8E001A93F8 /* GLUT.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,9 +129,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49F33ABC20D16A7D001A93F8 /* LOpenGL */ = {
+		49F33ABC20D16A7D001A93F8 /* LClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49F33AC420D16A7D001A93F8 /* Build configuration list for PBXNativeTarget "LOpenGL" */;
+			buildConfigurationList = 49F33AC420D16A7D001A93F8 /* Build configuration list for PBXNativeTarget "LClient" */;
 			buildPhases = (
 				49F33AB920D16A7D001A93F8 /* Sources */,
 				49F33ABA20D16A7D001A93F8 /* Frameworks */,
@@ -252,9 +141,9 @@
 			);
 			dependencies = (
 			);
-			name = LOpenGL;
+			name = LClient;
 			productName = LOpenGL;
-			productReference = 49F33ABD20D16A7D001A93F8 /* LOpenGL */;
+			productReference = 49F33ABD20D16A7D001A93F8 /* LClient */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -271,7 +160,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 49F33AB820D16A7D001A93F8 /* Build configuration list for PBXProject "LOpenGL" */;
+			buildConfigurationList = 49F33AB820D16A7D001A93F8 /* Build configuration list for PBXProject "LClient" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -283,7 +172,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49F33ABC20D16A7D001A93F8 /* LOpenGL */,
+				49F33ABC20D16A7D001A93F8 /* LClient */,
 			);
 		};
 /* End PBXProject section */
@@ -293,8 +182,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49EE95E320D9246F0071C153 /* LGLMain.cpp in Sources */,
-				49EE95EE20D92E530071C153 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +326,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49F33AB820D16A7D001A93F8 /* Build configuration list for PBXProject "LOpenGL" */ = {
+		49F33AB820D16A7D001A93F8 /* Build configuration list for PBXProject "LClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49F33AC220D16A7D001A93F8 /* Debug */,
@@ -448,7 +335,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49F33AC420D16A7D001A93F8 /* Build configuration list for PBXNativeTarget "LOpenGL" */ = {
+		49F33AC420D16A7D001A93F8 /* Build configuration list for PBXNativeTarget "LClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49F33AC520D16A7D001A93F8 /* Debug */,

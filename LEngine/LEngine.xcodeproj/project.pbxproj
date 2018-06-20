@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49EE968520DA37F90071C153 /* LEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 49EE968420DA37F90071C153 /* LEngine.hpp */; };
-		49EE968720DA37F90071C153 /* LEnginePriv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 49EE968620DA37F90071C153 /* LEnginePriv.hpp */; };
 		49EE968920DA37F90071C153 /* LEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE968820DA37F90071C153 /* LEngine.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49EE968120DA37F90071C153 /* libLEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libLEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		49EE968420DA37F90071C153 /* LEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LEngine.hpp; sourceTree = "<group>"; };
-		49EE968620DA37F90071C153 /* LEnginePriv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LEnginePriv.hpp; sourceTree = "<group>"; };
+		49EE968120DA37F90071C153 /* LEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = LEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EE968820DA37F90071C153 /* LEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LEngine.cpp; sourceTree = "<group>"; };
+		49EE969020DA38180071C153 /* LEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEngine.h; sourceTree = "<group>"; };
+		49EE969220DA38180071C153 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		49EE969420DA38180071C153 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		49EE969520DA38180071C153 /* LExports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LExports.h; sourceTree = "<group>"; };
+		49EE969720DA38180071C153 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		49EE969820DA38180071C153 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
+		49EE969920DA38180071C153 /* LAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAssert.h; sourceTree = "<group>"; };
+		49EE969A20DA38180071C153 /* LInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LInterface.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +37,8 @@
 		49EE967820DA37F90071C153 = {
 			isa = PBXGroup;
 			children = (
-				49EE968320DA37F90071C153 /* LEngine */,
+				49EE968F20DA38180071C153 /* Include */,
+				49EE968320DA37F90071C153 /* src */,
 				49EE968220DA37F90071C153 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,19 +46,57 @@
 		49EE968220DA37F90071C153 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49EE968120DA37F90071C153 /* libLEngine.dylib */,
+				49EE968120DA37F90071C153 /* LEngine.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		49EE968320DA37F90071C153 /* LEngine */ = {
+		49EE968320DA37F90071C153 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				49EE968420DA37F90071C153 /* LEngine.hpp */,
-				49EE968620DA37F90071C153 /* LEnginePriv.hpp */,
 				49EE968820DA37F90071C153 /* LEngine.cpp */,
 			);
-			path = LEngine;
+			path = src;
+			sourceTree = "<group>";
+		};
+		49EE968F20DA38180071C153 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				49EE969020DA38180071C153 /* LEngine.h */,
+				49EE969120DA38180071C153 /* KHR */,
+				49EE969320DA38180071C153 /* glad */,
+				49EE969520DA38180071C153 /* LExports.h */,
+				49EE969620DA38180071C153 /* GLFW */,
+				49EE969920DA38180071C153 /* LAssert.h */,
+				49EE969A20DA38180071C153 /* LInterface.h */,
+			);
+			name = Include;
+			path = ../Include;
+			sourceTree = "<group>";
+		};
+		49EE969120DA38180071C153 /* KHR */ = {
+			isa = PBXGroup;
+			children = (
+				49EE969220DA38180071C153 /* khrplatform.h */,
+			);
+			path = KHR;
+			sourceTree = "<group>";
+		};
+		49EE969320DA38180071C153 /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				49EE969420DA38180071C153 /* glad.h */,
+			);
+			path = glad;
+			sourceTree = "<group>";
+		};
+		49EE969620DA38180071C153 /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+				49EE969720DA38180071C153 /* glfw3.h */,
+				49EE969820DA38180071C153 /* glfw3native.h */,
+			);
+			path = GLFW;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -63,8 +106,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49EE968720DA37F90071C153 /* LEnginePriv.hpp in Headers */,
-				49EE968520DA37F90071C153 /* LEngine.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +126,7 @@
 			);
 			name = LEngine;
 			productName = LEngine;
-			productReference = 49EE968120DA37F90071C153 /* libLEngine.dylib */;
+			productReference = 49EE968120DA37F90071C153 /* LEngine.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -185,6 +226,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				REEXPORTED_LIBRARY_PATHS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -236,6 +278,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				REEXPORTED_LIBRARY_PATHS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -244,11 +287,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = ../Lib;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					LENGINE_EXPORTS,
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -259,11 +307,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = ../Lib;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = LENGINE_EXPORTS;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

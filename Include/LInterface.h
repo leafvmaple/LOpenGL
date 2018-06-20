@@ -6,9 +6,20 @@
 //  Copyright © 2018 LeafMaple. All rights reserved.
 //
 
-#ifndef ILEngine_h
-#define ILEngine_h
+#ifndef LINTERFACE_h
+#define LINTERFACE_h
+
+#include "LExports.h"
+
+class L3DENGINE_CLASS IL3DEngine
+{
+public:
+    virtual ~IL3DEngine() {};
+    
+protected:
+    IL3DEngine() {};
+};
 
 
-#endif /* ILEngine_h */
+#endif /* LInterface_h */
 

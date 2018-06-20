@@ -44,7 +44,7 @@ CMakeFiles/
 Debug/
 Release/
 
-LOpenGL.xcodeproj/xcuserdata/
-LOpenGL.xcodeproj/project.xcworkspace/xcuserdata/
+xcuserdata/
+*.xcuserstate
 
 !CMakeLists.txt

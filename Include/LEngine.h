@@ -9,5 +9,13 @@
 #ifndef LEngine_h
 #define LEngine_h
 
+#include "LInterface.h"
+
+class L3DEngine : public IL3DEngine
+{
+public:
+    L3DEngine();
+    virtual ~L3DEngine();
+};
 
 #endif /* LEngine_h */

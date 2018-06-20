@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:LOpenGL.xcodeproj">
+      location = "group:LClient/LClient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LEngine/LEngine.xcodeproj">
    </FileRef>
 </Workspace>
