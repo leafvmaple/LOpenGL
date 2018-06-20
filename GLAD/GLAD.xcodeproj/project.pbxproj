@@ -7,74 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49EE968920DA37F90071C153 /* LEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE968820DA37F90071C153 /* LEngine.cpp */; };
-		49EE96C320DA4FE90071C153 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */; };
-		49EE96FC20DA54B00071C153 /* GLAD.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96FB20DA54B00071C153 /* GLAD.dylib */; };
-		49EE971820DA66040071C153 /* LInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE971720DA66040071C153 /* LInterface.cpp */; };
+		49EE96FA20DA53C60071C153 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 49EE96F920DA53C60071C153 /* glad.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49EE968120DA37F90071C153 /* LEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = LEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		49EE968820DA37F90071C153 /* LEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LEngine.cpp; sourceTree = "<group>"; };
-		49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		49EE96DF20DA53190071C153 /* LEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = LEngine.dylib; path = ../Lib/LEngine.dylib; sourceTree = "<group>"; };
-		49EE96FB20DA54B00071C153 /* GLAD.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = GLAD.dylib; path = ../Lib/GLAD.dylib; sourceTree = "<group>"; };
-		49EE971720DA66040071C153 /* LInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LInterface.cpp; sourceTree = "<group>"; };
+		49EE96EA20DA53AD0071C153 /* GLAD.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = GLAD.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		49EE96F920DA53C60071C153 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		49EE967E20DA37F90071C153 /* Frameworks */ = {
+		49EE96E720DA53AD0071C153 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49EE96C320DA4FE90071C153 /* libglfw.3.2.dylib in Frameworks */,
-				49EE96FC20DA54B00071C153 /* GLAD.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49EE967820DA37F90071C153 = {
+		49EE96E120DA53AD0071C153 = {
 			isa = PBXGroup;
 			children = (
-				49EE968320DA37F90071C153 /* src */,
-				49EE968220DA37F90071C153 /* Products */,
-				49EE96C120DA4FE90071C153 /* Frameworks */,
+				49EE96F820DA53C60071C153 /* src */,
+				49EE96EB20DA53AD0071C153 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		49EE968220DA37F90071C153 /* Products */ = {
+		49EE96EB20DA53AD0071C153 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49EE968120DA37F90071C153 /* LEngine.dylib */,
+				49EE96EA20DA53AD0071C153 /* GLAD.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		49EE968320DA37F90071C153 /* src */ = {
+		49EE96F820DA53C60071C153 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				49EE968820DA37F90071C153 /* LEngine.cpp */,
-				49EE971720DA66040071C153 /* LInterface.cpp */,
+				49EE96F920DA53C60071C153 /* glad.c */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		49EE96C120DA4FE90071C153 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				49EE96FB20DA54B00071C153 /* GLAD.dylib */,
-				49EE96DF20DA53190071C153 /* LEngine.dylib */,
-				49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		49EE967F20DA37F90071C153 /* Headers */ = {
+		49EE96E820DA53AD0071C153 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -84,68 +63,67 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		49EE968020DA37F90071C153 /* LEngine */ = {
+		49EE96E920DA53AD0071C153 /* GLAD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49EE968C20DA37F90071C153 /* Build configuration list for PBXNativeTarget "LEngine" */;
+			buildConfigurationList = 49EE96F520DA53AD0071C153 /* Build configuration list for PBXNativeTarget "GLAD" */;
 			buildPhases = (
-				49EE967D20DA37F90071C153 /* Sources */,
-				49EE967E20DA37F90071C153 /* Frameworks */,
-				49EE967F20DA37F90071C153 /* Headers */,
+				49EE96E620DA53AD0071C153 /* Sources */,
+				49EE96E720DA53AD0071C153 /* Frameworks */,
+				49EE96E820DA53AD0071C153 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = LEngine;
-			productName = LEngine;
-			productReference = 49EE968120DA37F90071C153 /* LEngine.dylib */;
+			name = GLAD;
+			productName = GLAD;
+			productReference = 49EE96EA20DA53AD0071C153 /* GLAD.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		49EE967920DA37F90071C153 /* Project object */ = {
+		49EE96E220DA53AD0071C153 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = LeafMaple;
 				TargetAttributes = {
-					49EE968020DA37F90071C153 = {
+					49EE96E920DA53AD0071C153 = {
 						CreatedOnToolsVersion = 9.4;
 					};
 				};
 			};
-			buildConfigurationList = 49EE967C20DA37F90071C153 /* Build configuration list for PBXProject "LEngine" */;
+			buildConfigurationList = 49EE96E520DA53AD0071C153 /* Build configuration list for PBXProject "GLAD" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 49EE967820DA37F90071C153;
-			productRefGroup = 49EE968220DA37F90071C153 /* Products */;
+			mainGroup = 49EE96E120DA53AD0071C153;
+			productRefGroup = 49EE96EB20DA53AD0071C153 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49EE968020DA37F90071C153 /* LEngine */,
+				49EE96E920DA53AD0071C153 /* GLAD */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		49EE967D20DA37F90071C153 /* Sources */ = {
+		49EE96E620DA53AD0071C153 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49EE971820DA66040071C153 /* LInterface.cpp in Sources */,
-				49EE968920DA37F90071C153 /* LEngine.cpp in Sources */,
+				49EE96FA20DA53C60071C153 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		49EE968A20DA37F90071C153 /* Debug */ = {
+		49EE96F320DA53AD0071C153 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -178,6 +156,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = ../Lib;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -196,15 +175,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				REEXPORTED_LIBRARY_PATHS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		49EE968B20DA37F90071C153 /* Release */ = {
+		49EE96F420DA53AD0071C153 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -237,6 +216,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = ../Lib;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -249,61 +229,38 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				REEXPORTED_LIBRARY_PATHS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		49EE968D20DA37F90071C153 /* Debug */ = {
+		49EE96F620DA53AD0071C153 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = ../Lib;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = "";
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					LENGINE_EXPORTS,
-				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Include\"",
-					/usr/local/include,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/glfw/3.2.1/lib,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		49EE968E20DA37F90071C153 /* Release */ = {
+		49EE96F720DA53AD0071C153 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = ../Lib;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = "";
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = LENGINE_EXPORTS;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Include\"",
-					/usr/local/include,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/glfw/3.2.1/lib,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -312,25 +269,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49EE967C20DA37F90071C153 /* Build configuration list for PBXProject "LEngine" */ = {
+		49EE96E520DA53AD0071C153 /* Build configuration list for PBXProject "GLAD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49EE968A20DA37F90071C153 /* Debug */,
-				49EE968B20DA37F90071C153 /* Release */,
+				49EE96F320DA53AD0071C153 /* Debug */,
+				49EE96F420DA53AD0071C153 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49EE968C20DA37F90071C153 /* Build configuration list for PBXNativeTarget "LEngine" */ = {
+		49EE96F520DA53AD0071C153 /* Build configuration list for PBXNativeTarget "GLAD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49EE968D20DA37F90071C153 /* Debug */,
-				49EE968E20DA37F90071C153 /* Release */,
+				49EE96F620DA53AD0071C153 /* Debug */,
+				49EE96F720DA53AD0071C153 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 49EE967920DA37F90071C153 /* Project object */;
+	rootObject = 49EE96E220DA53AD0071C153 /* Project object */;
 }

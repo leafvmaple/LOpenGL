@@ -5,6 +5,49 @@
       location = "group:LClient/LClient.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:GLAD/GLAD.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Include"
+      name = "Include">
+      <FileRef
+         location = "group:LEngine.h">
+      </FileRef>
+      <Group
+         location = "group:KHR"
+         name = "KHR">
+         <FileRef
+            location = "group:khrplatform.h">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:glad"
+         name = "glad">
+         <FileRef
+            location = "group:glad.h">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:LExports.h">
+      </FileRef>
+      <Group
+         location = "group:GLFW"
+         name = "GLFW">
+         <FileRef
+            location = "group:glfw3.h">
+         </FileRef>
+         <FileRef
+            location = "group:glfw3native.h">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:LAssert.h">
+      </FileRef>
+      <FileRef
+         location = "group:LInterface.h">
+      </FileRef>
+   </Group>
+   <FileRef
       location = "group:LEngine/LEngine.xcodeproj">
    </FileRef>
 </Workspace>

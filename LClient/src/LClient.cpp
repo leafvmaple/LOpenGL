@@ -6,62 +6,85 @@
 //  Copyright © 2018 LeafMaple. All rights reserved.
 //
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
-#include <iostream>
+#include "LClient.h"
+#include "LInterface.h"
+#include "LAssert.h"
+#include <time.h>
 
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
-
-void FrameBufferSizeFunc(GLFWwindow* pWindow, int nWidth, int nHeight)
+LClient::LClient()
+: m_fLastTime(0.0f)
 {
-    glViewport(0, 0, nWidth, nHeight);
+    
 }
 
-void ProcessInput(GLFWwindow *pWindow)
+LClient::~LClient()
 {
-    if(glfwGetKey(pWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(pWindow, true);
+    
+}
+
+bool LClient::Init()
+{
+    L3DWINDOWPARAM WindowParam;
+    
+    do
+    {
+        WindowParam.Width = 800;
+        WindowParam.Height = 600;
+        WindowParam.lpszClassName = "LDirectX";
+        WindowParam.lpszWindowName = "L3D DirectX9 Engine";
+        
+        m_pEngine = IL3DEngine::Instance();
+        
+        m_pEngine->Init(WindowParam);
+    } while(0);
+    
+    return true;
+}
+
+bool LClient::Update()
+{
+    bool bResult = false;
+    bool bRetCode = false;
+    float fCurTime = 0;
+    float fDeltaTime = 0;
+    
+    do {
+        //fCurTime = (float)GetTickCount();
+        //fDeltaTime = (fCurTime - m_fLastTime) * 0.001f;
+        
+        bRetCode = m_pEngine->Update(fDeltaTime);
+        BOOL_ERROR_BREAK(bRetCode);
+        
+        m_fLastTime = fCurTime;
+        
+        bResult = true;
+    } while (0);
+    
+    return bResult;
+}
+
+bool LClient::IsActive()
+{
+    return m_pEngine->IsActive();
 }
 
 int main()
 {
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-#ifdef __APPLE__
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
-    GLFWwindow* pWindow = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LOpenGL", NULL, NULL);
-    if (pWindow == NULL)
-    {
-        std::cout << "Failed to create GLFW window" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
-    glfwMakeContextCurrent(pWindow);
-    glfwSetFramebufferSizeCallback(pWindow, FrameBufferSizeFunc);
+    bool bRetCode = false;
+    LClient Client;
     
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
-    
-    
-    while(!glfwWindowShouldClose(pWindow))
-    {
-        ProcessInput(pWindow);
+    do {
+        bRetCode = Client.Init();
+        BOOL_ERROR_BREAK(bRetCode);
         
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        while (Client.IsActive())
+        {
+            bRetCode = Client.Update();
+            BOOL_ERROR_BREAK(bRetCode);
+        }
         
-        glfwSwapBuffers(pWindow);
-        glfwPollEvents();
-    }
+    } while (0);
     
-    glfwTerminate();
     return 0;
 }

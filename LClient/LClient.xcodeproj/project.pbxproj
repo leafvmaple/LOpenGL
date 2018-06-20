@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49EE96AA20DA40340071C153 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96A920DA40340071C153 /* libglfw.3.2.dylib */; };
-		49F33ACB20D16A95001A93F8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F33ACA20D16A94001A93F8 /* OpenGL.framework */; };
+		49EE971620DA644B0071C153 /* LClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE971520DA644B0071C153 /* LClient.cpp */; };
+		49EE971B20DA6BC80071C153 /* LEngine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE971A20DA6BC80071C153 /* LEngine.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		49F33ABB20D16A7D001A93F8 /* CopyFiles */ = {
+		49EE970620DA64100071C153 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,104 +24,62 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		49EE969C20DA3EB90071C153 /* LEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEngine.h; sourceTree = "<group>"; };
-		49EE969E20DA3EB90071C153 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
-		49EE96A020DA3EB90071C153 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
-		49EE96A120DA3EB90071C153 /* LExports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LExports.h; sourceTree = "<group>"; };
-		49EE96A320DA3EB90071C153 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
-		49EE96A420DA3EB90071C153 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
-		49EE96A520DA3EB90071C153 /* LAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAssert.h; sourceTree = "<group>"; };
-		49EE96A620DA3EB90071C153 /* LInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LInterface.h; sourceTree = "<group>"; };
-		49EE96A820DA3EC80071C153 /* LClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LClient.cpp; sourceTree = "<group>"; };
-		49EE96A920DA40340071C153 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../usr/local/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		49F33ABD20D16A7D001A93F8 /* LClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LClient; sourceTree = BUILT_PRODUCTS_DIR; };
-		49F33ACA20D16A94001A93F8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		49EE970820DA64100071C153 /* LClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LClient; sourceTree = BUILT_PRODUCTS_DIR; };
+		49EE971320DA644B0071C153 /* LClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LClient.h; sourceTree = "<group>"; };
+		49EE971520DA644B0071C153 /* LClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LClient.cpp; sourceTree = "<group>"; };
+		49EE971A20DA6BC80071C153 /* LEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = LEngine.dylib; path = ../Lib/LEngine.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		49F33ABA20D16A7D001A93F8 /* Frameworks */ = {
+		49EE970520DA64100071C153 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49F33ACB20D16A95001A93F8 /* OpenGL.framework in Frameworks */,
-				49EE96AA20DA40340071C153 /* libglfw.3.2.dylib in Frameworks */,
+				49EE971B20DA6BC80071C153 /* LEngine.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49EE969B20DA3EB90071C153 /* Include */ = {
+		49EE96FF20DA64100071C153 = {
 			isa = PBXGroup;
 			children = (
-				49EE969C20DA3EB90071C153 /* LEngine.h */,
-				49EE969D20DA3EB90071C153 /* KHR */,
-				49EE969F20DA3EB90071C153 /* glad */,
-				49EE96A120DA3EB90071C153 /* LExports.h */,
-				49EE96A220DA3EB90071C153 /* GLFW */,
-				49EE96A520DA3EB90071C153 /* LAssert.h */,
-				49EE96A620DA3EB90071C153 /* LInterface.h */,
-			);
-			name = Include;
-			path = ../Include;
-			sourceTree = "<group>";
-		};
-		49EE969D20DA3EB90071C153 /* KHR */ = {
-			isa = PBXGroup;
-			children = (
-				49EE969E20DA3EB90071C153 /* khrplatform.h */,
-			);
-			path = KHR;
-			sourceTree = "<group>";
-		};
-		49EE969F20DA3EB90071C153 /* glad */ = {
-			isa = PBXGroup;
-			children = (
-				49EE96A020DA3EB90071C153 /* glad.h */,
-			);
-			path = glad;
-			sourceTree = "<group>";
-		};
-		49EE96A220DA3EB90071C153 /* GLFW */ = {
-			isa = PBXGroup;
-			children = (
-				49EE96A320DA3EB90071C153 /* glfw3.h */,
-				49EE96A420DA3EB90071C153 /* glfw3native.h */,
-			);
-			path = GLFW;
-			sourceTree = "<group>";
-		};
-		49EE96A720DA3EC80071C153 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				49EE96A820DA3EC80071C153 /* LClient.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		49F33AB420D16A7D001A93F8 = {
-			isa = PBXGroup;
-			children = (
-				49EE96A720DA3EC80071C153 /* src */,
-				49EE969B20DA3EB90071C153 /* Include */,
-				49F33ABE20D16A7D001A93F8 /* Products */,
-				49F33AC720D16A8E001A93F8 /* Frameworks */,
+				49EE971220DA644B0071C153 /* include */,
+				49EE971420DA644B0071C153 /* src */,
+				49EE970920DA64100071C153 /* Products */,
+				49EE971920DA6BC80071C153 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		49F33ABE20D16A7D001A93F8 /* Products */ = {
+		49EE970920DA64100071C153 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49F33ABD20D16A7D001A93F8 /* LClient */,
+				49EE970820DA64100071C153 /* LClient */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		49F33AC720D16A8E001A93F8 /* Frameworks */ = {
+		49EE971220DA644B0071C153 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				49EE96A920DA40340071C153 /* libglfw.3.2.dylib */,
-				49F33ACA20D16A94001A93F8 /* OpenGL.framework */,
+				49EE971320DA644B0071C153 /* LClient.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		49EE971420DA644B0071C153 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				49EE971520DA644B0071C153 /* LClient.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		49EE971920DA6BC80071C153 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49EE971A20DA6BC80071C153 /* LEngine.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,66 +87,67 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49F33ABC20D16A7D001A93F8 /* LClient */ = {
+		49EE970720DA64100071C153 /* LClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49F33AC420D16A7D001A93F8 /* Build configuration list for PBXNativeTarget "LClient" */;
+			buildConfigurationList = 49EE970F20DA64100071C153 /* Build configuration list for PBXNativeTarget "LClient" */;
 			buildPhases = (
-				49F33AB920D16A7D001A93F8 /* Sources */,
-				49F33ABA20D16A7D001A93F8 /* Frameworks */,
-				49F33ABB20D16A7D001A93F8 /* CopyFiles */,
+				49EE970420DA64100071C153 /* Sources */,
+				49EE970520DA64100071C153 /* Frameworks */,
+				49EE970620DA64100071C153 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = LClient;
-			productName = LOpenGL;
-			productReference = 49F33ABD20D16A7D001A93F8 /* LClient */;
+			productName = LClient;
+			productReference = 49EE970820DA64100071C153 /* LClient */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		49F33AB520D16A7D001A93F8 /* Project object */ = {
+		49EE970020DA64100071C153 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = LeafMaple;
 				TargetAttributes = {
-					49F33ABC20D16A7D001A93F8 = {
+					49EE970720DA64100071C153 = {
 						CreatedOnToolsVersion = 9.4;
 					};
 				};
 			};
-			buildConfigurationList = 49F33AB820D16A7D001A93F8 /* Build configuration list for PBXProject "LClient" */;
+			buildConfigurationList = 49EE970320DA64100071C153 /* Build configuration list for PBXProject "LClient" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 49F33AB420D16A7D001A93F8;
-			productRefGroup = 49F33ABE20D16A7D001A93F8 /* Products */;
+			mainGroup = 49EE96FF20DA64100071C153;
+			productRefGroup = 49EE970920DA64100071C153 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49F33ABC20D16A7D001A93F8 /* LClient */,
+				49EE970720DA64100071C153 /* LClient */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		49F33AB920D16A7D001A93F8 /* Sources */ = {
+		49EE970420DA64100071C153 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49EE971620DA644B0071C153 /* LClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		49F33AC220D16A7D001A93F8 /* Debug */ = {
+		49EE970D20DA64100071C153 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -240,10 +199,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Include\"",
-					/usr/local/include,
+					"\"$(SRCROOT)/../Include\"",
+					"\"$(SRCROOT)/include\"",
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -251,7 +209,7 @@
 			};
 			name = Debug;
 		};
-		49F33AC320D16A7D001A93F8 /* Release */ = {
+		49EE970E20DA64100071C153 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -297,17 +255,16 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Include\"",
-					/usr/local/include,
+					"\"$(SRCROOT)/../Include\"",
+					"\"$(SRCROOT)/include\"",
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		49F33AC520D16A7D001A93F8 /* Debug */ = {
+		49EE971020DA64100071C153 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -315,7 +272,7 @@
 			};
 			name = Debug;
 		};
-		49F33AC620D16A7D001A93F8 /* Release */ = {
+		49EE971120DA64100071C153 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -326,25 +283,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49F33AB820D16A7D001A93F8 /* Build configuration list for PBXProject "LClient" */ = {
+		49EE970320DA64100071C153 /* Build configuration list for PBXProject "LClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49F33AC220D16A7D001A93F8 /* Debug */,
-				49F33AC320D16A7D001A93F8 /* Release */,
+				49EE970D20DA64100071C153 /* Debug */,
+				49EE970E20DA64100071C153 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49F33AC420D16A7D001A93F8 /* Build configuration list for PBXNativeTarget "LClient" */ = {
+		49EE970F20DA64100071C153 /* Build configuration list for PBXNativeTarget "LClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49F33AC520D16A7D001A93F8 /* Debug */,
-				49F33AC620D16A7D001A93F8 /* Release */,
+				49EE971020DA64100071C153 /* Debug */,
+				49EE971120DA64100071C153 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 49F33AB520D16A7D001A93F8 /* Project object */;
+	rootObject = 49EE970020DA64100071C153 /* Project object */;
 }
