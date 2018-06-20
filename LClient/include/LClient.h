@@ -22,7 +22,7 @@ public:
     
     bool Init();
     bool Update();
-    
+
     bool IsActive();
     
 private:

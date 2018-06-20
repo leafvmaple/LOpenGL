@@ -57,6 +57,7 @@ bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
         glfwSetFramebufferSizeCallback(m_pWindow, FrameBufferSizeFunc);
         
         BOOL_ERROR_BREAK(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
+		m_bActive = true;
         
         bResult = true;
     } while(0);
