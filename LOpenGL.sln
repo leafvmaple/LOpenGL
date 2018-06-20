@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LOpenGL", "LOpenGL\LOpenGL.vcxproj", "{6B13FD73-B8B7-416E-9454-88CC492BA32F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLAD", "GLAD\GLAD.vcxproj", "{8360F4F5-6E2D-4A89-8A35-A09E5B465E85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B13FD73-B8B7-416E-9454-88CC492BA32F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6B13FD73-B8B7-416E-9454-88CC492BA32F}.Debug|Win32.Build.0 = Debug|Win32
+		{6B13FD73-B8B7-416E-9454-88CC492BA32F}.Release|Win32.ActiveCfg = Release|Win32
+		{6B13FD73-B8B7-416E-9454-88CC492BA32F}.Release|Win32.Build.0 = Release|Win32
+		{8360F4F5-6E2D-4A89-8A35-A09E5B465E85}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8360F4F5-6E2D-4A89-8A35-A09E5B465E85}.Debug|Win32.Build.0 = Debug|Win32
+		{8360F4F5-6E2D-4A89-8A35-A09E5B465E85}.Release|Win32.ActiveCfg = Release|Win32
+		{8360F4F5-6E2D-4A89-8A35-A09E5B465E85}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
