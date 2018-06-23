@@ -1,16 +1,17 @@
 //
-//  LGLMain.cpp
+//  LClient.cpp
 //  LOpenGL
 //
 //  Created by LeafMaple on 2018/06/19.
 //  Copyright © 2018 LeafMaple. All rights reserved.
 //
-
+#ifdef WIN32
+#include <windows.h>
+#endif
 
 #include "LClient.h"
 #include "LInterface.h"
 #include "LAssert.h"
-#include <time.h>
 
 LClient::LClient()
 : m_fLastTime(0.0f)
@@ -25,6 +26,8 @@ LClient::~LClient()
 
 bool LClient::Init()
 {
+    bool bResult = false;
+    bool bRetCode = false;
     L3DWINDOWPARAM WindowParam;
     
     do
@@ -35,11 +38,15 @@ bool LClient::Init()
         WindowParam.lpszWindowName = "L3D DirectX9 Engine";
         
         m_pEngine = IL3DEngine::Instance();
+        BOOL_ERROR_BREAK(m_pEngine);
         
-        m_pEngine->Init(WindowParam);
+        bRetCode = m_pEngine->Init(WindowParam);
+        BOOL_ERROR_BREAK(bRetCode);
+
+        bResult = true;
     } while(0);
     
-    return true;
+    return bResult;
 }
 
 bool LClient::Update()
@@ -49,10 +56,14 @@ bool LClient::Update()
     float fCurTime = 0;
     float fDeltaTime = 0;
     
-    do {
-        //fCurTime = (float)GetTickCount();
-        //fDeltaTime = (fCurTime - m_fLastTime) * 0.001f;
-        
+    do
+    {
+        BOOL_ERROR_BREAK(m_pEngine);
+
+#ifdef WIN32
+        fCurTime = (float)timeGetTime();
+        fDeltaTime = (fCurTime - m_fLastTime) * 0.001f;
+#endif  
         bRetCode = m_pEngine->Update(fDeltaTime);
         BOOL_ERROR_BREAK(bRetCode);
         
@@ -64,9 +75,17 @@ bool LClient::Update()
     return bResult;
 }
 
+void LClient::Uninit()
+{
+    if (m_pEngine)
+    {
+        m_pEngine->Uninit();
+    }
+}
+
 bool LClient::IsActive()
 {
-    return m_pEngine->IsActive();
+    return m_pEngine && m_pEngine->IsActive();
 }
 
 int main()
@@ -74,7 +93,9 @@ int main()
     bool bRetCode = false;
     LClient Client;
     
-    do {
+    do
+    {
+
         bRetCode = Client.Init();
         BOOL_ERROR_BREAK(bRetCode);
         
@@ -85,6 +106,8 @@ int main()
         }
         
     } while (0);
+
+    Client.Uninit();
     
     return 0;
 }

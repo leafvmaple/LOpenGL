@@ -40,13 +40,16 @@ bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
     do
     {
         m_WindowParam = WindowParam;
-        glfwInit();
+
+        BOOL_ERROR_BREAK(glfwInit());
+
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
+
         m_pWindow = glfwCreateWindow(WindowParam.Width,
                                      WindowParam.Height,
                                      WindowParam.lpszWindowName,
@@ -69,9 +72,9 @@ bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
     return bResult;
 }
 
-bool L3DEngine::Uninit()
+void L3DEngine::Uninit()
 {
-    return true;
+    glfwTerminate();
 }
 
 bool L3DEngine::Update(float fDeltaTime)

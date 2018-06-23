@@ -22,6 +22,7 @@ public:
     
     bool Init();
     bool Update();
+    void Uninit();
 
     bool IsActive();
     

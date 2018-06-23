@@ -28,7 +28,7 @@ public:
     virtual ~IL3DEngine() {};
     
     virtual bool Init(L3DWINDOWPARAM& WindowParam) = 0;
-    virtual bool Uninit() = 0;
+    virtual void Uninit() = 0;
     
     virtual bool Update(float fDeltaTime) = 0;
     
