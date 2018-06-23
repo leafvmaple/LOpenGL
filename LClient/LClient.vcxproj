@@ -37,19 +37,20 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../Include;include;$(IncludePath)</IncludePath>
-    <LibraryPath>../Lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;LENGINE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -80,6 +81,9 @@
     <ClInclude Include="include\LClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GLAD\GLAD.vcxproj">
+      <Project>{8360f4f5-6e2d-4a89-8a35-a09e5b465e85}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\LEngine\LEngine.vcxproj">
       <Project>{7df8e34f-92a3-4a77-9717-0698b01f67ac}</Project>
     </ProjectReference>
