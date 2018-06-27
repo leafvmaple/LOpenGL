@@ -91,8 +91,9 @@ bool L3DEngine::Update(float fDeltaTime)
         
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-
-        for (LLIST_ITER(ILModel)itModel = m_ModelList.begin(); itModel != m_ModelList.end(); itModel++)
+        
+        std::list<ILModel*>::iterator itModel;
+        for (itModel = m_ModelList.begin(); itModel != m_ModelList.end(); itModel++)
         {
             L3DModel* pObject = dynamic_cast<L3DModel*>(*itModel);
             BOOL_ERROR_CONTINUE(pObject);

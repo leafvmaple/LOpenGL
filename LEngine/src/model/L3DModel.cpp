@@ -1,5 +1,4 @@
-#include "model\L3DModel.h"
-#include "Linterface.h"
+#include "model/L3DModel.h"
 
 L3DModel::L3DModel()
 : m_nVertexArrObj(0)

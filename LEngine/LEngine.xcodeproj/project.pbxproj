@@ -7,19 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49CE8A9C20E321E700C289F3 /* L3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A9B20E321E700C289F3 /* L3DModel.cpp */; };
+		49CE8AA020E321F200C289F3 /* L3DModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 49CE8A9F20E321F200C289F3 /* L3DModel.h */; };
 		49EE968920DA37F90071C153 /* LEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE968820DA37F90071C153 /* LEngine.cpp */; };
 		49EE96C320DA4FE90071C153 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */; };
-		49EE96FC20DA54B00071C153 /* GLAD.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96FB20DA54B00071C153 /* GLAD.dylib */; };
 		49EE971820DA66040071C153 /* LInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE971720DA66040071C153 /* LInterface.cpp */; };
+		49FD5EDC20E34E2F0001802B /* libGLAD.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD5EDB20E34E2F0001802B /* libGLAD.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49EE968120DA37F90071C153 /* LEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = LEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		49CE8A9B20E321E700C289F3 /* L3DModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = L3DModel.cpp; sourceTree = "<group>"; };
+		49CE8A9F20E321F200C289F3 /* L3DModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L3DModel.h; sourceTree = "<group>"; };
+		49EE968120DA37F90071C153 /* libLEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libLEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EE968820DA37F90071C153 /* LEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LEngine.cpp; sourceTree = "<group>"; };
 		49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		49EE96DF20DA53190071C153 /* LEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = LEngine.dylib; path = ../Lib/LEngine.dylib; sourceTree = "<group>"; };
-		49EE96FB20DA54B00071C153 /* GLAD.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = GLAD.dylib; path = ../Lib/GLAD.dylib; sourceTree = "<group>"; };
 		49EE971720DA66040071C153 /* LInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LInterface.cpp; sourceTree = "<group>"; };
+		49FD5EDB20E34E2F0001802B /* libGLAD.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLAD.dylib; path = ../../../../../../usr/local/lib/libGLAD.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,16 +31,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				49EE96C320DA4FE90071C153 /* libglfw.3.2.dylib in Frameworks */,
-				49EE96FC20DA54B00071C153 /* GLAD.dylib in Frameworks */,
+				49FD5EDC20E34E2F0001802B /* libGLAD.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49CE8A9A20E321E700C289F3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				49CE8A9B20E321E700C289F3 /* L3DModel.cpp */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		49CE8A9D20E321F200C289F3 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				49CE8A9E20E321F200C289F3 /* model */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		49CE8A9E20E321F200C289F3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				49CE8A9F20E321F200C289F3 /* L3DModel.h */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		49EE967820DA37F90071C153 = {
 			isa = PBXGroup;
 			children = (
+				49CE8A9D20E321F200C289F3 /* include */,
 				49EE968320DA37F90071C153 /* src */,
 				49EE968220DA37F90071C153 /* Products */,
 				49EE96C120DA4FE90071C153 /* Frameworks */,
@@ -47,7 +75,7 @@
 		49EE968220DA37F90071C153 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49EE968120DA37F90071C153 /* LEngine.dylib */,
+				49EE968120DA37F90071C153 /* libLEngine.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,6 +83,7 @@
 		49EE968320DA37F90071C153 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				49CE8A9A20E321E700C289F3 /* model */,
 				49EE968820DA37F90071C153 /* LEngine.cpp */,
 				49EE971720DA66040071C153 /* LInterface.cpp */,
 			);
@@ -64,8 +93,7 @@
 		49EE96C120DA4FE90071C153 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49EE96FB20DA54B00071C153 /* GLAD.dylib */,
-				49EE96DF20DA53190071C153 /* LEngine.dylib */,
+				49FD5EDB20E34E2F0001802B /* libGLAD.dylib */,
 				49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */,
 			);
 			name = Frameworks;
@@ -78,6 +106,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CE8AA020E321F200C289F3 /* L3DModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +127,7 @@
 			);
 			name = LEngine;
 			productName = LEngine;
-			productReference = 49EE968120DA37F90071C153 /* LEngine.dylib */;
+			productReference = 49EE968120DA37F90071C153 /* libLEngine.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -138,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49EE971820DA66040071C153 /* LInterface.cpp in Sources */,
+				49CE8A9C20E321E700C289F3 /* L3DModel.cpp in Sources */,
 				49EE968920DA37F90071C153 /* LEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,10 +208,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../Lib";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -196,6 +228,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../Include",
+					"$(SRCROOT)/include",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/3.2.1/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -237,10 +278,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../Lib";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -249,6 +292,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../Include",
+					"$(SRCROOT)/include",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/3.2.1/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				REEXPORTED_LIBRARY_PATHS = "";
@@ -260,10 +312,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = ../Lib;
+				CONFIGURATION_BUILD_DIR = /usr/local/lib;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -273,12 +325,10 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../Include\"",
+					"\"$(SRCROOT)/include\"",
 					/usr/local/include,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/glfw/3.2.1/lib,
-				);
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw/3.2.1/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -288,22 +338,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CONFIGURATION_BUILD_DIR = ../Lib;
+				CONFIGURATION_BUILD_DIR = /usr/local/lib;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = LENGINE_EXPORTS;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../Include\"",
+					"\"$(SRCROOT)/include\"",
 					/usr/local/include,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/glfw/3.2.1/lib,
-				);
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw/3.2.1/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

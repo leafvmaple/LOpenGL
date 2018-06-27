@@ -2,14 +2,13 @@
 #ifndef _LSTL_H_
 #define _LSTL_H_
 
-#include <list>
-#include <map>
-
 #ifdef WIN32
-#define LLIST std::list
-#define LHASH std::map
+#include <map>
+#include <list>
 
-#define LLIST_ITER(T) std::list<T*>::iterator
+#elif __APPLE__
+#include <unordered_map>
+#include <list>
+
 #endif
-
 #endif // !_LSTL_H_

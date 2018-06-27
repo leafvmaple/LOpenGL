@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49CE8A9820E321C700C289F3 /* LObjectMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A9620E321C700C289F3 /* LObjectMgr.cpp */; };
+		49CE8A9920E321C700C289F3 /* LCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A9720E321C700C289F3 /* LCharacter.cpp */; };
 		49EE971620DA644B0071C153 /* LClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE971520DA644B0071C153 /* LClient.cpp */; };
-		49EE971B20DA6BC80071C153 /* LEngine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE971A20DA6BC80071C153 /* LEngine.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		49FD5EDA20E34C130001802B /* libLEngine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD5ED920E34C130001802B /* libLEngine.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		49CE8A9220E321BB00C289F3 /* LCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCharacter.h; sourceTree = "<group>"; };
+		49CE8A9320E321BB00C289F3 /* LObjectMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LObjectMgr.h; sourceTree = "<group>"; };
+		49CE8A9420E321BB00C289F3 /* LModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LModel.h; sourceTree = "<group>"; };
+		49CE8A9620E321C700C289F3 /* LObjectMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LObjectMgr.cpp; sourceTree = "<group>"; };
+		49CE8A9720E321C700C289F3 /* LCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LCharacter.cpp; sourceTree = "<group>"; };
 		49EE970820DA64100071C153 /* LClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LClient; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EE971320DA644B0071C153 /* LClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LClient.h; sourceTree = "<group>"; };
 		49EE971520DA644B0071C153 /* LClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LClient.cpp; sourceTree = "<group>"; };
-		49EE971A20DA6BC80071C153 /* LEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = LEngine.dylib; path = ../Lib/LEngine.dylib; sourceTree = "<group>"; };
+		49FD5ED920E34C130001802B /* libLEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLEngine.dylib; path = ../../../../../../usr/local/lib/libLEngine.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,13 +42,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49EE971B20DA6BC80071C153 /* LEngine.dylib in Frameworks */,
+				49FD5EDA20E34C130001802B /* libLEngine.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49CE8A9120E321BB00C289F3 /* object */ = {
+			isa = PBXGroup;
+			children = (
+				49CE8A9220E321BB00C289F3 /* LCharacter.h */,
+				49CE8A9320E321BB00C289F3 /* LObjectMgr.h */,
+				49CE8A9420E321BB00C289F3 /* LModel.h */,
+			);
+			path = object;
+			sourceTree = "<group>";
+		};
+		49CE8A9520E321C700C289F3 /* object */ = {
+			isa = PBXGroup;
+			children = (
+				49CE8A9620E321C700C289F3 /* LObjectMgr.cpp */,
+				49CE8A9720E321C700C289F3 /* LCharacter.cpp */,
+			);
+			path = object;
+			sourceTree = "<group>";
+		};
 		49EE96FF20DA64100071C153 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +89,7 @@
 		49EE971220DA644B0071C153 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				49CE8A9120E321BB00C289F3 /* object */,
 				49EE971320DA644B0071C153 /* LClient.h */,
 			);
 			path = include;
@@ -71,6 +98,7 @@
 		49EE971420DA644B0071C153 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				49CE8A9520E321C700C289F3 /* object */,
 				49EE971520DA644B0071C153 /* LClient.cpp */,
 			);
 			path = src;
@@ -79,7 +107,7 @@
 		49EE971920DA6BC80071C153 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49EE971A20DA6BC80071C153 /* LEngine.dylib */,
+				49FD5ED920E34C130001802B /* libLEngine.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CE8A9820E321C700C289F3 /* LObjectMgr.cpp in Sources */,
+				49CE8A9920E321C700C289F3 /* LCharacter.cpp in Sources */,
 				49EE971620DA644B0071C153 /* LClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,8 +229,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Include\"",
-					"\"$(SRCROOT)/include\"",
+					"$(SRCROOT)/../Include",
+					"$(SRCROOT)/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../Lib",
+					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -255,8 +289,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Include\"",
-					"\"$(SRCROOT)/include\"",
+					"$(SRCROOT)/../Include",
+					"$(SRCROOT)/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../Lib",
+					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;

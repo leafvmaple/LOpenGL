@@ -33,7 +33,7 @@ private:
     bool m_bActive;
     GLFWwindow* m_pWindow;
 
-    LLIST<ILModel*> m_ModelList;
+    std::list<ILModel*> m_ModelList;
 };
 
 #endif /* LEngine_h */

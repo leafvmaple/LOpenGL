@@ -11,6 +11,9 @@
       location = "group:Include"
       name = "Include">
       <FileRef
+         location = "group:LSTL.h">
+      </FileRef>
+      <FileRef
          location = "group:LEngine.h">
       </FileRef>
       <Group

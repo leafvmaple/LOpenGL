@@ -2,6 +2,7 @@
 #define _LOBJECTMGR_H_
 
 #include "LInterface.h"
+#include "LSTL.h"
 
 #ifdef WIN32
 #include <list>

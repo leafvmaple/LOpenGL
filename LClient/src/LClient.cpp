@@ -104,7 +104,6 @@ int main()
     
     do
     {
-
         bRetCode = Client.Init();
         BOOL_ERROR_BREAK(bRetCode);
         
