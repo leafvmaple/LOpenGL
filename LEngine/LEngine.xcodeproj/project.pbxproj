@@ -7,21 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49CE8A9C20E321E700C289F3 /* L3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A9B20E321E700C289F3 /* L3DModel.cpp */; };
-		49CE8AA020E321F200C289F3 /* L3DModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 49CE8A9F20E321F200C289F3 /* L3DModel.h */; };
-		49EE968920DA37F90071C153 /* LEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE968820DA37F90071C153 /* LEngine.cpp */; };
+		4947F1F420E39970002F8909 /* LInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F1E920E39970002F8909 /* LInterface.cpp */; };
+		4947F1F520E39970002F8909 /* LEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F1EA20E39970002F8909 /* LEngine.cpp */; };
+		4947F1F620E39970002F8909 /* LFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4947F1EC20E39970002F8909 /* LFileReader.h */; };
+		4947F1F720E39970002F8909 /* LFileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F1ED20E39970002F8909 /* LFileReader.cpp */; };
+		4947F1F820E39970002F8909 /* L3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F1EF20E39970002F8909 /* L3DModel.cpp */; };
+		4947F1F920E39970002F8909 /* L3DModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 4947F1F020E39970002F8909 /* L3DModel.h */; };
+		4947F1FA20E39970002F8909 /* L3DShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4947F1F220E39970002F8909 /* L3DShader.h */; };
+		4947F1FB20E39970002F8909 /* L3DShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F1F320E39970002F8909 /* L3DShader.cpp */; };
 		49EE96C320DA4FE90071C153 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */; };
-		49EE971820DA66040071C153 /* LInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE971720DA66040071C153 /* LInterface.cpp */; };
 		49FD5EDC20E34E2F0001802B /* libGLAD.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD5EDB20E34E2F0001802B /* libGLAD.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49CE8A9B20E321E700C289F3 /* L3DModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = L3DModel.cpp; sourceTree = "<group>"; };
-		49CE8A9F20E321F200C289F3 /* L3DModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L3DModel.h; sourceTree = "<group>"; };
+		4947F1E920E39970002F8909 /* LInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LInterface.cpp; sourceTree = "<group>"; };
+		4947F1EA20E39970002F8909 /* LEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LEngine.cpp; sourceTree = "<group>"; };
+		4947F1EC20E39970002F8909 /* LFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFileReader.h; sourceTree = "<group>"; };
+		4947F1ED20E39970002F8909 /* LFileReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFileReader.cpp; sourceTree = "<group>"; };
+		4947F1EF20E39970002F8909 /* L3DModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = L3DModel.cpp; sourceTree = "<group>"; };
+		4947F1F020E39970002F8909 /* L3DModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L3DModel.h; sourceTree = "<group>"; };
+		4947F1F220E39970002F8909 /* L3DShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L3DShader.h; sourceTree = "<group>"; };
+		4947F1F320E39970002F8909 /* L3DShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = L3DShader.cpp; sourceTree = "<group>"; };
 		49EE968120DA37F90071C153 /* libLEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libLEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		49EE968820DA37F90071C153 /* LEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LEngine.cpp; sourceTree = "<group>"; };
 		49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		49EE971720DA66040071C153 /* LInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LInterface.cpp; sourceTree = "<group>"; };
 		49FD5EDB20E34E2F0001802B /* libGLAD.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLAD.dylib; path = ../../../../../../usr/local/lib/libGLAD.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,35 +46,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49CE8A9A20E321E700C289F3 /* model */ = {
+		4947F1E820E39970002F8909 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				49CE8A9B20E321E700C289F3 /* L3DModel.cpp */,
+				4947F1E920E39970002F8909 /* LInterface.cpp */,
+				4947F1EA20E39970002F8909 /* LEngine.cpp */,
+				4947F1EB20E39970002F8909 /* io */,
+				4947F1EE20E39970002F8909 /* model */,
+				4947F1F120E39970002F8909 /* shader */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		4947F1EB20E39970002F8909 /* io */ = {
+			isa = PBXGroup;
+			children = (
+				4947F1EC20E39970002F8909 /* LFileReader.h */,
+				4947F1ED20E39970002F8909 /* LFileReader.cpp */,
+			);
+			path = io;
+			sourceTree = "<group>";
+		};
+		4947F1EE20E39970002F8909 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4947F1EF20E39970002F8909 /* L3DModel.cpp */,
+				4947F1F020E39970002F8909 /* L3DModel.h */,
 			);
 			path = model;
 			sourceTree = "<group>";
 		};
-		49CE8A9D20E321F200C289F3 /* include */ = {
+		4947F1F120E39970002F8909 /* shader */ = {
 			isa = PBXGroup;
 			children = (
-				49CE8A9E20E321F200C289F3 /* model */,
+				4947F1F220E39970002F8909 /* L3DShader.h */,
+				4947F1F320E39970002F8909 /* L3DShader.cpp */,
 			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		49CE8A9E20E321F200C289F3 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				49CE8A9F20E321F200C289F3 /* L3DModel.h */,
-			);
-			path = model;
+			path = shader;
 			sourceTree = "<group>";
 		};
 		49EE967820DA37F90071C153 = {
 			isa = PBXGroup;
 			children = (
-				49CE8A9D20E321F200C289F3 /* include */,
-				49EE968320DA37F90071C153 /* src */,
+				4947F1E820E39970002F8909 /* src */,
 				49EE968220DA37F90071C153 /* Products */,
 				49EE96C120DA4FE90071C153 /* Frameworks */,
 			);
@@ -78,16 +100,6 @@
 				49EE968120DA37F90071C153 /* libLEngine.dylib */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		49EE968320DA37F90071C153 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				49CE8A9A20E321E700C289F3 /* model */,
-				49EE968820DA37F90071C153 /* LEngine.cpp */,
-				49EE971720DA66040071C153 /* LInterface.cpp */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		49EE96C120DA4FE90071C153 /* Frameworks */ = {
@@ -106,7 +118,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49CE8AA020E321F200C289F3 /* L3DModel.h in Headers */,
+				4947F1F920E39970002F8909 /* L3DModel.h in Headers */,
+				4947F1FA20E39970002F8909 /* L3DShader.h in Headers */,
+				4947F1F620E39970002F8909 /* LFileReader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,9 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49EE971820DA66040071C153 /* LInterface.cpp in Sources */,
-				49CE8A9C20E321E700C289F3 /* L3DModel.cpp in Sources */,
-				49EE968920DA37F90071C153 /* LEngine.cpp in Sources */,
+				4947F1FB20E39970002F8909 /* L3DShader.cpp in Sources */,
+				4947F1F420E39970002F8909 /* LInterface.cpp in Sources */,
+				4947F1F520E39970002F8909 /* LEngine.cpp in Sources */,
+				4947F1F720E39970002F8909 /* LFileReader.cpp in Sources */,
+				4947F1F820E39970002F8909 /* L3DModel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +246,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../Include",
-					"$(SRCROOT)/include",
+					"$(SRCROOT)/src",
 					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -241,6 +257,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				REEXPORTED_LIBRARY_PATHS = "";
+				REZ_SEARCH_PATHS = "$(SRCROOT)";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -294,7 +311,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../Include",
-					"$(SRCROOT)/include",
+					"$(SRCROOT)/src",
 					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
@@ -304,6 +321,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				REEXPORTED_LIBRARY_PATHS = "";
+				REZ_SEARCH_PATHS = "$(SRCROOT)";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -323,12 +341,6 @@
 					LENGINE_EXPORTS,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Include\"",
-					"\"$(SRCROOT)/include\"",
-					/usr/local/include,
-				);
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw/3.2.1/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -346,12 +358,6 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = LENGINE_EXPORTS;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Include\"",
-					"\"$(SRCROOT)/include\"",
-					/usr/local/include,
-				);
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw/3.2.1/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

@@ -13,9 +13,9 @@ public:
     void Uninit();
 
     void User() const;
-    void L3DShader::setBool(const char* szValueName, bool value) const;
-    void L3DShader::setInt(const char* szValueName, int value) const;
-    void L3DShader::setFloat(const char* szValueName, float value) const;
+    void setBool(const char* szValueName, bool value) const;
+    void setInt(const char* szValueName, int value) const;
+    void setFloat(const char* szValueName, float value) const;
 
 private:
     bool CreateShader(const char* pShaderPath, int ShaderType, int* pShaderID);

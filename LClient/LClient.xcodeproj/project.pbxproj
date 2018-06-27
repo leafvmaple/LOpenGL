@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49CE8A9820E321C700C289F3 /* LObjectMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A9620E321C700C289F3 /* LObjectMgr.cpp */; };
-		49CE8A9920E321C700C289F3 /* LCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A9720E321C700C289F3 /* LCharacter.cpp */; };
-		49EE971620DA644B0071C153 /* LClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49EE971520DA644B0071C153 /* LClient.cpp */; };
+		4947F20520E39991002F8909 /* LObjectMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F20020E39990002F8909 /* LObjectMgr.cpp */; };
+		4947F20620E39991002F8909 /* LCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F20220E39990002F8909 /* LCharacter.cpp */; };
+		4947F20720E39991002F8909 /* LClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F20420E39990002F8909 /* LClient.cpp */; };
 		49FD5EDA20E34C130001802B /* libLEngine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD5ED920E34C130001802B /* libLEngine.dylib */; };
 /* End PBXBuildFile section */
 
@@ -26,14 +26,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		49CE8A9220E321BB00C289F3 /* LCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCharacter.h; sourceTree = "<group>"; };
-		49CE8A9320E321BB00C289F3 /* LObjectMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LObjectMgr.h; sourceTree = "<group>"; };
-		49CE8A9420E321BB00C289F3 /* LModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LModel.h; sourceTree = "<group>"; };
-		49CE8A9620E321C700C289F3 /* LObjectMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LObjectMgr.cpp; sourceTree = "<group>"; };
-		49CE8A9720E321C700C289F3 /* LCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LCharacter.cpp; sourceTree = "<group>"; };
+		4947F1FD20E39990002F8909 /* LClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LClient.h; sourceTree = "<group>"; };
+		4947F1FF20E39990002F8909 /* LCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCharacter.h; sourceTree = "<group>"; };
+		4947F20020E39990002F8909 /* LObjectMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LObjectMgr.cpp; sourceTree = "<group>"; };
+		4947F20120E39990002F8909 /* LObjectMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LObjectMgr.h; sourceTree = "<group>"; };
+		4947F20220E39990002F8909 /* LCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LCharacter.cpp; sourceTree = "<group>"; };
+		4947F20320E39990002F8909 /* LModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LModel.h; sourceTree = "<group>"; };
+		4947F20420E39990002F8909 /* LClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LClient.cpp; sourceTree = "<group>"; };
 		49EE970820DA64100071C153 /* LClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LClient; sourceTree = BUILT_PRODUCTS_DIR; };
-		49EE971320DA644B0071C153 /* LClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LClient.h; sourceTree = "<group>"; };
-		49EE971520DA644B0071C153 /* LClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LClient.cpp; sourceTree = "<group>"; };
 		49FD5ED920E34C130001802B /* libLEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLEngine.dylib; path = ../../../../../../usr/local/lib/libLEngine.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,21 +49,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49CE8A9120E321BB00C289F3 /* object */ = {
+		4947F1FC20E39990002F8909 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				49CE8A9220E321BB00C289F3 /* LCharacter.h */,
-				49CE8A9320E321BB00C289F3 /* LObjectMgr.h */,
-				49CE8A9420E321BB00C289F3 /* LModel.h */,
+				4947F1FD20E39990002F8909 /* LClient.h */,
+				4947F1FE20E39990002F8909 /* object */,
+				4947F20420E39990002F8909 /* LClient.cpp */,
 			);
-			path = object;
+			path = src;
 			sourceTree = "<group>";
 		};
-		49CE8A9520E321C700C289F3 /* object */ = {
+		4947F1FE20E39990002F8909 /* object */ = {
 			isa = PBXGroup;
 			children = (
-				49CE8A9620E321C700C289F3 /* LObjectMgr.cpp */,
-				49CE8A9720E321C700C289F3 /* LCharacter.cpp */,
+				4947F1FF20E39990002F8909 /* LCharacter.h */,
+				4947F20020E39990002F8909 /* LObjectMgr.cpp */,
+				4947F20120E39990002F8909 /* LObjectMgr.h */,
+				4947F20220E39990002F8909 /* LCharacter.cpp */,
+				4947F20320E39990002F8909 /* LModel.h */,
 			);
 			path = object;
 			sourceTree = "<group>";
@@ -71,8 +74,7 @@
 		49EE96FF20DA64100071C153 = {
 			isa = PBXGroup;
 			children = (
-				49EE971220DA644B0071C153 /* include */,
-				49EE971420DA644B0071C153 /* src */,
+				4947F1FC20E39990002F8909 /* src */,
 				49EE970920DA64100071C153 /* Products */,
 				49EE971920DA6BC80071C153 /* Frameworks */,
 			);
@@ -84,24 +86,6 @@
 				49EE970820DA64100071C153 /* LClient */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		49EE971220DA644B0071C153 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				49CE8A9120E321BB00C289F3 /* object */,
-				49EE971320DA644B0071C153 /* LClient.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		49EE971420DA644B0071C153 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				49CE8A9520E321C700C289F3 /* object */,
-				49EE971520DA644B0071C153 /* LClient.cpp */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		49EE971920DA6BC80071C153 /* Frameworks */ = {
@@ -168,9 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49CE8A9820E321C700C289F3 /* LObjectMgr.cpp in Sources */,
-				49CE8A9920E321C700C289F3 /* LCharacter.cpp in Sources */,
-				49EE971620DA644B0071C153 /* LClient.cpp in Sources */,
+				4947F20720E39991002F8909 /* LClient.cpp in Sources */,
+				4947F20620E39991002F8909 /* LCharacter.cpp in Sources */,
+				4947F20520E39991002F8909 /* LObjectMgr.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +214,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../Include",
-					"$(SRCROOT)/include",
+					"$(SRCROOT)/src",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/../Lib",
@@ -239,6 +223,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				REZ_SEARCH_PATHS = "$(SRCROOT)";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -290,7 +275,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../Include",
-					"$(SRCROOT)/include",
+					"$(SRCROOT)/src",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/../Lib",
@@ -298,6 +283,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				REZ_SEARCH_PATHS = "$(SRCROOT)";
 				SDKROOT = macosx;
 			};
 			name = Release;

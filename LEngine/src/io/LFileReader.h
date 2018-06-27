@@ -1,6 +1,9 @@
-#pragma once
-#include <wtypes.h>
-#include <atlconv.h>
+#ifndef LFILEREADER_H_
+#define LFILEREADER_H_
+
+#ifdef __APPLE__
+typedef unsigned char BYTE;
+#endif
 
 class LFileReader
 {
@@ -33,14 +36,17 @@ public:
 		return pBuffer + nLen;
 	}
 
-	static BYTE* Copy(BYTE* pBuffer, TCHAR pModel[], size_t nLen = 0)
+	static BYTE* Copy(BYTE* pBuffer, char pModel[], size_t nLen = 0)
 	{
 		if (!nLen)
-			nLen = strlen((LPCSTR)pBuffer);
-		{
-			USES_CONVERSION;
-			strcpy_s(pModel, nLen, (LPCSTR)pBuffer);
-		}
+        {
+			nLen = strlen((const char*)pBuffer);
+#ifdef WIN32
+			strcpy_s(pModel, nLen, (const char*)pBuffer);
+#else
+            strcpy(pModel, (const char*)pBuffer);
+#endif
+        }
 		return pBuffer + nLen;
 	}
 
@@ -52,3 +58,5 @@ public:
 		return pBuffer + nLen;
 	}
 };
+
+#endif
