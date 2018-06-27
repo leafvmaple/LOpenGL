@@ -9,7 +9,12 @@
 #ifndef _LINTERFACE_H_
 #define _LINTERFACE_H_
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 #include "LExports.h"
+#include "LAssert.h"
+#include "LSTL.h"
 
 struct L3DWINDOWPARAM
 {
@@ -43,6 +48,21 @@ private:
     static IL3DEngine* m_pInstance;
 };
 
+class L3DENGINE_CLASS ILModel
+{
+public:
+    ILModel() {};
+    virtual ~ILModel() {};
+
+    static bool Create(IL3DEngine* pIEngine,
+                       const void* pModelVerteices,
+                       GLsizeiptr nVerteicesCount,
+                       const void* pwModelIndices,
+                       GLsizeiptr nIndicesCount,
+                       const char *pVertexShaderSource,
+                       const char *pFragmentShaderSource,
+                       ILModel** ppModel);
+};
 
 #endif /* LInterface_h */
 

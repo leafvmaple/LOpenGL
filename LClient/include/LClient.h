@@ -12,7 +12,8 @@
 #include "LAssert.h"
 #include "LExports.h"
 
-class IL3DEngine;
+class L3DENGINE_CLASS IL3DEngine;
+class LObjectMgr;
 
 class LClient
 {
@@ -28,6 +29,7 @@ public:
     
 private:
     IL3DEngine* m_pEngine;
+    LObjectMgr* m_pObjectMgr;
     
     float m_fLastTime;
 };

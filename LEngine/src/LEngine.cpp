@@ -7,8 +7,11 @@
 //
 
 #include <iostream>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "LEngine.h"
 #include "LAssert.h"
+#include "model/L3DModel.h"
 
 void FrameBufferSizeFunc(GLFWwindow* pWindow, int nWidth, int nHeight)
 {
@@ -60,7 +63,7 @@ bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
         glfwSetFramebufferSizeCallback(m_pWindow, FrameBufferSizeFunc);
         
         BOOL_ERROR_BREAK(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
-		m_bActive = true;
+        m_bActive = true;
         
         bResult = true;
     } while(0);
@@ -88,6 +91,14 @@ bool L3DEngine::Update(float fDeltaTime)
         
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        for (LLIST_ITER(ILModel)itModel = m_ModelList.begin(); itModel != m_ModelList.end(); itModel++)
+        {
+            L3DModel* pObject = dynamic_cast<L3DModel*>(*itModel);
+            BOOL_ERROR_CONTINUE(pObject);
+
+            pObject->UpdateDisplay();
+        }
         
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
@@ -101,4 +112,19 @@ bool L3DEngine::Update(float fDeltaTime)
 bool L3DEngine::IsActive()
 {
     return m_bActive && !glfwWindowShouldClose(m_pWindow);
+}
+
+bool L3DEngine::AttachObject(ILModel* pAction)
+{
+    bool bResult = false;
+
+    do 
+    {
+        BOOL_ERROR_BREAK(pAction);
+        m_ModelList.push_back(pAction);
+
+        bResult = true;
+    } while (0);
+
+    return bResult;
 }

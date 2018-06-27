@@ -9,9 +9,6 @@
 #ifndef LEngine_h
 #define LEngine_h
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 #include "LInterface.h"
 
 class L3DEngine : public IL3DEngine
@@ -26,12 +23,17 @@ public:
     virtual bool Update(float fDeltaTime);
     
     virtual bool IsActive();
-    
+
+public:
+    bool AttachObject(ILModel* pAction);
+
 private:
     L3DWINDOWPARAM m_WindowParam;
     
     bool m_bActive;
     GLFWwindow* m_pWindow;
+
+    LLIST<ILModel*> m_ModelList;
 };
 
 #endif /* LEngine_h */

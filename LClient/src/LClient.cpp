@@ -12,6 +12,8 @@
 #include "LClient.h"
 #include "LInterface.h"
 #include "LAssert.h"
+#include "object/LObjectMgr.h"
+#include "object/LCharacter.h"
 
 LClient::LClient()
 : m_fLastTime(0.0f)
@@ -21,7 +23,7 @@ LClient::LClient()
 
 LClient::~LClient()
 {
-    
+    Uninit();
 }
 
 bool LClient::Init()
@@ -34,14 +36,20 @@ bool LClient::Init()
     {
         WindowParam.Width = 800;
         WindowParam.Height = 600;
-        WindowParam.lpszClassName = "LDirectX";
-        WindowParam.lpszWindowName = "L3D DirectX9 Engine";
+        WindowParam.lpszClassName = "LOpenGL";
+        WindowParam.lpszWindowName = "L3D LOpenGL Engine";
         
         m_pEngine = IL3DEngine::Instance();
         BOOL_ERROR_BREAK(m_pEngine);
-        
+
         bRetCode = m_pEngine->Init(WindowParam);
         BOOL_ERROR_BREAK(bRetCode);
+
+        m_pObjectMgr = new LObjectMgr;
+        BOOL_ERROR_BREAK(m_pObjectMgr);
+
+        LCharacter *pCharacter = m_pObjectMgr->CreateModel<LCharacter>();
+        BOOL_ERROR_BREAK(pCharacter);
 
         bResult = true;
     } while(0);
@@ -80,6 +88,7 @@ void LClient::Uninit()
     if (m_pEngine)
     {
         m_pEngine->Uninit();
+        m_pEngine = nullptr;
     }
 }
 
