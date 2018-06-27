@@ -50,7 +50,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -79,9 +79,11 @@ copy "$(TargetDir)$(TargetName).lib" "$(SolutionDir)Lib"</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\io\LFileReader.cpp" />
     <ClCompile Include="src\LEngine.cpp" />
     <ClCompile Include="src\LInterface.cpp" />
     <ClCompile Include="src\model\L3DModel.cpp" />
+    <ClCompile Include="src\shader\L3DShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GLAD\GLAD.vcxproj">
@@ -94,7 +96,9 @@ copy "$(TargetDir)$(TargetName).lib" "$(SolutionDir)Lib"</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\model\L3DModel.h" />
+    <ClInclude Include="src\io\LFileReader.h" />
+    <ClInclude Include="src\model\L3DModel.h" />
+    <ClInclude Include="src\shader\L3DShader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,8 @@
 
 #include "LInterface.h"
 
+class L3DShader;
+
 class L3DModel : public ILModel
 {
 public:
@@ -14,8 +16,10 @@ public:
               GLsizeiptr nVerticesCount,
               const void* pModelIndices,
               GLsizeiptr nIndicesCount,
-              const char *pVertexShaderSource,
-              const char *pFragmentShaderSource);
+              const char *pVertexPath,
+              const char *pFragmentPath);
+
+    void Uninit();
 
     bool InitVertex(const void* pModelVertices,
                     GLsizeiptr nVerteicesCount,
@@ -29,11 +33,11 @@ public:
     bool UpdateDisplay();
 
 private:
+    L3DShader* m_p3DShader;
+
     unsigned int m_nVertexArrObj;
     unsigned int m_nVertexBufObj;
     unsigned int m_nElemBufObj;
-
-    unsigned int m_nShaderProgram;
 };
 
 #endif

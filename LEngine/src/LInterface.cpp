@@ -25,8 +25,8 @@ bool ILModel::Create(IL3DEngine* pIEngine,
                      GLsizeiptr nVerteicesCount,
                      const void* pwModelIndices,
                      GLsizeiptr nIndicesCount,
-                     const char *pVertexShaderSource,
-                     const char *pFragmentShaderSource,
+                     const char *pVertexPath,
+                     const char *pFragmentPath,
                      ILModel** ppModel)
 {
     bool bResult = false;
@@ -46,8 +46,8 @@ bool ILModel::Create(IL3DEngine* pIEngine,
                                   nVerteicesCount,
                                   pwModelIndices,
                                   nIndicesCount,
-                                  pVertexShaderSource,
-                                  pFragmentShaderSource);
+                                  pVertexPath,
+                                  pFragmentPath);
         BOOL_ERROR_BREAK(bRetCode);
 
         pEngine->AttachObject(p3DModel);

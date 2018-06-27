@@ -1,5 +1,5 @@
 
-#include "object/LObjectMgr.h"
+#include "LObjectMgr.h"
 
 LObjectMgr::LObjectMgr()
 {

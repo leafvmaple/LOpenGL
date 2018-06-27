@@ -1,0 +1,39 @@
+#include <cstdio>
+#include <io.h>
+#include "LFileReader.h"
+#include "LAssert.h"
+
+bool LFileReader::Reader(const char* pszFileName, unsigned char** ppBuffer, size_t* puLen)
+{
+	bool bResult = false;
+	FILE* pFile = NULL;
+	BYTE* pBuffer = NULL;
+	size_t uFileLen;
+	
+	do 
+	{
+		BOOL_ERROR_BREAK(ppBuffer);
+
+		fopen_s(&pFile, pszFileName, "rb");
+		BOOL_ERROR_BREAK(pFile);
+
+		fseek(pFile, 0, SEEK_END);
+		uFileLen = ftell(pFile);
+		fseek(pFile, 0, SEEK_SET);
+
+		pBuffer = new BYTE[uFileLen];
+		BOOL_ERROR_BREAK(pBuffer);
+
+		*puLen = fread(pBuffer, 1, uFileLen, pFile);
+		BOOL_ERROR_BREAK(*puLen);
+
+		*ppBuffer = pBuffer;
+
+		bResult = true;
+	} while (0);
+
+	if (pFile)
+		fclose(pFile);
+
+	return bResult;
+}

@@ -43,6 +43,7 @@ CMakeFiles/
 *.user
 Debug/
 Release/
+Lib/
 
 xcuserdata/
 *.xcuserstate

@@ -59,8 +59,8 @@ public:
                        GLsizeiptr nVerteicesCount,
                        const void* pwModelIndices,
                        GLsizeiptr nIndicesCount,
-                       const char *pVertexShaderSource,
-                       const char *pFragmentShaderSource,
+                       const char *pVertexPath,
+                       const char *pFragmentPath,
                        ILModel** ppModel);
 };
 

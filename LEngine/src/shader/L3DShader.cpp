@@ -1,0 +1,115 @@
+#include "L3DShader.h"
+#include "LInterface.h"
+#include "io/LFileReader.h"
+
+L3DShader::L3DShader()
+: m_nShaderProgram(0)
+{
+
+}
+
+L3DShader::~L3DShader()
+{
+    Uninit();
+}
+
+bool L3DShader::Init(const char* pVertexPath, const char* pFragmentPath)
+{
+    bool bResult = false;
+    int nRetCode = 0;
+    do
+    {
+        int nVertexShader = 0;
+        nRetCode = CreateShader(pVertexPath, GL_VERTEX_SHADER, &nVertexShader);
+        BOOL_ERROR_BREAK(nRetCode);
+
+        int nFragmentShader = 0;
+        nRetCode = CreateShader(pFragmentPath, GL_FRAGMENT_SHADER, &nFragmentShader);
+        BOOL_ERROR_BREAK(nRetCode);
+
+        m_nShaderProgram = glCreateProgram();
+        glAttachShader(m_nShaderProgram, nVertexShader);
+        glAttachShader(m_nShaderProgram, nFragmentShader);
+        glLinkProgram(m_nShaderProgram);
+        glGetProgramiv(m_nShaderProgram, GL_LINK_STATUS, &nRetCode);
+        BOOL_ERROR_BREAK(nRetCode);
+
+        glDeleteShader(nVertexShader);
+        glDeleteShader(nFragmentShader);
+
+        bResult = true;
+    } while (0);
+
+    return bResult;
+}
+
+void L3DShader::Uninit()
+{
+
+}
+
+bool L3DShader::CreateShader(const char* pShaderPath, int nShaderType, int* pShaderID)
+{
+    bool bResult = false;
+    bool bRetCode = false;
+
+    do 
+    {
+        size_t uBuffLen = 0;
+        unsigned char* pBuff = new unsigned char[FILE_BUFF_LEN];
+        bRetCode = LFileReader::Reader(pShaderPath, &pBuff, &uBuffLen);
+        BOOL_ERROR_BREAK(bRetCode);
+        
+        pBuff[uBuffLen] = '\0';
+        const char* pShaderCode = (const char*)pBuff;
+
+        int nShaderID = glCreateShader(nShaderType);
+        glShaderSource(nShaderID, 1, &pShaderCode, NULL);
+        glCompileShader(nShaderID);
+
+        bRetCode = CheckCompileErrors(nShaderID, nShaderType);
+        BOOL_ERROR_BREAK(bRetCode);
+
+        *pShaderID = nShaderID;
+
+        bResult = true;
+    } while (0);
+
+    return bResult;
+}
+
+void L3DShader::User() const
+{
+    glUseProgram(m_nShaderProgram); 
+}
+
+void L3DShader::setBool(const char* szValueName, bool value) const
+{         
+    glUniform1i(glGetUniformLocation(m_nShaderProgram, szValueName), (int)value); 
+}
+
+void L3DShader::setInt(const char* szValueName, int value) const
+{ 
+    glUniform1i(glGetUniformLocation(m_nShaderProgram, szValueName), value); 
+}
+// ------------------------------------------------------------------------
+void L3DShader::setFloat(const char* szValueName, float value) const
+{ 
+    glUniform1f(glGetUniformLocation(m_nShaderProgram, szValueName), value); 
+}
+
+bool L3DShader::CheckCompileErrors(unsigned int nShader, int nShaderType)
+{
+    bool bResult = false;
+    int nRetCode = 0;
+
+    do 
+    {
+        glGetShaderiv(nShader, GL_COMPILE_STATUS, &nRetCode);
+        BOOL_ERROR_BREAK(nRetCode);
+
+        bResult = true;
+    } while (0);
+
+    return bResult;
+}

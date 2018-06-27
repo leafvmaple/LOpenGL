@@ -32,17 +32,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\LClient.h">
+    <ClInclude Include="src\object\LCharacter.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\LModel.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\LObjectMgr.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LClient.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\object\LObjectMgr.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="include\object\LModel.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="include\object\LCharacter.h">
-      <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,27 +1,26 @@
-#include "model/L3DModel.h"
+#include "L3DModel.h"
+#include "shader/L3DShader.h"
 
 L3DModel::L3DModel()
 : m_nVertexArrObj(0)
 , m_nVertexBufObj(0)
 , m_nElemBufObj(0)
-, m_nShaderProgram(0)
+, m_p3DShader(nullptr)
 {
 }
 
 
 L3DModel::~L3DModel()
 {
-    m_nVertexArrObj = 0;
-    m_nVertexBufObj = 0;
-    m_nElemBufObj = 0;
+    Uninit();
 }
 
 bool L3DModel::Init(const void* pModelVerteices,
                     GLsizeiptr nVerticesCount,
                     const void* pModelIndices,
                     GLsizeiptr nIndicesCount,
-                    const char *pVertexShaderSource,
-                    const char *pFragmentShaderSource)
+                    const char *pVertexPath,
+                    const char *pFragmentPath)
 {
     bool bResult = false;
     bool bRetCode = false;
@@ -31,13 +30,25 @@ bool L3DModel::Init(const void* pModelVerteices,
         bRetCode = InitVertex(pModelVerteices, nVerticesCount, pModelIndices, nIndicesCount);
         BOOL_ERROR_BREAK(bRetCode);
 
-        bRetCode = InitShader(pVertexShaderSource, pFragmentShaderSource);
+        bRetCode = InitShader(pVertexPath, pFragmentPath);
         BOOL_ERROR_BREAK(bRetCode);
 
         bResult = true;
     } while (0);
 
     return bResult;
+}
+
+void L3DModel::Uninit()
+{
+    m_nVertexArrObj = 0;
+    m_nVertexBufObj = 0;
+    m_nElemBufObj = 0;
+
+    if (m_p3DShader)
+    {
+        SAFE_DELETE(m_p3DShader);
+    }
 }
 
 bool L3DModel::InitVertex(const void* pModelVertices,
@@ -73,35 +84,18 @@ bool L3DModel::InitVertex(const void* pModelVertices,
     return bResult;
 }
 
-bool L3DModel::InitShader(const char *pVertexShaderSource,
-                          const char *pFragmentShaderSource)
+bool L3DModel::InitShader(const char* pVertexPath, const char* pFragmentPath)
 {
     bool bResult = false;
-    int nRetCode = 0;
+    bool bRetCode = false;
 
     do 
     {
-        int nVertexShader = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(nVertexShader, 1, &pVertexShaderSource, NULL);
-        glCompileShader(nVertexShader);
-        glGetShaderiv(nVertexShader, GL_COMPILE_STATUS, &nRetCode);
-        BOOL_ERROR_BREAK(nRetCode);
+        m_p3DShader = new L3DShader;
+        BOOL_ERROR_BREAK(m_p3DShader);
 
-        int nFragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(nFragmentShader, 1, &pFragmentShaderSource, NULL);
-        glCompileShader(nFragmentShader);
-        glGetShaderiv(nFragmentShader, GL_COMPILE_STATUS, &nRetCode);
-        BOOL_ERROR_BREAK(nRetCode);
-
-        m_nShaderProgram = glCreateProgram();
-        glAttachShader(m_nShaderProgram, nVertexShader);
-        glAttachShader(m_nShaderProgram, nFragmentShader);
-        glLinkProgram(m_nShaderProgram);
-        glGetProgramiv(m_nShaderProgram, GL_LINK_STATUS, &nRetCode);
-        BOOL_ERROR_BREAK(nRetCode);
-
-        glDeleteShader(nVertexShader);
-        glDeleteShader(nFragmentShader);
+        bRetCode = m_p3DShader->Init(pVertexPath, pFragmentPath);
+        BOOL_ERROR_BREAK(bRetCode);
 
         bResult = true;
     } while (0);
@@ -115,7 +109,10 @@ bool L3DModel::UpdateDisplay()
 
     do 
     {
-        glUseProgram(m_nShaderProgram);
+        if (m_p3DShader)
+        {
+            m_p3DShader->User();
+        }
         glBindVertexArray(m_nVertexArrObj);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
