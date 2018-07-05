@@ -1,9 +1,7 @@
 #ifndef LFILEREADER_H_
 #define LFILEREADER_H_
 
-#ifdef __APPLE__
-typedef unsigned char BYTE;
-#endif
+#include "LDefine.h"
 
 class LFileReader
 {

@@ -12,6 +12,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "LDefine.h"
 #include "LExports.h"
 #include "LAssert.h"
 #include "LSTL.h"

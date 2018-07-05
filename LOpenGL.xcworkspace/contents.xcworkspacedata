@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:stb/stb.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:LClient/LClient.xcodeproj">
    </FileRef>
    <FileRef
@@ -10,6 +13,67 @@
    <Group
       location = "group:Include"
       name = "Include">
+      <Group
+         location = "group:stb"
+         name = "stb">
+         <FileRef
+            location = "group:stb_c_lexer.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_image_write.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_image_resize.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_rect_pack.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_divide.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_sprintf.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_dxt.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_perlin.h">
+         </FileRef>
+         <FileRef
+            location = "group:stretchy_buffer.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_connected_components.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_image.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_truetype.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_leakcheck.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_textedit.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_easy_font.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_herringbone_wang_tile.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_voxel_render.h">
+         </FileRef>
+         <FileRef
+            location = "group:stb_tilemap_editor.h">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:LSTL.h">
       </FileRef>
@@ -48,6 +112,9 @@
       </FileRef>
       <FileRef
          location = "group:LInterface.h">
+      </FileRef>
+      <FileRef
+         location = "group:LDefine.h">
       </FileRef>
    </Group>
    <FileRef

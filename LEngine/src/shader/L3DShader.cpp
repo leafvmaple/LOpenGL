@@ -6,6 +6,7 @@ L3DShader::L3DShader()
 : m_nShaderProgram(0)
 {
 
+    
 }
 
 L3DShader::~L3DShader()
@@ -92,7 +93,7 @@ void L3DShader::setInt(const char* szValueName, int value) const
 { 
     glUniform1i(glGetUniformLocation(m_nShaderProgram, szValueName), value); 
 }
-// ------------------------------------------------------------------------
+
 void L3DShader::setFloat(const char* szValueName, float value) const
 { 
     glUniform1f(glGetUniformLocation(m_nShaderProgram, szValueName), value); 
