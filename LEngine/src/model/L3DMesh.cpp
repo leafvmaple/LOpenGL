@@ -12,8 +12,7 @@
 
 L3DMesh::L3DMesh()
 : m_nVertexArrObj(0)
-, m_nVertexBufObj(0)
-, m_nElemBufObj(0)
+, m_dwNumFaces(0)
 {
     
 }
@@ -74,7 +73,7 @@ bool L3DMesh::LoadMesh(const char* cszFileName)
 bool L3DMesh::UpdateMesh(unsigned int dwSubMesh)
 {
     glBindVertexArray(m_nVertexArrObj);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, m_dwNumFaces, GL_UNSIGNED_SHORT, 0);
 
     return true;
 }
@@ -187,17 +186,21 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
             pwIndices[i * 3 + 2] = static_cast<unsigned short>(pLMeshData->pFaceIndices[i * 3 + 2]);
         }
         
+        m_dwNumFaces = pLMeshData->dwNumFaces * 3;
+        
         glGenVertexArrays(1, &m_nVertexArrObj);
-        glGenBuffers(1, &m_nVertexBufObj);
-        glGenBuffers(1, &m_nElemBufObj);
+        
+        unsigned int nVertexBufObj = 0;
+        glGenBuffers(1, &nVertexBufObj);
+        unsigned int nElemBufObj = 0;
+        glGenBuffers(1, &nElemBufObj);
         
         glBindVertexArray(m_nVertexArrObj);
+        glBindBuffer(GL_ARRAY_BUFFER, nVertexBufObj);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, nElemBufObj);
         
-        glBindBuffer(GL_ARRAY_BUFFER, m_nVertexBufObj);
-        glBufferData(GL_ARRAY_BUFFER, pLMeshData->dwNumVertices, pbyVertices, GL_STATIC_DRAW);
-        
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_nElemBufObj);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, pLMeshData->dwNumFaces, pwIndices, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(pbyVertices), pbyVertices, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(pwIndices), pwIndices, GL_STATIC_DRAW);
         
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)0);
         glEnableVertexAttribArray(0);

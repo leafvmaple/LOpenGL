@@ -172,8 +172,7 @@ public:
     
 private:
     unsigned int m_nVertexArrObj;
-    unsigned int m_nVertexBufObj;
-    unsigned int m_nElemBufObj;
+    unsigned int m_dwNumFaces;
     
     static const VertexFromatOffsetItem* GetVertexFormat(unsigned int dwFVF);
     static unsigned int GetVertexStride(unsigned int dwFVF);
@@ -182,6 +181,7 @@ public:
     bool LoadMesh(const char* cszFileName);
     bool UpdateMesh(unsigned int dwSubMesh);
     
+private:
     bool LoadMeshData(const char* cszFileName, LMESH_DATA* pLMeshData);
     bool CreateMesh(const LMESH_DATA* pLMeshData);
 };

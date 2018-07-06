@@ -9,10 +9,12 @@ public:
     L3DShader();
     ~L3DShader();
 
-    bool Init(const char* pVertexPath, const char* pFragmentPath);
+    
     void Uninit();
 
-    void User() const;
+    bool LoadShader(const char* pVertexPath, const char* pFragmentPath);
+    bool UpdateShader() const;
+    
     void setBool(const char* szValueName, bool value) const;
     void setInt(const char* szValueName, int value) const;
     void setFloat(const char* szValueName, float value) const;

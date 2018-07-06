@@ -36,19 +36,20 @@ public:
     bool LoadTexture(const char* cszFileName);
     bool LoadMaterial(const char* cszFileName);
     bool LoadParticle(const char* cszFileName);
+    
+    bool LoadShader(const char *pVertexShaderSource,
+                    const char *pFragmentShaderSource);
 
     bool InitVertex(const void* pModelVertices,
                     GLsizeiptr nVerteicesCount,
                     const void* pModelIndices,
                     GLsizeiptr nIndicesCount);
 
-    bool InitShader(const char *pVertexShaderSource,
-                    const char *pFragmentShaderSource);
-
 public:
     bool UpdateDisplay();
-    bool UpdateMesh(DWORD uIndex);
-    bool UpdateMaterial(DWORD uIndex);
+    bool UpdateMesh(unsigned int uIndex);
+    bool UpdateMaterial(unsigned int uIndex);
+    bool UpdateShader();
 
 private:
     L3DMesh* m_p3DMesh;

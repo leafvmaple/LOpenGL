@@ -53,7 +53,7 @@ bool L3DModel::Init(const void* pModelVerteices,
         bRetCode = InitVertex(pModelVerteices, nVerticesCount, pModelIndices, nIndicesCount);
         BOOL_ERROR_BREAK(bRetCode);
         
-        bRetCode = InitShader(pVertexPath, pFragmentPath);
+        bRetCode = LoadShader(pVertexPath, pFragmentPath);
         BOOL_ERROR_BREAK(bRetCode);
         
         bResult = true;
@@ -107,25 +107,6 @@ bool L3DModel::InitVertex(const void* pModelVertices,
     return bResult;
 }
 
-bool L3DModel::InitShader(const char* pVertexPath, const char* pFragmentPath)
-{
-    bool bResult = false;
-    bool bRetCode = false;
-
-    do 
-    {
-        m_p3DShader = new L3DShader;
-        BOOL_ERROR_BREAK(m_p3DShader);
-
-        bRetCode = m_p3DShader->Init(pVertexPath, pFragmentPath);
-        BOOL_ERROR_BREAK(bRetCode);
-
-        bResult = true;
-    } while (0);
-
-    return bResult;
-}
-
 bool L3DModel::LoadModel(const char* cszFileName)
 {
     bool bResult = false;
@@ -158,6 +139,12 @@ bool L3DModel::LoadMesh(const char* cszFileName)
         bRetCode = m_p3DMesh->LoadMesh(cszFileName);
         BOOL_ERROR_BREAK(bRetCode);
         
+        m_p3DShader = new L3DShader;
+        BOOL_ERROR_BREAK(m_p3DShader);
+        
+        bRetCode = m_p3DShader->LoadShader("res/shader/default.vs", "res/shader/default.fs");
+        BOOL_ERROR_BREAK(bRetCode);
+        
         bResult = true;
     } while (0);
     
@@ -179,6 +166,25 @@ bool L3DModel::LoadParticle(const char* cszFileName)
     return false;
 }
 
+bool L3DModel::LoadShader(const char* pVertexPath, const char* pFragmentPath)
+{
+    bool bResult = false;
+    bool bRetCode = false;
+    
+    do
+    {
+        m_p3DShader = new L3DShader;
+        BOOL_ERROR_BREAK(m_p3DShader);
+        
+        bRetCode = m_p3DShader->LoadShader(pVertexPath, pFragmentPath);
+        BOOL_ERROR_BREAK(bRetCode);
+        
+        bResult = true;
+    } while (0);
+    
+    return bResult;
+}
+
 bool L3DModel::UpdateDisplay()
 {
     bool bResult = false;
@@ -186,12 +192,10 @@ bool L3DModel::UpdateDisplay()
 
     do 
     {
-        if (m_p3DShader)
-        {
-            m_p3DShader->User();
-        }
+        bRetCode = UpdateShader();
+        BOOL_ERROR_BREAK(bRetCode);
 
-        for (DWORD u = 0; u < m_dwSubsetCount; u++)
+        for (unsigned int u = 0; u < m_dwSubsetCount; u++)
         {
             bRetCode = UpdateMesh(u);
             BOOL_ERROR_BREAK(bRetCode);
@@ -203,10 +207,22 @@ bool L3DModel::UpdateDisplay()
     return bResult;
 }
 
-bool L3DModel::UpdateMesh(DWORD uIndex)
+bool L3DModel::UpdateMesh(unsigned int uIndex)
 {
     if (m_p3DMesh)
         m_p3DMesh->UpdateMesh(uIndex);
+    return true;
+}
+
+bool L3DModel::UpdateMaterial(unsigned int uIndex)
+{
+    return false;
+}
+
+bool L3DModel::UpdateShader()
+{
+    if (m_p3DShader)
+        m_p3DShader->UpdateShader();
     return true;
 }
 

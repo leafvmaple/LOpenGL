@@ -14,10 +14,16 @@ L3DShader::~L3DShader()
     Uninit();
 }
 
-bool L3DShader::Init(const char* pVertexPath, const char* pFragmentPath)
+void L3DShader::Uninit()
 {
-    bool bResult = false;
+    
+}
+
+bool L3DShader::LoadShader(const char* pVertexPath, const char* pFragmentPath)
+{
     int nRetCode = 0;
+    bool bResult = false;
+    
     do
     {
         int nVertexShader = 0;
@@ -44,9 +50,10 @@ bool L3DShader::Init(const char* pVertexPath, const char* pFragmentPath)
     return bResult;
 }
 
-void L3DShader::Uninit()
+bool L3DShader::UpdateShader() const
 {
-
+    glUseProgram(m_nShaderProgram);
+    return true;
 }
 
 bool L3DShader::CreateShader(const char* pShaderPath, int nShaderType, int* pShaderID)
@@ -77,11 +84,6 @@ bool L3DShader::CreateShader(const char* pShaderPath, int nShaderType, int* pSha
     } while (0);
 
     return bResult;
-}
-
-void L3DShader::User() const
-{
-    glUseProgram(m_nShaderProgram); 
 }
 
 void L3DShader::setBool(const char* szValueName, bool value) const
