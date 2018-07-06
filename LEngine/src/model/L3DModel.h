@@ -47,11 +47,15 @@ public:
 
 public:
     bool UpdateDisplay();
+    bool UpdateMesh(DWORD uIndex);
+    bool UpdateMaterial(DWORD uIndex);
 
 private:
     L3DMesh* m_p3DMesh;
     L3DShader* m_p3DShader;
     L3DTexture* m_pLTexture;
+
+    unsigned int m_dwSubsetCount;
 
     unsigned int m_nVertexArrObj;
     unsigned int m_nVertexBufObj;

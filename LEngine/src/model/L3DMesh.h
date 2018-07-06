@@ -12,6 +12,7 @@
 #include <string>
 #include "LInterface.h"
 #include "io/LFileStruct.h"
+#include "io/LFileDef.h"
 
 struct VertexFromatOffsetItem
 {
@@ -22,63 +23,74 @@ struct VertexFromatOffsetItem
     unsigned int dwSrcStride[s_dwMaxVertexElement];
     unsigned int dwDestOffset[s_dwMaxVertexElement];
     unsigned int dwDestStride[s_dwMaxVertexElement];
+    unsigned int dwElementFVF[s_dwMaxVertexElement];
 };
 
 static VertexFromatOffsetItem s_VertexFormat[] = {
-    {0, 3,
-        0,  1,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 24, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12, 12,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNorTex1
-    
-    {0, 4,
-        0,  1,  3, 4, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12, 12,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNorTex2
-    
-    {0, 5,
-        0,  1,  3, 4, 5, 0xffffffff, 0xffffffff, 0xffffffff,
-        12, 12, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 24, 32, 40, 0xffffffff, 0xffffffff, 0xffffffff,
-        12, 12,  8,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNorTex3 ÓÐÎÊÌâ
-    
-    {0, 3,
-        0,  2,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12,  4, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 16, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12,  4,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosDiffuseTex1
-    
-    {0, 4,
-        0,  2,  3,  4, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12,  4, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 16, 24, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        12,  4,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosDiffuseTex2
-    
-    {0, 5,
-        0,  2,  3,  4,  5, 0xffffffff, 0xffffffff, 0xffffffff,
-        12,  4, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 16, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff,
-        12,  4,  8,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff,},//PosDiffuseTex2
-    
-    {0, 4,
-        0,  1,  2,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12,  4, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 16, 20, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12,  4,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNormalDiffuseTex1 ?????bug
-    
-    {0, 5,
-        0,  1,  2,  3,  4, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12,  4, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12, 16, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff,
-        0, 12,  4,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNormalDiffuseTex2
-    
-    {0, 6,
-        0,  1,  2,  3,  4,  5, 0xffffffff, 0xffffffff,
-        0, 12,  4,  8,  8,  8, 0xffffffff, 0xffffffff,
-        0, 12, 16, 28, 40, 52, 0xffffffff, 0xffffffff,
-        0, 12,  4, 12, 12, 12, 0xffffffff, 0xffffffff,}//PosNormalDiffuseTex3
+    {L3DFVF_XYZ | L3DFVF_NORMAL | L3DFVF_TEX1, 3,   
+    0,  1,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    0, 12, 24, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    12, 12,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    L3DFVF_XYZ, L3DFVF_NORMAL, L3DFVF_TEX1, ELEMENT_FVF_END},//PosNorTex1
+
+    {L3DFVF_XYZ | L3DFVF_NORMAL | L3DFVF_TEX2, 4,
+    0,  1,  3, 4, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    0, 12, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12, 12,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    L3DFVF_XYZ, L3DFVF_NORMAL, L3DFVF_TEX1, L3DFVF_TEX2, ELEMENT_FVF_END,},//PosNorTex2
+
+    {L3DFVF_XYZ | L3DFVF_NORMAL | L3DFVF_TEX3, 5,
+    0,  1,  3, 4, 5, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12, 12, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 
+    0, 12, 24, 32, 40, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12, 12,  8,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 
+    L3DFVF_XYZ, L3DFVF_NORMAL, L3DFVF_TEX1, L3DFVF_TEX2, L3DFVF_TEX3, ELEMENT_FVF_END},//PosNorTex3 有问题
+
+    {L3DFVF_XYZ | L3DFVF_DIFFUSE | L3DFVF_TEX1, 3,
+    0,  2,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12,  4, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    0, 12, 16, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    12,  4,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    L3DFVF_XYZ, L3DFVF_DIFFUSE, L3DFVF_TEX1, ELEMENT_FVF_END, },//PosDiffuseTex1
+
+    {L3DFVF_XYZ | L3DFVF_DIFFUSE | L3DFVF_TEX2, 4,
+    0,  2,  3,  4, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12,  4, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    0, 12, 16, 24, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+    12,  4,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    L3DFVF_XYZ, L3DFVF_DIFFUSE, L3DFVF_TEX1, L3DFVF_TEX2, ELEMENT_FVF_END},//PosDiffuseTex2
+
+    {L3DFVF_XYZ | L3DFVF_DIFFUSE | L3DFVF_TEX3, 5, 
+    0,  2,  3,  4,  5, 0xffffffff, 0xffffffff, 0xffffffff, 
+    12,  4, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 
+    0, 12, 16, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff,
+    12,  4,  8,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 
+    L3DFVF_XYZ, L3DFVF_DIFFUSE, L3DFVF_TEX1, L3DFVF_TEX2, L3DFVF_TEX3, ELEMENT_FVF_END},//PosDiffuseTex2
+
+    {L3DFVF_XYZ | L3DFVF_DIFFUSE | L3DFVF_NORMAL | L3DFVF_TEX1, 4,
+    0,  1,  2,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    0, 12,  4, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    0, 12, 16, 20, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    0, 12,  4,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 
+    L3DFVF_XYZ, L3DFVF_DIFFUSE, L3DFVF_NORMAL, L3DFVF_TEX1, ELEMENT_FVF_END,},//PosNormalDiffuseTex1 ?????bug
+
+    {L3DFVF_XYZ | L3DFVF_DIFFUSE | L3DFVF_NORMAL | L3DFVF_TEX2, 5,
+    0,  1,  2,  3,  4, 0xffffffff, 0xffffffff, 0xffffffff, 
+    0, 12,  4, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff,
+    0, 12, 16, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff,
+    0, 12,  4,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 
+    L3DFVF_XYZ, L3DFVF_DIFFUSE, L3DFVF_NORMAL, L3DFVF_TEX1, L3DFVF_TEX2, ELEMENT_FVF_END},//PosNormalDiffuseTex2
+
+    {L3DFVF_XYZ | L3DFVF_DIFFUSE | L3DFVF_NORMAL | L3DFVF_TEX3, 6,
+    0,  1,  2,  3,  4,  5, 0xffffffff, 0xffffffff, 
+    0, 12,  4,  8,  8,  8, 0xffffffff, 0xffffffff, 
+    0, 12, 16, 28, 40, 52, 0xffffffff, 0xffffffff, 
+    0, 12,  4, 12, 12, 12, 0xffffffff, 0xffffffff, 
+    L3DFVF_XYZ, L3DFVF_DIFFUSE, L3DFVF_NORMAL, L3DFVF_TEX1, L3DFVF_TEX2, L3DFVF_TEX3, ELEMENT_FVF_END}//PosNormalDiffuseTex3
 };
+
 
 class L3DMesh
 {
@@ -146,6 +158,11 @@ public:
         unsigned int    dwMeshFVF;
         
         GLVec3          *pPos;
+        GLVec3          *pNormals;
+        GLCOLOR         *pDiffuse;
+        GLVec3          *pUV1;
+        GLVec3          *pUV2;
+        GLVec3          *pUV3;
         
         unsigned int    *pFaceIndices;
         unsigned int    *pSubsetIndices;

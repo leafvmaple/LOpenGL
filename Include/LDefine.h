@@ -8,8 +8,8 @@
 #ifndef LDefine_h
 #define LDefine_h
 
-#ifdef __APPLE__
+//#ifdef __APPLE__
 typedef unsigned char BYTE;
-#endif
+//#endif
 
 #endif /* LDefine_h */

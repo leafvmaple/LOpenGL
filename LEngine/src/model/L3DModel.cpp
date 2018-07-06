@@ -9,6 +9,7 @@ L3DModel::L3DModel()
 : m_nVertexArrObj(0)
 , m_nVertexBufObj(0)
 , m_nElemBufObj(0)
+, m_dwSubsetCount(0)
 , m_p3DShader(nullptr)
 {
 }
@@ -26,6 +27,8 @@ bool L3DModel::Init(const char* cszFileName)
 
     do 
     {
+        m_dwSubsetCount = 1;
+
         bRetCode = LoadModel(cszFileName);
         BOOL_ERROR_BREAK(bRetCode);
 
@@ -179,6 +182,7 @@ bool L3DModel::LoadParticle(const char* cszFileName)
 bool L3DModel::UpdateDisplay()
 {
     bool bResult = false;
+    bool bRetCode = false;
 
     do 
     {
@@ -186,13 +190,24 @@ bool L3DModel::UpdateDisplay()
         {
             m_p3DShader->User();
         }
-        glBindVertexArray(m_nVertexArrObj);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        for (DWORD u = 0; u < m_dwSubsetCount; u++)
+        {
+            bRetCode = UpdateMesh(u);
+            BOOL_ERROR_BREAK(bRetCode);
+        }
 
         bResult = true;
     } while (0);
 
     return bResult;
+}
+
+bool L3DModel::UpdateMesh(DWORD uIndex)
+{
+    if (m_p3DMesh)
+        m_p3DMesh->UpdateMesh(uIndex);
+    return true;
 }
 
 const L3DModel::LoadModelFunc* L3DModel::GetLoadModelFunc(const char* cszFileName)

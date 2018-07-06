@@ -73,7 +73,10 @@ bool L3DMesh::LoadMesh(const char* cszFileName)
 
 bool L3DMesh::UpdateMesh(unsigned int dwSubMesh)
 {
-    return false;
+    glBindVertexArray(m_nVertexArrObj);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+    return true;
 }
 
 bool L3DMesh::LoadMeshData(const char* cszFileName, LMESH_DATA* pLMeshData)
@@ -103,8 +106,33 @@ bool L3DMesh::LoadMeshData(const char* cszFileName, LMESH_DATA* pLMeshData)
         if (pMeshHead->Blocks.PositionBlock)
         {
             LFileReader::Convert(pbyBufferHead + pMeshHead->Blocks.PositionBlock, pLMeshData->pPos, pMeshHead->dwNumVertices);
-            
+            pLMeshData->dwMeshFVF |= L3DFVF_XYZ;
+
             //pLMesh->BoundingBox.AddPosition(pMeshData->pPos, pMeshData->dwNumVertices);
+        }
+
+        if (pMeshHead->Blocks.NormalBlock)
+        {
+            LFileReader::Convert(pbyBufferHead + pMeshHead->Blocks.NormalBlock, pLMeshData->pNormals, pMeshHead->dwNumVertices);
+            pLMeshData->dwMeshFVF |= L3DFVF_NORMAL;
+        }
+
+        if (pMeshHead->Blocks.DiffuseBlock)
+        {
+            LFileReader::Convert(pbyBufferHead + pMeshHead->Blocks.DiffuseBlock, pLMeshData->pDiffuse, pMeshHead->dwNumVertices);
+            pLMeshData->dwMeshFVF |= L3DFVF_DIFFUSE;
+        }
+
+        if (pMeshHead->Blocks.TextureUVW1Block)
+        {
+            LFileReader::Convert(pbyBufferHead + pMeshHead->Blocks.TextureUVW1Block, pLMeshData->pUV1, pMeshHead->dwNumVertices);
+            pLMeshData->dwMeshFVF |= L3DFVF_TEX1;
+
+            //计算UVSizeMax
+            //BBox UVBox;
+            //UVBox.AddPosition(pMeshData->pUV1, pMeshHead->dwNumVertices);
+            //pMeshData->pUVSizeMax[0].x = fabs(UVBox.A.x) > fabs(UVBox.B.x) ? fabs(UVBox.A.x) : fabs(UVBox.B.x);
+            //pMeshData->pUVSizeMax[0].y = fabs(UVBox.A.y) > fabs(UVBox.B.y) ? fabs(UVBox.A.y) : fabs(UVBox.B.y);
         }
         
         if (pMeshHead->Blocks.FacesIndexBlock)
@@ -151,7 +179,7 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
             }
         }
         
-        unsigned short* pwIndices = NULL;
+        unsigned short* pwIndices = new unsigned short[pLMeshData->dwNumFaces * 3];
         for(unsigned int i = 0; i < pLMeshData->dwNumFaces; i++)
         {
             pwIndices[i * 3]     = static_cast<unsigned short>(pLMeshData->pFaceIndices[i * 3]);
@@ -171,13 +199,12 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_nElemBufObj);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, pLMeshData->dwNumFaces, pwIndices, GL_STATIC_DRAW);
         
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)0);
         glEnableVertexAttribArray(0);
         
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
 
-        
         bResult = true;
     } while (0);
     

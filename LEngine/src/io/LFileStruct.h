@@ -9,6 +9,10 @@ struct TFileHeader
 {
 	char szCommonTag[defFILE_TAGLEN];
 	char szModuleTag[defFILE_TAGLEN];
+#ifdef __APPLE__
 	__int32_t byVersion;
-	char szDescription[defFILE_DESCLEN];
+#elif _WIN32
+    __int32 byVersion;
+#endif
+    char szDescription[defFILE_DESCLEN];
 };

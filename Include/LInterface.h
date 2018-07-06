@@ -24,6 +24,8 @@ typedef struct GLVec3
     GLfloat z;
 } GLVec3;
 
+typedef unsigned int GLCOLOR;
+
 struct L3DWINDOWPARAM
 {
     int x;
