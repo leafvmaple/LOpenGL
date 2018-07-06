@@ -13,6 +13,73 @@
 #include "LInterface.h"
 #include "io/LFileStruct.h"
 
+struct VertexFromatOffsetItem
+{
+    const static unsigned int s_dwMaxVertexElement = 8;
+    unsigned int dwFVF;
+    unsigned int dwNumElement;
+    unsigned int dwSrcOffset[s_dwMaxVertexElement];
+    unsigned int dwSrcStride[s_dwMaxVertexElement];
+    unsigned int dwDestOffset[s_dwMaxVertexElement];
+    unsigned int dwDestStride[s_dwMaxVertexElement];
+};
+
+static VertexFromatOffsetItem s_VertexFormat[] = {
+    {0, 3,
+        0,  1,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 24, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12, 12,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNorTex1
+    
+    {0, 4,
+        0,  1,  3, 4, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12, 12,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNorTex2
+    
+    {0, 5,
+        0,  1,  3, 4, 5, 0xffffffff, 0xffffffff, 0xffffffff,
+        12, 12, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 24, 32, 40, 0xffffffff, 0xffffffff, 0xffffffff,
+        12, 12,  8,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNorTex3 ÓÐÎÊÌâ
+    
+    {0, 3,
+        0,  2,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12,  4, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 16, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12,  4,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosDiffuseTex1
+    
+    {0, 4,
+        0,  2,  3,  4, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12,  4, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 16, 24, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        12,  4,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosDiffuseTex2
+    
+    {0, 5,
+        0,  2,  3,  4,  5, 0xffffffff, 0xffffffff, 0xffffffff,
+        12,  4, 12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 16, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff,
+        12,  4,  8,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff,},//PosDiffuseTex2
+    
+    {0, 4,
+        0,  1,  2,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12,  4, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 16, 20, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12,  4,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNormalDiffuseTex1 ?????bug
+    
+    {0, 5,
+        0,  1,  2,  3,  4, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12,  4, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12, 16, 24, 32, 0xffffffff, 0xffffffff, 0xffffffff,
+        0, 12,  4,  8,  8, 0xffffffff, 0xffffffff, 0xffffffff,},//PosNormalDiffuseTex2
+    
+    {0, 6,
+        0,  1,  2,  3,  4,  5, 0xffffffff, 0xffffffff,
+        0, 12,  4,  8,  8,  8, 0xffffffff, 0xffffffff,
+        0, 12, 16, 28, 40, 52, 0xffffffff, 0xffffffff,
+        0, 12,  4, 12, 12, 12, 0xffffffff, 0xffffffff,}//PosNormalDiffuseTex3
+};
+
 class L3DMesh
 {
 public:
@@ -78,8 +145,21 @@ public:
         unsigned int    dwNumSubset;
         unsigned int    dwMeshFVF;
         
+        GLVec3          *pPos;
+        
+        unsigned int    *pFaceIndices;
+        unsigned int    *pSubsetIndices;
+        
         BYTE*           pbyFileBuffer;
     };
+    
+private:
+    unsigned int m_nVertexArrObj;
+    unsigned int m_nVertexBufObj;
+    unsigned int m_nElemBufObj;
+    
+    static const VertexFromatOffsetItem* GetVertexFormat(unsigned int dwFVF);
+    static unsigned int GetVertexStride(unsigned int dwFVF);
     
 public:
     bool LoadMesh(const char* cszFileName);

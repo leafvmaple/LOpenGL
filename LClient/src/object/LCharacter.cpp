@@ -24,15 +24,17 @@ bool LCharacter::Create(IL3DEngine* p3DEngine)
             0, 1, 3,
             1, 2, 3
         };
+        
+        bRetCode = ILModel::Create(IL3DEngine::Instance(), "res/Model/M2_1035_body.mesh", &m_pObject);
 
-        bRetCode = ILModel::Create(IL3DEngine::Instance(),
+        /*bRetCode = ILModel::Create(IL3DEngine::Instance(),
                                     pVertices,
                                     sizeof(pVertices),
                                     pIndices,
                                     sizeof(pIndices),
                                     "res/shader/vertex.vs",
                                     "res/shader/fragment.fs",
-                                    &m_pObject);
+                                    &m_pObject);*/
         BOOL_ERROR_BREAK(bRetCode);
 
         bResult = true;

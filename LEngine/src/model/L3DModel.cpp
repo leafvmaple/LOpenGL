@@ -19,6 +19,22 @@ L3DModel::~L3DModel()
     Uninit();
 }
 
+bool L3DModel::Init(const char* cszFileName)
+{
+    bool bResult = false;
+    bool bRetCode = false;
+
+    do 
+    {
+        bRetCode = LoadModel(cszFileName);
+        BOOL_ERROR_BREAK(bRetCode);
+
+        bResult = true;
+    } while (0);
+
+    return bResult;
+}
+
 bool L3DModel::Init(const void* pModelVerteices,
                     GLsizeiptr nVerticesCount,
                     const void* pModelIndices,
@@ -28,18 +44,18 @@ bool L3DModel::Init(const void* pModelVerteices,
 {
     bool bResult = false;
     bool bRetCode = false;
-
-    do 
+    
+    do
     {
         bRetCode = InitVertex(pModelVerteices, nVerticesCount, pModelIndices, nIndicesCount);
         BOOL_ERROR_BREAK(bRetCode);
-
+        
         bRetCode = InitShader(pVertexPath, pFragmentPath);
         BOOL_ERROR_BREAK(bRetCode);
-
+        
         bResult = true;
     } while (0);
-
+    
     return bResult;
 }
 
@@ -184,9 +200,10 @@ const L3DModel::LoadModelFunc* L3DModel::GetLoadModelFunc(const char* cszFileNam
     const LoadModelFunc *pReturn = NULL;
     size_t uSize = sizeof(s_ModelLoadFunc) / sizeof(LoadModelFunc);
     size_t i = 0;
+    
     for (; i < uSize; i++)
     {
-        if (!strstr(cszFileName, s_ModelLoadFunc[i].pwcsFileExt))
+        if (strstr(cszFileName, s_ModelLoadFunc[i].pwcsFileExt))
             break;
     }
     BOOL_ERROR_RETURN(i != uSize);

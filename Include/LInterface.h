@@ -17,6 +17,13 @@
 #include "LAssert.h"
 #include "LSTL.h"
 
+typedef struct GLVec3
+{
+    GLfloat x;
+    GLfloat y;
+    GLfloat z;
+} GLVec3;
+
 struct L3DWINDOWPARAM
 {
     int x;
@@ -54,14 +61,15 @@ class L3DENGINE_CLASS ILModel
 public:
     ILModel() {};
     virtual ~ILModel() {};
-
+    
+    static bool Create(IL3DEngine* pIEngine, const char* cszFileName, ILModel** ppModel);
     static bool Create(IL3DEngine* pIEngine,
                        const void* pModelVerteices,
                        GLsizeiptr nVerteicesCount,
                        const void* pwModelIndices,
                        GLsizeiptr nIndicesCount,
-                       const char *pVertexPath,
-                       const char *pFragmentPath,
+                       const char* pVertexPath,
+                       const char* pFragmentPath,
                        ILModel** ppModel);
 };
 

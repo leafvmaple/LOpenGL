@@ -21,6 +21,7 @@ public:
     L3DModel();
     ~L3DModel();
 
+    bool Init(const char* cszFileName);
     bool Init(const void* pModelVertices,
               GLsizeiptr nVerticesCount,
               const void* pModelIndices,
