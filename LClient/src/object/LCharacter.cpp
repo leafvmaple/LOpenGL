@@ -14,18 +14,7 @@ bool LCharacter::Create(IL3DEngine* p3DEngine)
 
     do 
     {
-        float pVertices[] = {
-            0.5f,  0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f,
-            -0.5f, -0.5f, 0.0f,
-            -0.5f,  0.5f, 0.0f
-        };
-        unsigned int pIndices[] = {
-            0, 1, 3,
-            1, 2, 3
-        };
-        
-        bRetCode = ILModel::Create(IL3DEngine::Instance(), "res/model/test.mesh", &m_pObject);
+        bRetCode = ILModel::Create(IL3DEngine::Instance(), "res/model/Rect.mesh", &m_pObject);
 
         /*bRetCode = ILModel::Create(IL3DEngine::Instance(),
                                     pVertices,

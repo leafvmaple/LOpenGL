@@ -13,7 +13,7 @@
 
 LMeshCreator::LMeshCreator()
 {
-    
+    Init();
 }
 
 LMeshCreator::~LMeshCreator()
@@ -23,15 +23,10 @@ LMeshCreator::~LMeshCreator()
 
 bool LMeshCreator::Init()
 {
-    memset(&m_FileHead, 0, sizeof(m_FileHead));
-    
-    m_FileHead.dwFileMask = 0x4D455348;
-    m_FileHead.dwVersion = 0;
-    
-    memset(&m_MeshHead, 0, sizeof(m_MeshHead));
-    
     m_Verties.clear();
     m_Faces.clear();
+    m_Normals.clear();
+    m_Textures.clear();
     
     return true;
 }
@@ -42,38 +37,43 @@ bool LMeshCreator::Create(const char *cszFileName)
     int nNumFaces = m_Faces.size();
     int nNumVerties = m_Verties.size();
     FILE* pFile = fopen(cszFileName, "wb");
+
+    _MeshFileHead FileHead;
+    memset(&FileHead, 0, sizeof(FileHead));
+    FileHead.dwFileMask = 0x4D455348;
+    FileHead.dwVersion = 0;
     
-    m_MeshHead.dwNumSubset = 1;
-    m_MeshHead.dwNumFaces = nNumFaces;
-    m_MeshHead.dwNumVertices = nNumVerties;
+    _MeshHead MeshHead;
+    memset(&MeshHead, 0, sizeof(MeshHead));
+    MeshHead.dwNumSubset = 1;
+    MeshHead.dwNumFaces = nNumFaces;
+    MeshHead.dwNumVertices = nNumVerties;
     
+    MeshHead.Blocks.PositionBlock = sizeof(FileHead) + sizeof(MeshHead);
+    MeshHead.Blocks.NormalBlock = MeshHead.Blocks.PositionBlock + nNumVerties * sizeof(GLVec3);
+    MeshHead.Blocks.TextureUVW1Block = MeshHead.Blocks.NormalBlock + nNumVerties * sizeof(GLVec3);
+    MeshHead.Blocks.FacesIndexBlock = MeshHead.Blocks.TextureUVW1Block + nNumVerties * sizeof(GLTEX2);
+
     BYTE* pNormals = new BYTE[nNumVerties * sizeof(GLVec3)];
+    if (m_Normals.size() > 0)
+        memcpy(pNormals, &m_Normals[0], m_Normals.size() * sizeof(GLVec3));
     BYTE* pTexture1 = new BYTE[nNumVerties * sizeof(GLTEX2)];
+    if (m_Textures.size() > 0)
+        memcpy(pTexture1, &m_Textures[0], m_Textures.size() * sizeof(GLTEX2));
     
-    m_MeshHead.Blocks.PositionBlock = sizeof(m_FileHead) + sizeof(m_MeshHead);
-    m_MeshHead.Blocks.NormalBlock = m_MeshHead.Blocks.PositionBlock + nNumVerties * sizeof(GLVec3);
-    m_MeshHead.Blocks.TextureUVW1Block = m_MeshHead.Blocks.NormalBlock + nNumVerties * sizeof(GLVec3);
-    m_MeshHead.Blocks.FacesIndexBlock = m_MeshHead.Blocks.TextureUVW1Block + nNumVerties * sizeof(GLTEX2);
-    
-    fwrite(&m_FileHead, sizeof(m_FileHead), 1, pFile);
-    fwrite(&m_MeshHead, sizeof(m_MeshHead), 1, pFile);
-    fwrite(&m_Verties, nNumVerties * sizeof(GLVec3), 1, pFile);
+    fwrite(&FileHead, sizeof(FileHead), 1, pFile);
+    fwrite(&MeshHead, sizeof(MeshHead), 1, pFile);
+    fwrite(&m_Verties[0], nNumVerties * sizeof(GLVec3), 1, pFile);
     fwrite(pNormals, nNumVerties * sizeof(GLVec3), 1, pFile);
     fwrite(pTexture1, nNumVerties * sizeof(GLTEX2), 1, pFile);
-    fwrite(&m_Faces, nNumFaces * sizeof(GLFace3), 1, pFile);
+    fwrite(&m_Faces[0], nNumFaces * sizeof(GLFace3), 1, pFile);
     
     fclose(pFile);
     
     return true;
 }
 
-bool LMeshCreator::AddVerex(GLVec3* pVertex)
-{
-    m_Verties.push_back(*pVertex);
-    return true;
-}
-
-bool LMeshCreator::AddVerties(GLVec3* pVerties, unsigned int nCount)
+bool LMeshCreator::AddVerties(GLVec3* pVerties, unsigned int nCount /*= 1*/)
 {
     for (int i = 0; i < nCount; i++)
     {
@@ -83,18 +83,32 @@ bool LMeshCreator::AddVerties(GLVec3* pVerties, unsigned int nCount)
     return true;
 }
 
-bool LMeshCreator::AddFace(GLFace3* pFace)
-{
-    m_Faces.push_back(*pFace);
-    return true;
-}
-
-bool LMeshCreator::AddFaces(GLFace3* pFaces, unsigned int nCount)
+bool LMeshCreator::AddFaces(GLFace3* pFaces, unsigned int nCount /*= 1*/)
 {
     for (int i = 0; i < nCount; i++)
     {
         m_Faces.push_back(pFaces[i]);
     }
     
+    return true;
+}
+
+bool LMeshCreator::AddNomals(GLVec3* pNomals, unsigned int nCount /*= 1*/)
+{
+    for (int i = 0; i < nCount; i++)
+    {
+        m_Normals.push_back(pNomals[i]);
+    }
+
+    return true;
+}
+
+bool LMeshCreator::AddTextures(GLTEX2* pTextures, unsigned int nCount /*= 1*/)
+{
+    for (int i = 0; i < nCount; i++)
+    {
+        m_Textures.push_back(pTextures[i]);
+    }
+
     return true;
 }

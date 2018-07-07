@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LClient", "LClient\LClient.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stb", "stb\stb.vcxproj", "{54D70773-60A8-446F-8779-6011C48B152A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LCreator", "LCreator\LCreator.vcxproj", "{115F536F-CA66-497D-BF38-415867E3563C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{54D70773-60A8-446F-8779-6011C48B152A}.Debug|Win32.Build.0 = Debug|Win32
 		{54D70773-60A8-446F-8779-6011C48B152A}.Release|Win32.ActiveCfg = Release|Win32
 		{54D70773-60A8-446F-8779-6011C48B152A}.Release|Win32.Build.0 = Release|Win32
+		{115F536F-CA66-497D-BF38-415867E3563C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{115F536F-CA66-497D-BF38-415867E3563C}.Debug|Win32.Build.0 = Debug|Win32
+		{115F536F-CA66-497D-BF38-415867E3563C}.Release|Win32.ActiveCfg = Release|Win32
+		{115F536F-CA66-497D-BF38-415867E3563C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

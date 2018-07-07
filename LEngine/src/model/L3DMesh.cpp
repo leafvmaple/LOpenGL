@@ -199,8 +199,8 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         glBindBuffer(GL_ARRAY_BUFFER, nVertexBufObj);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, nElemBufObj);
         
-        glBufferData(GL_ARRAY_BUFFER, sizeof(pbyVertices), pbyVertices, GL_STATIC_DRAW);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(pwIndices), pwIndices, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, pLMeshData->dwNumVertices * dwVertexStride, pbyVertices, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_dwNumFaces * sizeof(unsigned short), pwIndices, GL_STATIC_DRAW);
         
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)0);
         glEnableVertexAttribArray(0);

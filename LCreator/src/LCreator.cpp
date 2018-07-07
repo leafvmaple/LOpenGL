@@ -28,5 +28,5 @@ int main()
     
     MeshCreator.AddVerties(reinterpret_cast<GLVec3*>(vertices), sizeof(vertices) / sizeof(GLVec3));
     MeshCreator.AddFaces(reinterpret_cast<GLFace3*>(indices), sizeof(indices) / sizeof(GLFace3));
-    MeshCreator.Create("test.mesh");
+    MeshCreator.Create("Rect.mesh");
 }

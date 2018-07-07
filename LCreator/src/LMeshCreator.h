@@ -34,19 +34,17 @@ public:
     
     bool Init();
     bool Create(const char* cszFileName);
-    
-    bool AddVerex(GLVec3* pVertex);
-    bool AddVerties(GLVec3* pVerties, unsigned int nCount);
-    
-    bool AddFace(GLFace3* pFace);
-    bool AddFaces(GLFace3* pFaces, unsigned int nCount);
+
+    bool AddVerties(GLVec3* pVerties, unsigned int nCount = 1);
+    bool AddFaces(GLFace3* pFaces, unsigned int nCount = 1);
+    bool AddNomals(GLVec3* pNomals, unsigned int nCount = 1);
+    bool AddTextures(GLTEX2* pNomals, unsigned int nCount = 1);
     
 private:
-    _MeshFileHead m_FileHead;
-    _MeshHead m_MeshHead;
-    
     std::vector<GLVec3> m_Verties;
     std::vector<GLFace3> m_Faces;
+    std::vector<GLVec3> m_Normals;
+    std::vector<GLTEX2> m_Textures;
 };
 
 #endif /* LMeshCreator_h */
