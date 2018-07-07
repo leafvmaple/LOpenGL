@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:LCreator/LCreator.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:stb/stb.xcodeproj">
    </FileRef>
    <FileRef
@@ -13,6 +16,16 @@
    <Group
       location = "group:Include"
       name = "Include">
+      <Group
+         location = "group:io"
+         name = "io">
+         <FileRef
+            location = "group:LFileStruct.h">
+         </FileRef>
+         <FileRef
+            location = "group:LFileDef.h">
+         </FileRef>
+      </Group>
       <Group
          location = "group:stb"
          name = "stb">

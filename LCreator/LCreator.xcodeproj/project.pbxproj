@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4905786020F04587009AF9F9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4905785F20F04587009AF9F9 /* main.cpp */; };
+		4905786920F0462C009AF9F9 /* LCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4905786820F0462C009AF9F9 /* LCreator.cpp */; };
+		4905786D20F04B82009AF9F9 /* LMeshCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4905786C20F04B82009AF9F9 /* LMeshCreator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +25,9 @@
 
 /* Begin PBXFileReference section */
 		4905785C20F04587009AF9F9 /* LCreator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCreator; sourceTree = BUILT_PRODUCTS_DIR; };
-		4905785F20F04587009AF9F9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4905786820F0462C009AF9F9 /* LCreator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LCreator.cpp; sourceTree = "<group>"; };
+		4905786B20F04B6A009AF9F9 /* LMeshCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMeshCreator.h; sourceTree = "<group>"; };
+		4905786C20F04B82009AF9F9 /* LMeshCreator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LMeshCreator.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +44,7 @@
 		4905785320F04587009AF9F9 = {
 			isa = PBXGroup;
 			children = (
-				4905785E20F04587009AF9F9 /* LCreator */,
+				4905786720F045FF009AF9F9 /* src */,
 				4905785D20F04587009AF9F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +57,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4905785E20F04587009AF9F9 /* LCreator */ = {
+		4905786720F045FF009AF9F9 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				4905785F20F04587009AF9F9 /* main.cpp */,
+				4905786820F0462C009AF9F9 /* LCreator.cpp */,
+				4905786B20F04B6A009AF9F9 /* LMeshCreator.h */,
+				4905786C20F04B82009AF9F9 /* LMeshCreator.cpp */,
 			);
-			path = LCreator;
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +123,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4905786020F04587009AF9F9 /* main.cpp in Sources */,
+				4905786D20F04B82009AF9F9 /* LMeshCreator.cpp in Sources */,
+				4905786920F0462C009AF9F9 /* LCreator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +182,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Include";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -228,6 +235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Include";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;

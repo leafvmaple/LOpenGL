@@ -25,7 +25,7 @@ bool LCharacter::Create(IL3DEngine* p3DEngine)
             1, 2, 3
         };
         
-        bRetCode = ILModel::Create(IL3DEngine::Instance(), "res/model/M2_1035_body.mesh", &m_pObject);
+        bRetCode = ILModel::Create(IL3DEngine::Instance(), "res/model/test.mesh", &m_pObject);
 
         /*bRetCode = ILModel::Create(IL3DEngine::Instance(),
                                     pVertices,
