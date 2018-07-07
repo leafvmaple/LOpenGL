@@ -184,10 +184,10 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         
         BYTE* pbyVertices = new BYTE[pLMeshData->dwNumVertices * dwVertexStride];
         
-        for (unsigned int i = 0; i < pLMeshData->dwNumVertices; i++)
+        for (DWORD i = 0; i < pLMeshData->dwNumVertices; i++)
         {
             BYTE* pCurrentVertexData = pbyVertices + dwVertexStride * i;
-            for (unsigned int j = 0; j < pVertexFormat->dwNumElement; j++)
+            for (DWORD j = 0; j < pVertexFormat->dwNumElement; j++)
             {
                 const BYTE* pCurrentSrc = *(reinterpret_cast<BYTE* const*>(&pLMeshData->pPos) + pVertexFormat->dwSrcOffset[j]);
                 memcpy(pCurrentVertexData + pVertexFormat->dwDestOffset[j],
@@ -195,10 +195,11 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
                        pVertexFormat->dwDestStride[j]);
                 if (pVertexFormat->dwElementFVF[j] == L3DFVF_DIFFUSE)
                 {
-                    const DWORD* pSrcDiffuse = reinterpret_cast<const DWORD*>(pCurrentSrc + pVertexFormat->dwSrcStride[j] * i);
-                    LCOLOR_RGBA_FLOAT* pDestDiffuse = reinterpret_cast<LCOLOR_RGBA_FLOAT*>(pCurrentVertexData + pVertexFormat->dwDestOffset[j]);
+                    const DWORD* pSrcDiffuse = reinterpret_cast<const DWORD*>(
+                                                pCurrentSrc + pVertexFormat->dwSrcStride[j] * i);
+                    LCOLOR_RGBA_FLOAT* pDestDiffuse = reinterpret_cast<LCOLOR_RGBA_FLOAT*>(
+                                                pCurrentVertexData + pVertexFormat->dwDestOffset[j]);
                     *pDestDiffuse = L3DARGB_COLOR(*pSrcDiffuse);
-                    printf("%f %f %f %f\n", pDestDiffuse->r, pDestDiffuse->g, pDestDiffuse->b, pDestDiffuse->a);
                 }
             }
         }
@@ -227,12 +228,13 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         glBufferData(GL_ARRAY_BUFFER, pLMeshData->dwNumVertices * dwVertexStride, pbyVertices, GL_STATIC_DRAW);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_dwNumFaces * sizeof(unsigned short), pwIndices, GL_STATIC_DRAW);
         
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)0);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)(3 * sizeof(float)));
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)(3 * sizeof(float) + 4 * sizeof(float)));
-        glEnableVertexAttribArray(2);
+        for (DWORD i = 0; i < pVertexFormat->dwNumElement; i++)
+        {
+            glVertexAttribPointer(i, pVertexFormat->dwDestStride[i] / 4,
+                                  GL_FLOAT, GL_FALSE, dwVertexStride,
+                                  (void*)pVertexFormat->dwDestOffset[i]);
+            glEnableVertexAttribArray(i);
+        }
 
         bResult = true;
     } while (0);
