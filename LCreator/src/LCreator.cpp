@@ -16,17 +16,19 @@ int main()
     MeshCreator.Init();
     
     float vertices[] = {
-        0.5f,  0.5f, 0.0f,  // top right
-        0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left
+        //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
+        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // 右上
+        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // 右下
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // 左上
     };
-    unsigned int indices[] = {  // note that we start from 0!
-        0, 1, 3,  // first Triangle
-        1, 2, 3   // second Triangle
+    unsigned int indices[] = {
+        0, 1, 3,
+        1, 2, 3,
+        //0, 3, 4
     };
     
-    MeshCreator.AddVerties(reinterpret_cast<GLVec3*>(vertices), sizeof(vertices) / sizeof(GLVec3));
-    MeshCreator.AddFaces(reinterpret_cast<GLFace3*>(indices), sizeof(indices) / sizeof(GLFace3));
-    MeshCreator.Create("Rect.mesh");
+    MeshCreator.AddDiffuseVerties(reinterpret_cast<GL_VERTEX*>(vertices), sizeof(vertices) / sizeof(GL_VERTEX));
+    MeshCreator.AddFaces(reinterpret_cast<GLInt3*>(indices), sizeof(indices) / sizeof(GLInt3));
+    MeshCreator.Create("../LClient/res/model/Rect.mesh");
 }

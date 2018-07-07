@@ -10,6 +10,7 @@ class LFileReader
 
 public:
 	static bool Reader(const char* pszFileName, unsigned char** ppBuffer, size_t* puLen);
+    static bool IsExist(const char* cszFileName);
 
 	template<typename Model>
 	static BYTE* Convert(BYTE* pBuffer, Model*& pModel, size_t nCount = 1)

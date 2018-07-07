@@ -46,3 +46,14 @@ bool LFileReader::Reader(const char* pszFileName, BYTE** ppBuffer, size_t* puLen
 
 	return bResult;
 }
+
+bool LFileReader::IsExist(const char* cszFileName)
+{
+    FILE* pFile = fopen(cszFileName, "rb");
+    if (pFile)
+    {
+        fclose(pFile);
+        return true;
+    }
+    return false;
+}

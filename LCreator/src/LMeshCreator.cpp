@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <cstring>
 #include <algorithm>
+#include "LDefine.h"
 #include "LMeshCreator.h"
 
 LMeshCreator::LMeshCreator()
@@ -49,24 +50,47 @@ bool LMeshCreator::Create(const char *cszFileName)
     MeshHead.dwNumFaces = nNumFaces;
     MeshHead.dwNumVertices = nNumVerties;
     
-    MeshHead.Blocks.PositionBlock = sizeof(FileHead) + sizeof(MeshHead);
-    MeshHead.Blocks.NormalBlock = MeshHead.Blocks.PositionBlock + nNumVerties * sizeof(GLVec3);
-    MeshHead.Blocks.TextureUVW1Block = MeshHead.Blocks.NormalBlock + nNumVerties * sizeof(GLVec3);
-    MeshHead.Blocks.FacesIndexBlock = MeshHead.Blocks.TextureUVW1Block + nNumVerties * sizeof(GLTEX2);
-
-    BYTE* pNormals = new BYTE[nNumVerties * sizeof(GLVec3)];
+    uOffset += sizeof(FileHead) + sizeof(MeshHead);
+    
+    MeshHead.Blocks.PositionBlock = uOffset;
+    uOffset += nNumVerties * sizeof(GLVec3);
+    
     if (m_Normals.size() > 0)
-        memcpy(pNormals, &m_Normals[0], m_Normals.size() * sizeof(GLVec3));
-    BYTE* pTexture1 = new BYTE[nNumVerties * sizeof(GLTEX2)];
+    {
+        MeshHead.Blocks.NormalBlock = uOffset;
+        uOffset += nNumVerties * sizeof(GLVec3);
+    }
+    
+    if (m_Diffuses.size() > 0)
+    {
+        MeshHead.Blocks.DiffuseBlock = uOffset;
+        uOffset += nNumVerties * sizeof(DWORD);
+    }
+    
     if (m_Textures.size() > 0)
-        memcpy(pTexture1, &m_Textures[0], m_Textures.size() * sizeof(GLTEX2));
+    {
+        MeshHead.Blocks.TextureUVW1Block = uOffset;
+        uOffset += nNumVerties * sizeof(GLUVW3);
+    }
+    
+    if (m_Faces.size() > 0)
+    {
+        MeshHead.Blocks.FacesIndexBlock = uOffset;
+        uOffset += nNumFaces * sizeof(GLInt3);
+    }
     
     fwrite(&FileHead, sizeof(FileHead), 1, pFile);
     fwrite(&MeshHead, sizeof(MeshHead), 1, pFile);
-    fwrite(&m_Verties[0], nNumVerties * sizeof(GLVec3), 1, pFile);
-    fwrite(pNormals, nNumVerties * sizeof(GLVec3), 1, pFile);
-    fwrite(pTexture1, nNumVerties * sizeof(GLTEX2), 1, pFile);
-    fwrite(&m_Faces[0], nNumFaces * sizeof(GLFace3), 1, pFile);
+    fwrite(&m_Verties[0], sizeof(GLVec3), nNumVerties, pFile);
+    
+    if (m_Normals.size() > 0)
+        fwrite(&m_Normals[0], sizeof(GLVec3), nNumVerties, pFile);
+    if (m_Diffuses.size() > 0)
+        fwrite(&m_Diffuses[0], sizeof(GLCOLOR), nNumVerties, pFile);
+    if (m_Textures.size() > 0)
+        fwrite(&m_Textures[0], sizeof(GLUVW3), nNumVerties, pFile);
+    if (m_Faces.size() > 0)
+        fwrite(&m_Faces[0], sizeof(GLInt3), nNumFaces, pFile);
     
     fclose(pFile);
     
@@ -83,7 +107,20 @@ bool LMeshCreator::AddVerties(GLVec3* pVerties, unsigned int nCount /*= 1*/)
     return true;
 }
 
-bool LMeshCreator::AddFaces(GLFace3* pFaces, unsigned int nCount /*= 1*/)
+bool LMeshCreator::AddDiffuseVerties(GL_VERTEX* pVerties, unsigned int nCount /*= 1*/)
+{
+    for (int i = 0; i < nCount; i++)
+    {
+        m_Verties.push_back(pVerties[i].Vertex);
+        m_Diffuses.push_back(L3DCOLOR_COLORVALUE(pVerties[i].Diffuse.x,
+                                                 pVerties[i].Diffuse.y,
+                                                 pVerties[i].Diffuse.z, 1));
+        m_Textures.push_back(pVerties[i].Texture);
+    }
+    return true;
+}
+
+bool LMeshCreator::AddFaces(GLInt3* pFaces, unsigned int nCount /*= 1*/)
 {
     for (int i = 0; i < nCount; i++)
     {
@@ -93,22 +130,3 @@ bool LMeshCreator::AddFaces(GLFace3* pFaces, unsigned int nCount /*= 1*/)
     return true;
 }
 
-bool LMeshCreator::AddNomals(GLVec3* pNomals, unsigned int nCount /*= 1*/)
-{
-    for (int i = 0; i < nCount; i++)
-    {
-        m_Normals.push_back(pNomals[i]);
-    }
-
-    return true;
-}
-
-bool LMeshCreator::AddTextures(GLTEX2* pTextures, unsigned int nCount /*= 1*/)
-{
-    for (int i = 0; i < nCount; i++)
-    {
-        m_Textures.push_back(pTextures[i]);
-    }
-
-    return true;
-}

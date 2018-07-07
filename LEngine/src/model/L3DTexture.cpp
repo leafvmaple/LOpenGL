@@ -45,9 +45,6 @@ bool L3DTexture::LoadLTexture(const char* cszFileName)
     
     do
     {
-        _TextureBase* pTextureBase = new _TextureBase;
-        memset(pTextureBase, 0, sizeof(pTextureBase));
-        
         glGenTextures(1, &m_nTexture);
         glBindTexture(GL_TEXTURE_2D, m_nTexture);
         
@@ -55,22 +52,28 @@ bool L3DTexture::LoadLTexture(const char* cszFileName)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-        pTextureBase->pTexture = stbi_load("container.jpg", &n_nWidth, &n_nWidth, &m_nChannels, 0);
-        BOOL_ERROR_BREAK(pTextureBase->pTexture)
+        
+        stbi_set_flip_vertically_on_load(true);
+        BYTE* pTexture = stbi_load(cszFileName, &n_nWidth, &n_nWidth, &m_nChannels, 0);
+        BOOL_ERROR_BREAK(pTexture)
         
         glTexImage2D(GL_TEXTURE_2D,
                      0, GL_RGB, n_nWidth, m_nHeight,
                      0, GL_RGB, GL_UNSIGNED_BYTE,
-                     pTextureBase->pTexture);
+                     pTexture);
         glGenerateMipmap(GL_TEXTURE_2D);
         
-        stbi_image_free(pTextureBase->pTexture);
-        
-        m_vecTextures.push_back(pTextureBase);
+        stbi_image_free(pTexture);
         
         bResult = true;
     } while (0);
     
     return bResult;
+}
+
+bool L3DTexture::UpdateTexture()
+{
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_nTexture);
+    return true;
 }

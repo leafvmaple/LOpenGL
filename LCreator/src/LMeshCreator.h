@@ -13,18 +13,39 @@
 #include "LInterface.h"
 #include <vector>
 
-typedef struct GLFace3
+typedef struct GLInt3
 {
     unsigned int x;
     unsigned int y;
     unsigned int z;
-} GLFace3;
+} GLInt3;
 
-typedef struct GLTEX2
+typedef struct GLUVW3
 {
-    float u;
-    float v;
-} GLTEX2;
+    DWORD u;
+    DWORD v;
+    DWORD w;
+    GLUVW3(DWORD u,DWORD v,DWORD w) : u(u), v(v), w(w) {}
+} GLUVW3;
+
+typedef struct GLUV2
+{
+    DWORD u;
+    DWORD v;
+    
+    operator GLUVW3() {return GLUVW3(u, v, 0);}
+} GLUV2;
+
+typedef struct GL_VERTEX
+{
+    GLVec3 Vertex;
+    union
+    {
+        GLVec3 Normal;
+        GLVec3 Diffuse;
+    };
+    GLUV2 Texture;
+} GL_VERTEX;
 
 class LMeshCreator
 {
@@ -36,15 +57,15 @@ public:
     bool Create(const char* cszFileName);
 
     bool AddVerties(GLVec3* pVerties, unsigned int nCount = 1);
-    bool AddFaces(GLFace3* pFaces, unsigned int nCount = 1);
-    bool AddNomals(GLVec3* pNomals, unsigned int nCount = 1);
-    bool AddTextures(GLTEX2* pNomals, unsigned int nCount = 1);
+    bool AddDiffuseVerties(GL_VERTEX* pVerties, unsigned int nCount = 1);
+    bool AddFaces(GLInt3* pFaces, unsigned int nCount = 1);
     
 private:
     std::vector<GLVec3> m_Verties;
-    std::vector<GLFace3> m_Faces;
     std::vector<GLVec3> m_Normals;
-    std::vector<GLTEX2> m_Textures;
+    std::vector<GLCOLOR> m_Diffuses;
+    std::vector<GLUVW3> m_Textures;
+    std::vector<GLInt3> m_Faces;
 };
 
 #endif /* LMeshCreator_h */
