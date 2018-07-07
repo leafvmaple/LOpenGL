@@ -57,6 +57,9 @@
     <ClCompile Include="src\model\L3DMesh.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\model\L3DMaterial.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\model\L3DModel.h">
@@ -79,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="src\io\LFileDef.h">
       <Filter>Header Files\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\L3DMaterial.h">
+      <Filter>Header Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

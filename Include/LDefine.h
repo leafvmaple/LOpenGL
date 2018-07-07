@@ -10,8 +10,10 @@
 
 #ifdef __APPLE__
 typedef unsigned int DWORD;
-#endif
 typedef unsigned char BYTE;
+#elif _WIN32
+#include <wtypes.h>
+#endif
 
 #define L3DCOLOR_ARGB(a,r,g,b) \
     ((DWORD)((((a)&0xff)<<24)|(((r)&0xff)<<16)|(((g)&0xff)<<8)|((b)&0xff)))
