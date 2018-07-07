@@ -54,7 +54,7 @@ bool L3DTexture::LoadLTexture(const char* cszFileName)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         
         stbi_set_flip_vertically_on_load(true);
-        BYTE* pTexture = stbi_load(cszFileName, &n_nWidth, &n_nWidth, &m_nChannels, 0);
+        BYTE* pTexture = stbi_load(cszFileName, &n_nWidth, &m_nHeight, &m_nChannels, 0);
         BOOL_ERROR_BREAK(pTexture)
         
         glTexImage2D(GL_TEXTURE_2D,

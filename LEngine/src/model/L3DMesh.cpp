@@ -87,10 +87,11 @@ bool L3DMesh::LoadMesh(const char* cszFileName)
 
 bool L3DMesh::UpdateMesh(unsigned int dwSubMesh)
 {
+    if (m_pLMaterial)
+        m_pLMaterial->UpdateMaterial(dwSubMesh);
+    
     glBindVertexArray(m_nVertexArrObj);
     glDrawElements(GL_TRIANGLES, m_dwNumFaces, GL_UNSIGNED_SHORT, 0);
-    
-    m_pLMaterial->UpdateMaterial(dwSubMesh);
 
     return true;
 }
@@ -192,11 +193,12 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
                 memcpy(pCurrentVertexData + pVertexFormat->dwDestOffset[j],
                        pCurrentSrc + pVertexFormat->dwSrcStride[j] * i,
                        pVertexFormat->dwDestStride[j]);
-                if (pVertexFormat->dwElementFVF[1] == L3DFVF_DIFFUSE)
+                if (pVertexFormat->dwElementFVF[j] == L3DFVF_DIFFUSE)
                 {
-                    const BYTE* pSrcDiffuse = pCurrentSrc + pVertexFormat->dwSrcStride[1];
-                    BYTE* pDestDiffuse =  pCurrentVertexData + pVertexFormat->dwDestOffset[1];
-                    *reinterpret_cast<LCOLOR_ARGB_FLOAT*>(pDestDiffuse) = *reinterpret_cast<const LCOLOR_ARGB_BYTE*>(pSrcDiffuse);
+                    const DWORD* pSrcDiffuse = reinterpret_cast<const DWORD*>(pCurrentSrc + pVertexFormat->dwSrcStride[j] * i);
+                    LCOLOR_RGBA_FLOAT* pDestDiffuse = reinterpret_cast<LCOLOR_RGBA_FLOAT*>(pCurrentVertexData + pVertexFormat->dwDestOffset[j]);
+                    *pDestDiffuse = L3DARGB_COLOR(*pSrcDiffuse);
+                    printf("%f %f %f %f\n", pDestDiffuse->r, pDestDiffuse->g, pDestDiffuse->b, pDestDiffuse->a);
                 }
             }
         }
@@ -226,12 +228,11 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_dwNumFaces * sizeof(unsigned short), pwIndices, GL_STATIC_DRAW);
         
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)0);
-        glVertexAttribPointer(4, 1, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)(3 * sizeof(float)));
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)(3 * sizeof(float) + 4 * sizeof(float)));
         glEnableVertexAttribArray(0);
-        
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
+        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)(3 * sizeof(float)));
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, dwVertexStride, (void*)(3 * sizeof(float) + 4 * sizeof(float)));
+        glEnableVertexAttribArray(2);
 
         bResult = true;
     } while (0);

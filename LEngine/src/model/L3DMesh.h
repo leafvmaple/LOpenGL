@@ -16,24 +16,6 @@
 
 class L3DMaterial;
 
-struct LCOLOR_ARGB_FLOAT
-{
-    float a;
-    float r;
-    float g;
-    float b;
-    LCOLOR_ARGB_FLOAT(float a, float r, float g, float b) : a(a), r(r), g(g), b(b) {};
-};
-
-struct LCOLOR_ARGB_BYTE
-{
-    BYTE a;
-    BYTE r;
-    BYTE g;
-    BYTE b;
-    operator LCOLOR_ARGB_FLOAT() const {return LCOLOR_ARGB_FLOAT(a, r, g, b);}
-};
-
 struct VertexFromatOffsetItem
 {
     const static unsigned int s_dwMaxVertexElement = 8;

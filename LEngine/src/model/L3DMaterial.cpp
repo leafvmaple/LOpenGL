@@ -27,7 +27,7 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, BYTE*& pb
         m_p3DTexture = new L3DTexture;
         BOOL_ERROR_BREAK(m_p3DTexture);
         
-        bRetCode = m_p3DTexture->LoadLTexture("res/model/texture/M2_1035.tga");
+        bRetCode = m_p3DTexture->LoadLTexture("res/model/texture/wall.jpg");
         BOOL_ERROR_BREAK(bRetCode);
         
         bResult = true;
