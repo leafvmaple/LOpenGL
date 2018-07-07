@@ -22,13 +22,6 @@ public:
     ~L3DModel();
 
     bool Init(const char* cszFileName);
-    bool Init(const void* pModelVertices,
-              GLsizeiptr nVerticesCount,
-              const void* pModelIndices,
-              GLsizeiptr nIndicesCount,
-              const char *pVertexPath,
-              const char *pFragmentPath);
-
     void Uninit();
     
     bool LoadModel(const char* cszFileName);
@@ -39,11 +32,6 @@ public:
     
     bool LoadShader(const char *pVertexShaderSource,
                     const char *pFragmentShaderSource);
-
-    bool InitVertex(const void* pModelVertices,
-                    GLsizeiptr nVerteicesCount,
-                    const void* pModelIndices,
-                    GLsizeiptr nIndicesCount);
 
 public:
     bool UpdateDisplay();

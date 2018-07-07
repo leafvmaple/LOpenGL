@@ -65,14 +65,6 @@ public:
     virtual ~ILModel() {};
     
     static bool Create(IL3DEngine* pIEngine, const char* cszFileName, ILModel** ppModel);
-    static bool Create(IL3DEngine* pIEngine,
-                       const void* pModelVerteices,
-                       GLsizeiptr nVerteicesCount,
-                       const void* pwModelIndices,
-                       GLsizeiptr nIndicesCount,
-                       const char* pVertexPath,
-                       const char* pFragmentPath,
-                       ILModel** ppModel);
 };
 
 #endif /* LInterface_h */

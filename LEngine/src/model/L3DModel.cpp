@@ -38,30 +38,6 @@ bool L3DModel::Init(const char* cszFileName)
     return bResult;
 }
 
-bool L3DModel::Init(const void* pModelVerteices,
-                    GLsizeiptr nVerticesCount,
-                    const void* pModelIndices,
-                    GLsizeiptr nIndicesCount,
-                    const char *pVertexPath,
-                    const char *pFragmentPath)
-{
-    bool bResult = false;
-    bool bRetCode = false;
-    
-    do
-    {
-        bRetCode = InitVertex(pModelVerteices, nVerticesCount, pModelIndices, nIndicesCount);
-        BOOL_ERROR_BREAK(bRetCode);
-        
-        bRetCode = LoadShader(pVertexPath, pFragmentPath);
-        BOOL_ERROR_BREAK(bRetCode);
-        
-        bResult = true;
-    } while (0);
-    
-    return bResult;
-}
-
 void L3DModel::Uninit()
 {
     m_nVertexArrObj = 0;
@@ -72,39 +48,6 @@ void L3DModel::Uninit()
     {
         SAFE_DELETE(m_p3DShader);
     }
-}
-
-bool L3DModel::InitVertex(const void* pModelVertices,
-                          GLsizeiptr nVerticesCount,
-                          const void* pModelIndices,
-                          GLsizeiptr nIndicesCount)
-{
-    bool bResult = false;
-
-    do 
-    {
-        glGenVertexArrays(1, &m_nVertexArrObj);
-        glGenBuffers(1, &m_nVertexBufObj);
-        glGenBuffers(1, &m_nElemBufObj);
-
-        glBindVertexArray(m_nVertexArrObj);
-
-        glBindBuffer(GL_ARRAY_BUFFER, m_nVertexBufObj);
-        glBufferData(GL_ARRAY_BUFFER, nVerticesCount, pModelVertices, GL_STATIC_DRAW);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_nElemBufObj);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, nIndicesCount, pModelIndices, GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-
-        glBindBuffer(GL_ARRAY_BUFFER, 0); 
-        glBindVertexArray(0);
-
-        bResult = true;
-    } while (0);
-
-    return bResult;
 }
 
 bool L3DModel::LoadModel(const char* cszFileName)
