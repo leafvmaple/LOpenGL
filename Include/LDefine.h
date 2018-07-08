@@ -8,12 +8,7 @@
 #ifndef LDefine_h
 #define LDefine_h
 
-#ifdef __APPLE__
-typedef unsigned int DWORD;
-typedef unsigned char BYTE;
-#elif _WIN32
-#include <wtypes.h>
-#endif
+#include "glad/glad.h"
 
 struct LCOLOR_RGBA_FLOAT
 {
@@ -24,6 +19,14 @@ struct LCOLOR_RGBA_FLOAT
     LCOLOR_RGBA_FLOAT() {};
     LCOLOR_RGBA_FLOAT(float r, float g, float b, float a) : r(r), g(g), b(b), a(a) {};
 };
+
+typedef struct L3DMATERIAL {
+    LCOLOR_RGBA_FLOAT Diffuse;
+    LCOLOR_RGBA_FLOAT Ambient;
+    LCOLOR_RGBA_FLOAT Specular;
+    LCOLOR_RGBA_FLOAT Emissive;
+    float Power;
+} L3DMATERIAL;
 
 #define L3DCOLOR_ARGB(a,r,g,b) \
     ((DWORD)((((a)&0xff)<<24)|(((r)&0xff)<<16)|(((g)&0xff)<<8)|((b)&0xff)))

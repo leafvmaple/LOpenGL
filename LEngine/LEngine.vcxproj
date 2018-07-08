@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;LENGINE_DLL;LENGINE_EXPORTS;STB_IMAGE_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;LENGINE_DLL;LENGINE_EXPORTS;_CRT_SECURE_NO_WARNINGS;STB_IMAGE_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -99,7 +99,6 @@ copy "$(TargetDir)$(TargetName).lib" "$(SolutionDir)Lib"</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\io\LFileDef.h" />
     <ClInclude Include="src\io\LFileReader.h" />
     <ClInclude Include="src\io\LFileStruct.h" />
     <ClInclude Include="src\model\L3DMaterial.h" />

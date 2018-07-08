@@ -14,7 +14,7 @@ public:
     static bool IsExist(const char* cszFileName);
 
 	template<typename Model>
-	static BYTE* Convert(BYTE* pBuffer, Model*& pModel, size_t nCount = 1)
+	static GLubyte* Convert(GLubyte* pBuffer, Model*& pModel, size_t nCount = 1)
 	{
 		size_t nLen = sizeof(Model) * nCount;
 		pModel = (Model*) pBuffer;
@@ -22,21 +22,21 @@ public:
 	}
 
 	template<typename Model>
-	static BYTE* Convert(BYTE* pBuffer, Model& pModel)
+	static GLubyte* Convert(GLubyte* pBuffer, Model& pModel)
 	{
 		pModel = *((Model*) pBuffer);
 		return pBuffer + sizeof(Model);
 	}
 
 	template<typename Model, int nSize>
-	static BYTE* Copy(BYTE* pBuffer, Model pModel[nSize])
+	static GLubyte* Copy(GLubyte* pBuffer, Model pModel[nSize])
 	{
 		size_t nLen = sizeof(Model) * nSize;
 		memcpy(&pModel, pBuffer, nLen);
 		return pBuffer + nLen;
 	}
 
-	static BYTE* Copy(BYTE* pBuffer, char pModel[], size_t nLen = 0)
+	static GLubyte* Copy(GLubyte* pBuffer, char pModel[], size_t nLen = 0)
 	{
 		if (!nLen)
         {
@@ -51,7 +51,7 @@ public:
 	}
 
 	template<typename Model>
-	static BYTE* Copy(BYTE* pBuffer, Model* pModel, size_t nCount = 1)
+	static GLubyte* Copy(GLubyte* pBuffer, Model* pModel, size_t nCount = 1)
 	{
 		size_t nLen = sizeof(Model) * nCount;
 		memcpy(pModel, pBuffer, nLen);

@@ -39,12 +39,12 @@ bool LMeshCreator::Create(const char *cszFileName)
     int nNumVerties = m_Verties.size();
     FILE* pFile = fopen(cszFileName, "wb");
 
-    _MeshFileHead FileHead;
+    L3DMesh::_MeshFileHead FileHead;
     memset(&FileHead, 0, sizeof(FileHead));
     FileHead.dwFileMask = 0x4D455348;
     FileHead.dwVersion = 0;
     
-    _MeshHead MeshHead;
+    L3DMesh::_MeshHead MeshHead;
     memset(&MeshHead, 0, sizeof(MeshHead));
     MeshHead.dwNumSubset = 1;
     MeshHead.dwNumFaces = nNumFaces;

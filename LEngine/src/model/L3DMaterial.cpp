@@ -12,24 +12,23 @@
 #include "io/LFileReader.h"
 
 L3DSubsetMaterial::L3DSubsetMaterial()
-: m_p3DTexture(nullptr)
-, m_dwOption(0)
+: m_dwOption(0)
 {
-    
+    m_vecTexture.clear();
 }
 L3DSubsetMaterial::~L3DSubsetMaterial()
 {
     
 }
 
-bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, BYTE*& pbyMaterial)
+bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*& pbyMaterial)
 {
     bool bResult = false;
     bool bRetCode = false;
     
     do
     {
-        DWORD dwMaterialOptionCount = 0;
+        GLuint dwMaterialOptionCount = 0;
         
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Ambient);
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Diffuse);
@@ -40,17 +39,33 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, BYTE*& pb
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_dwOption);
         pbyMaterial = LFileReader::Convert(pbyMaterial, dwMaterialOptionCount);
         
-        for (DWORD j = 0; j < dwMaterialOptionCount; j++)
+        for (GLuint j = 0; j < dwMaterialOptionCount; j++)
         {
             bRetCode = LoadOption(pbyMaterial);
             BOOL_ERROR_BREAK(bRetCode);
         }
-        
-        m_p3DTexture = new L3DTexture;
-        BOOL_ERROR_BREAK(m_p3DTexture);
-        
-        bRetCode = m_p3DTexture->LoadTexture(pcszDirectory, pbyMaterial);
-        BOOL_ERROR_BREAK(bRetCode);
+
+        GLuint dwNumUsedTexture = 0;
+        pbyMaterial = LFileReader::Convert(pbyMaterial, dwNumUsedTexture);
+
+        for (GLuint dwTextIndex = 0; dwTextIndex < dwNumUsedTexture; dwTextIndex++)
+        {
+            L3DTexture::_TEXTURE* pTextureInfo = NULL;
+            pbyMaterial = LFileReader::Convert(pbyMaterial, pTextureInfo);
+
+            char szTextureName[FILENAME_MAX];
+            sprintf(szTextureName, "%s%s", pcszDirectory, pTextureInfo->szTextureFileName);
+            while(char* pszIndex = strchr(szTextureName, '\\'))
+                *pszIndex = '/';
+
+            L3DTexture* p3DTexture = new L3DTexture;
+            BOOL_ERROR_BREAK(p3DTexture);
+
+            bRetCode = p3DTexture->LoadTexture(szTextureName, pTextureInfo, pbyMaterial);
+            BOOL_ERROR_BREAK(bRetCode);
+
+            m_vecTexture.push_back(p3DTexture);
+        }
         
         if (m_dwOption & MATERIAL_OPTION_VERSION_2)
         {
@@ -72,30 +87,20 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, BYTE*& pb
     } while (0);
     
     return bResult;
-    
-    do
-    {
-        m_p3DTexture = new L3DTexture;
-        BOOL_ERROR_BREAK(m_p3DTexture);
-        
-        bRetCode = m_p3DTexture->LoadTexture("res/model/texture/wall.jpg");
-        BOOL_ERROR_BREAK(bRetCode);
-        
-        bResult = true;
-    } while (0);
-    
-    return bResult;
 }
 
-bool L3DSubsetMaterial::LoadOption(BYTE*& pbyMaterial)
+bool L3DSubsetMaterial::LoadOption(GLubyte*& pbyMaterial)
 {
     return false;
 }
 
 bool L3DSubsetMaterial::UpdateSubsetMaterial()
 {
-    if (m_p3DTexture)
-        m_p3DTexture->UpdateTexture();
+
+    for (int i = 0; i < m_vecTexture.size(); i++)
+    {
+        m_vecTexture[i]->UpdateTexture(i);
+    }
     
     return true;
 }
@@ -106,15 +111,15 @@ bool L3DMaterial::LoadLMaterial(const char *cszFileName)
     
     do
     {
-        BYTE* pbyMaterial = nullptr;
+        GLubyte* pbyMaterial = nullptr;
         size_t uMaterialLen = 0;
         LFileReader::Reader(cszFileName, &pbyMaterial, &uMaterialLen);
         
-        DWORD dwMask = 0;
+        GLuint dwMask = 0;
         pbyMaterial = LFileReader::Convert(pbyMaterial, dwMask);
         BOOL_ERROR_BREAK(dwMask >= 0x4D41544C);//MATL对应的ASECC代码
         
-        DWORD dwBlockLength = 0;
+        GLuint dwBlockLength = 0;
         pbyMaterial = LFileReader::Convert(pbyMaterial, dwBlockLength);
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_dwNumMaterials);
         BOOL_ERROR_BREAK(m_dwNumMaterials <= MAX_SUBSET_COUNT);
@@ -126,14 +131,14 @@ bool L3DMaterial::LoadLMaterial(const char *cszFileName)
         strcpy(szDir, cszFileName);
         
         char* pszDot = strchr(szDir, '/');
-        while (strchr(pszDot, '/'))
-            pszDot = strchr(pszDot, '/');
+        while (pszDot && strchr(pszDot + 1, '/'))
+            pszDot = strchr(pszDot + 1, '/');
         if (pszDot)
-            pszDot[0] = '\0';
+            pszDot[1] = '\0';
         else
             szDir[0] = '\0';
         
-        for (DWORD i = 0; i < m_dwNumMaterials; i++)
+        for (GLuint i = 0; i < m_dwNumMaterials; i++)
         {
             m_pMaterialSubset[i].LoadLSubsetMaterial(szDir, pbyMaterial);
             
@@ -147,7 +152,7 @@ bool L3DMaterial::LoadLMaterial(const char *cszFileName)
     return bResult;
 }
 
-bool L3DMaterial::UpdateMaterial(DWORD dwSubMaterial)
+bool L3DMaterial::UpdateMaterial(GLuint dwSubMaterial)
 {
     bool bResult = false;
     bool bRetCode = false;

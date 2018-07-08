@@ -10,6 +10,7 @@
 #define _L3DMaterial_H_
 
 #include <stdio.h>
+#include <vector>
 #include "LDefine.h"
 
 #define MAX_SUBSET_COUNT 32
@@ -18,23 +19,17 @@
 
 class L3DTexture;
 
-typedef struct L3DMATERIAL {
-    LCOLOR_RGBA_FLOAT Diffuse;
-    LCOLOR_RGBA_FLOAT Ambient;
-    LCOLOR_RGBA_FLOAT Specular;
-    LCOLOR_RGBA_FLOAT Emissive;
-    float Power;
-} L3DMATERIAL;
-
 class L3DSubsetMaterial
 {
+    friend class LMaterialCreator;
+
 public:
     L3DSubsetMaterial();
     ~L3DSubsetMaterial();
-    
+
 public:
-    bool LoadLSubsetMaterial(const char* pcszDirectory, BYTE*& pbyMaterial);
-    bool LoadOption(BYTE*& pbyMaterial);
+    bool LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*& pbyMaterial);
+    bool LoadOption(GLubyte*& pbyMaterial);
     
     bool UpdateSubsetMaterial();
     
@@ -51,9 +46,9 @@ private:
     
     const static int cNumID = 8;
     const static int cNumColorCast = 8;
-    DWORD m_dwOption;
+    GLuint m_dwOption;
     L3DMATERIAL m_Material;
-    L3DTexture* m_p3DTexture;
+    std::vector<L3DTexture*> m_vecTexture;
     
     LCOLOR_RGBA_FLOAT m_ColorCast[cNumColorCast];
     float            m_fSpecPower;
@@ -64,10 +59,10 @@ class L3DMaterial
 {
 public:
     bool LoadLMaterial(const char* cszFileName);
-    bool UpdateMaterial(DWORD dwSubMaterial);
+    bool UpdateMaterial(GLuint dwSubMaterial);
     
 private:
-    DWORD m_dwNumMaterials;
+    GLuint m_dwNumMaterials;
     L3DSubsetMaterial* m_pMaterialSubset;
 };
 

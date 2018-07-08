@@ -80,9 +80,6 @@
     <ClInclude Include="src\io\LFileStruct.h">
       <Filter>Header Files\IO</Filter>
     </ClInclude>
-    <ClInclude Include="src\io\LFileDef.h">
-      <Filter>Header Files\IO</Filter>
-    </ClInclude>
     <ClInclude Include="src\model\L3DMaterial.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>

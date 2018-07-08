@@ -10,6 +10,7 @@
 #define LMeshCreator_h
 
 #include "io/LFileStruct.h"
+#include "L3DMesh.h"
 #include "LInterface.h"
 #include <vector>
 

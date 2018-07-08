@@ -104,10 +104,10 @@ bool L3DMesh::LoadMeshData(const char* cszFileName, LMESH_DATA* pLMeshData)
     {
         memset(pLMeshData, 0, sizeof(LMESH_DATA));
         
-        BYTE* pbyMesh = NULL;
+        GLubyte* pbyMesh = NULL;
         size_t uMeshLen = 0;
         LFileReader::Reader(cszFileName, &pbyMesh, &uMeshLen);
-        BYTE* pbyBufferHead = pbyMesh;
+        GLubyte* pbyBufferHead = pbyMesh;
         
         _MeshFileHead* pMeshFileHead = NULL;
         pbyMesh = LFileReader::Convert(pbyMesh, pMeshFileHead);
@@ -182,20 +182,20 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         
         unsigned int dwVertexStride = GetVertexStride(pLMeshData->dwMeshFVF);
         
-        BYTE* pbyVertices = new BYTE[pLMeshData->dwNumVertices * dwVertexStride];
+        GLubyte* pbyVertices = new GLubyte[pLMeshData->dwNumVertices * dwVertexStride];
         
-        for (DWORD i = 0; i < pLMeshData->dwNumVertices; i++)
+        for (GLuint i = 0; i < pLMeshData->dwNumVertices; i++)
         {
-            BYTE* pCurrentVertexData = pbyVertices + dwVertexStride * i;
-            for (DWORD j = 0; j < pVertexFormat->dwNumElement; j++)
+            GLubyte* pCurrentVertexData = pbyVertices + dwVertexStride * i;
+            for (GLuint j = 0; j < pVertexFormat->dwNumElement; j++)
             {
-                const BYTE* pCurrentSrc = *(reinterpret_cast<BYTE* const*>(&pLMeshData->pPos) + pVertexFormat->dwSrcOffset[j]);
+                const GLubyte* pCurrentSrc = *(reinterpret_cast<GLubyte* const*>(&pLMeshData->pPos) + pVertexFormat->dwSrcOffset[j]);
                 memcpy(pCurrentVertexData + pVertexFormat->dwDestOffset[j],
                        pCurrentSrc + pVertexFormat->dwSrcStride[j] * i,
                        pVertexFormat->dwDestStride[j]);
                 if (pVertexFormat->dwElementFVF[j] == L3DFVF_DIFFUSE)
                 {
-                    const DWORD* pSrcDiffuse = reinterpret_cast<const DWORD*>(
+                    const GLuint* pSrcDiffuse = reinterpret_cast<const GLuint*>(
                                                 pCurrentSrc + pVertexFormat->dwSrcStride[j] * i);
                     LCOLOR_RGBA_FLOAT* pDestDiffuse = reinterpret_cast<LCOLOR_RGBA_FLOAT*>(
                                                 pCurrentVertexData + pVertexFormat->dwDestOffset[j]);
@@ -204,12 +204,12 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
             }
         }
         
-        unsigned short* pwIndices = new unsigned short[pLMeshData->dwNumFaces * 3];
+        GLushort* pwIndices = new GLushort[pLMeshData->dwNumFaces * 3];
         for(unsigned int i = 0; i < pLMeshData->dwNumFaces; i++)
         {
-            pwIndices[i * 3]     = static_cast<unsigned short>(pLMeshData->pFaceIndices[i * 3]);
-            pwIndices[i * 3 + 1] = static_cast<unsigned short>(pLMeshData->pFaceIndices[i * 3 + 1]);
-            pwIndices[i * 3 + 2] = static_cast<unsigned short>(pLMeshData->pFaceIndices[i * 3 + 2]);
+            pwIndices[i * 3]     = static_cast<GLushort>(pLMeshData->pFaceIndices[i * 3]);
+            pwIndices[i * 3 + 1] = static_cast<GLushort>(pLMeshData->pFaceIndices[i * 3 + 1]);
+            pwIndices[i * 3 + 2] = static_cast<GLushort>(pLMeshData->pFaceIndices[i * 3 + 2]);
         }
         
         m_dwNumFaces = pLMeshData->dwNumFaces * 3;
@@ -226,9 +226,9 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, nElemBufObj);
         
         glBufferData(GL_ARRAY_BUFFER, pLMeshData->dwNumVertices * dwVertexStride, pbyVertices, GL_STATIC_DRAW);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_dwNumFaces * sizeof(unsigned short), pwIndices, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_dwNumFaces * sizeof(GLushort), pwIndices, GL_STATIC_DRAW);
         
-        for (DWORD i = 0; i < pVertexFormat->dwNumElement; i++)
+        for (GLuint i = 0; i < pVertexFormat->dwNumElement; i++)
         {
             glVertexAttribPointer(i, pVertexFormat->dwDestStride[i] / 4,
                                   GL_FLOAT, GL_FALSE, dwVertexStride,

@@ -7,11 +7,11 @@
 #include <io.h>
 #endif
 
-bool LFileReader::Reader(const char* pszFileName, BYTE** ppBuffer, size_t* puLen)
+bool LFileReader::Reader(const char* pszFileName, GLubyte** ppBuffer, size_t* puLen)
 {
 	bool bResult = false;
 	FILE* pFile = NULL;
-	BYTE* pBuffer = NULL;
+	GLubyte* pBuffer = NULL;
 	size_t uFileLen;
 	
 	do 

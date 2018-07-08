@@ -29,7 +29,6 @@ public:
     bool LoadTexture(const char* cszFileName);
     bool LoadMaterial(const char* cszFileName);
     bool LoadParticle(const char* cszFileName);
-    
     bool LoadShader(const char *pVertexShaderSource,
                     const char *pFragmentShaderSource);
 

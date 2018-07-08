@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Include;$(SolutionDir)LEngine/src/model;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -80,10 +80,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\LCreator.cpp" />
+    <ClCompile Include="src\LMaterialCreator.cpp" />
     <ClCompile Include="src\LMeshCreator.cpp" />
+    <ClCompile Include="src\LTextureCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\LMeshCreator.h" />
+    <ClInclude Include="src\LMaterialCreator.h" />
+    <ClInclude Include="src\LTextureCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,6 +11,9 @@
 
 #include "LInterface.h"
 
+#define MAT_TEXTURETYPE_LENGTH 20
+#define MAT_TEXTUREFILENAME_LENGTH 256
+
 enum OPTION_TEXTURE
 {
     OPTION_TEXTURE_OPERATION = 1000,
@@ -23,71 +26,65 @@ enum OPTION_TEXTURE
 class L3DTexture
 {
 private:
-    struct _TEXTURE
-    {
-        float fAmount;
-        char  szTextureType[FILENAME_MAX];
-        char  szTextureFileName[FILENAME_MAX];
-        DWORD dwTextureOptionCount;
-    };
-    
+    friend class LTextureCreator;
+
     struct _MtlOption
     {
-        DWORD Type;
+        GLuint Type;
         void* pData;
     };
     
     struct _MtlTextureOp
     {
-        DWORD ColorOp;
-        DWORD ColorArg1;
-        DWORD ColorArg2;
-        DWORD AlphaOp;
-        DWORD AlphaArg1;
-        DWORD AlphaArg2;
-        DWORD TFactor;
+        GLuint ColorOp;
+        GLuint ColorArg1;
+        GLuint ColorArg2;
+        GLuint AlphaOp;
+        GLuint AlphaArg1;
+        GLuint AlphaArg2;
+        GLuint TFactor;
         
-        DWORD BakColorOp;
-        DWORD BakColorArg1;
-        DWORD BakColorArg2;
-        DWORD BakAlphaOp;
-        DWORD BakAlphaArg1;
-        DWORD BakAlphaArg2;
-        DWORD BakTFactor;
+        GLuint BakColorOp;
+        GLuint BakColorArg1;
+        GLuint BakColorArg2;
+        GLuint BakAlphaOp;
+        GLuint BakAlphaArg1;
+        GLuint BakAlphaArg2;
+        GLuint BakTFactor;
     };
     
     struct _TextureOpEx
     {
-        DWORD ColorOp;
-        DWORD ColorArg1;
-        DWORD ColorArg2;
-        DWORD ColorArg0;
-        DWORD Result;
-        DWORD AlphaOp;
-        DWORD AlphaArg1;
-        DWORD AlphaArg2;
-        DWORD AlphaArg0;
-        DWORD AlphaResult;
-        DWORD TFactor;
-        DWORD Constant;
+        GLuint ColorOp;
+        GLuint ColorArg1;
+        GLuint ColorArg2;
+        GLuint ColorArg0;
+        GLuint Result;
+        GLuint AlphaOp;
+        GLuint AlphaArg1;
+        GLuint AlphaArg2;
+        GLuint AlphaArg0;
+        GLuint AlphaResult;
+        GLuint TFactor;
+        GLuint Constant;
         
-        DWORD BakColorOp;
-        DWORD BakColorArg1;
-        DWORD BakColorArg2;
-        DWORD BakColorArg0;
-        DWORD BakResult;
-        DWORD BakAlphaOp;
-        DWORD BakAlphaArg1;
-        DWORD BakAlphaArg2;
-        DWORD BakAlphaArg0;
-        DWORD BakTFactor;
-        DWORD BakConstant;
+        GLuint BakColorOp;
+        GLuint BakColorArg1;
+        GLuint BakColorArg2;
+        GLuint BakColorArg0;
+        GLuint BakResult;
+        GLuint BakAlphaOp;
+        GLuint BakAlphaArg1;
+        GLuint BakAlphaArg2;
+        GLuint BakAlphaArg0;
+        GLuint BakTFactor;
+        GLuint BakConstant;
     };
     
     struct _TextureMap
     {
-        DWORD TextureMap;
-        DWORD BakTextureMap;
+        GLuint TextureMap;
+        GLuint BakTextureMap;
     };
     
     struct _TextureTf
@@ -101,10 +98,12 @@ private:
     };
     
 public:
-    struct _TextureBase
+    struct _TEXTURE
     {
-        DWORD nTexture;
-        std::vector<_MtlOption> vecTextureOptions;
+        float fAmount;
+        char  szTextureType[MAT_TEXTURETYPE_LENGTH];
+        char  szTextureFileName[MAT_TEXTUREFILENAME_LENGTH];
+        GLuint dwTextureOptionCount;
     };
     
 public:
@@ -115,15 +114,13 @@ public:
     void Uninit();
     
     bool LoadTexture(const char* cszFileName);
-    bool LoadTexture(const char* pcszDirectory, BYTE*& pbyTexture);
+    bool LoadTexture(const char* cszFileName, _TEXTURE* pTextureInfo, GLubyte*& pbyTexture);
     
-    bool UpdateTexture();
-    
-private:
-    bool CreateTexture(const char* cszFileName, DWORD* pTextureID);
+    bool UpdateTexture(GLuint uIndex);
     
 private:
-    std::vector<_TextureBase> m_vecTextures;
+    GLuint m_nTexture;
+    std::vector<_MtlOption> m_vecTextureOptions;
 };
 
 #endif /* L3DTexture_h */
