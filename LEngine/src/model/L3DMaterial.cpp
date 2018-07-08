@@ -13,6 +13,11 @@
 
 L3DSubsetMaterial::L3DSubsetMaterial()
 : m_p3DTexture(nullptr)
+, m_dwOption(0)
+{
+    
+}
+L3DSubsetMaterial::~L3DSubsetMaterial()
 {
     
 }
@@ -24,10 +29,56 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, BYTE*& pb
     
     do
     {
+        DWORD dwMaterialOptionCount = 0;
+        
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Ambient);
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Diffuse);
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Specular);
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Emissive);
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Power);
+        NORMALIZE_MAT_POWER(m_Material.Power);
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_dwOption);
+        pbyMaterial = LFileReader::Convert(pbyMaterial, dwMaterialOptionCount);
+        
+        for (DWORD j = 0; j < dwMaterialOptionCount; j++)
+        {
+            bRetCode = LoadOption(pbyMaterial);
+            BOOL_ERROR_BREAK(bRetCode);
+        }
+        
         m_p3DTexture = new L3DTexture;
         BOOL_ERROR_BREAK(m_p3DTexture);
         
-        bRetCode = m_p3DTexture->LoadLTexture("res/model/texture/wall.jpg");
+        bRetCode = m_p3DTexture->LoadTexture(pcszDirectory, pbyMaterial);
+        BOOL_ERROR_BREAK(bRetCode);
+        
+        if (m_dwOption & MATERIAL_OPTION_VERSION_2)
+        {
+            if (m_dwOption & MATERIAL_OPTION_INCLUDEALLDEFAULTCOLORCAST)
+            {
+                pbyMaterial = LFileReader::Copy<LCOLOR_RGBA_FLOAT, L3DSubsetMaterial::cNumColorCast>(pbyMaterial, m_ColorCast);
+            }
+            else
+            {
+                pbyMaterial = LFileReader::Convert(pbyMaterial, m_ColorCast[0]);
+                m_dwOption |= MATERIAL_OPTION_INCLUDEALLDEFAULTCOLORCAST;
+            }
+            
+            pbyMaterial = LFileReader::Convert(pbyMaterial, m_fSpecPower);
+            pbyMaterial = LFileReader::Convert(pbyMaterial, m_fEmssPower);
+        }
+        
+        bResult = true;
+    } while (0);
+    
+    return bResult;
+    
+    do
+    {
+        m_p3DTexture = new L3DTexture;
+        BOOL_ERROR_BREAK(m_p3DTexture);
+        
+        bRetCode = m_p3DTexture->LoadTexture("res/model/texture/wall.jpg");
         BOOL_ERROR_BREAK(bRetCode);
         
         bResult = true;
@@ -55,13 +106,7 @@ bool L3DMaterial::LoadLMaterial(const char *cszFileName)
     
     do
     {
-        m_dwNumMaterials = 1;
-        m_pMaterialSubset = new L3DSubsetMaterial[m_dwNumMaterials];
-        
-        BYTE* mtl = new BYTE[1];
-        m_pMaterialSubset[0].LoadLSubsetMaterial(nullptr, mtl);
-        
-        /*BYTE* pbyMaterial = nullptr;
+        BYTE* pbyMaterial = nullptr;
         size_t uMaterialLen = 0;
         LFileReader::Reader(cszFileName, &pbyMaterial, &uMaterialLen);
         
@@ -77,14 +122,24 @@ bool L3DMaterial::LoadLMaterial(const char *cszFileName)
         m_pMaterialSubset = new L3DSubsetMaterial[m_dwNumMaterials];
         BOOL_ERROR_BREAK(m_pMaterialSubset);
         
-        char wcszDir[FILENAME_MAX];
+        char szDir[FILENAME_MAX];
+        strcpy(szDir, cszFileName);
+        
+        char* pszDot = strchr(szDir, '/');
+        while (strchr(pszDot, '/'))
+            pszDot = strchr(pszDot, '/');
+        if (pszDot)
+            pszDot[0] = '\0';
+        else
+            szDir[0] = '\0';
+        
         for (DWORD i = 0; i < m_dwNumMaterials; i++)
         {
-            m_pMaterialSubset[i].LoadLSubsetMaterial(wcszDir, pbyMaterial);
+            m_pMaterialSubset[i].LoadLSubsetMaterial(szDir, pbyMaterial);
             
             //m_bHasDetail = nHasDetail || m_bHasDetail;
             //m_bSortAsSFX = nIsSortAsSFX || m_bSortAsSFX;
-        }*/
+        }
         
         bResult = true;
     } while (0);

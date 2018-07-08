@@ -2,6 +2,7 @@
 #define LFILEREADER_H_
 
 #include "LDefine.h"
+#include <cstring>
 
 class LFileReader
 {
@@ -31,7 +32,7 @@ public:
 	static BYTE* Copy(BYTE* pBuffer, Model pModel[nSize])
 	{
 		size_t nLen = sizeof(Model) * nSize;
-		memcpy_s(&pModel, nLen, pBuffer, nLen);
+		memcpy(&pModel, pBuffer, nLen);
 		return pBuffer + nLen;
 	}
 
@@ -53,7 +54,7 @@ public:
 	static BYTE* Copy(BYTE* pBuffer, Model* pModel, size_t nCount = 1)
 	{
 		size_t nLen = sizeof(Model) * nCount;
-		memcpy_s(pModel, nLen, pBuffer, nLen);
+		memcpy(pModel, pBuffer, nLen);
 		return pBuffer + nLen;
 	}
 };

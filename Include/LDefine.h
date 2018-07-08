@@ -21,6 +21,7 @@ struct LCOLOR_RGBA_FLOAT
     float g;
     float b;
     float a;
+    LCOLOR_RGBA_FLOAT() {};
     LCOLOR_RGBA_FLOAT(float r, float g, float b, float a) : r(r), g(g), b(b), a(a) {};
 };
 
