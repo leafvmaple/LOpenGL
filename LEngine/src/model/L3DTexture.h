@@ -89,12 +89,12 @@ private:
     
     struct _TextureTf
     {
-        GLVec3 Scaling;
-        GLVec3 Rotation;
-        GLVec3 Position;
-        GLVec3 Speed_Scaling;
-        GLVec3 Speed_Rotation;
-        GLVec3 Speed_Position;
+        glm::vec3 Scaling;
+        glm::vec3 Rotation;
+        glm::vec3 Position;
+        glm::vec3 Speed_Scaling;
+        glm::vec3 Speed_Rotation;
+        glm::vec3 Speed_Position;
     };
     
 public:

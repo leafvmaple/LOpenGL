@@ -27,7 +27,7 @@ bool LMaterialCreator::Init()
 
 bool LMaterialCreator::Create(const char* cszFileName)
 {
-    unsigned int uOffset = 0;
+    GLuint uOffset = 0;
     FILE* pFile = fopen(cszFileName, "wb");
 
     GLuint dwMask = 0x4D41544C;

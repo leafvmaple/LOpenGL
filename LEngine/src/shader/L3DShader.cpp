@@ -101,7 +101,7 @@ void L3DShader::setFloat(const char* szValueName, float value) const
     glUniform1f(glGetUniformLocation(m_nShaderProgram, szValueName), value); 
 }
 
-bool L3DShader::CheckCompileErrors(unsigned int nShader, int nShaderType)
+bool L3DShader::CheckCompileErrors(GLuint nShader, int nShaderType)
 {
     bool bResult = false;
     int nRetCode = 0;

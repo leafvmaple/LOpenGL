@@ -32,18 +32,18 @@ public:
 
 public:
     bool UpdateDisplay();
-    bool UpdateMesh(unsigned int uIndex);
-    bool UpdateMaterial(unsigned int uIndex);
+    bool UpdateMesh(GLuint uIndex);
+    bool UpdateMaterial(GLuint uIndex);
 
 private:
     L3DMesh* m_p3DMesh;
     L3DTexture* m_pLTexture;
 
-    unsigned int m_dwSubsetCount;
+    GLuint m_dwSubsetCount;
 
-    unsigned int m_nVertexArrObj;
-    unsigned int m_nVertexBufObj;
-    unsigned int m_nElemBufObj;
+    GLuint m_nVertexArrObj;
+    GLuint m_nVertexBufObj;
+    GLuint m_nElemBufObj;
     
     static const LoadModelFunc* GetLoadModelFunc(const char* cszFileName);
 };

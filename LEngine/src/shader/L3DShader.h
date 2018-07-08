@@ -1,6 +1,8 @@
 #ifndef _LSHADER_H_
 #define _LSHADER_H_
 
+#include "LDefine.h"
+
 #define FILE_BUFF_LEN 4096
 
 class L3DShader
@@ -21,7 +23,7 @@ public:
 
 private:
     bool CreateShader(const char* pShaderPath, int ShaderType, int* pShaderID);
-    bool CheckCompileErrors(unsigned int nShader, int nShaderType);
+    bool CheckCompileErrors(GLuint nShader, int nShaderType);
 
     int m_nShaderProgram;
 };

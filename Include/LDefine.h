@@ -9,6 +9,7 @@
 #define LDefine_h
 
 #include "glad/glad.h"
+#include "glm/glm.hpp"
 
 struct LCOLOR_RGBA_FLOAT
 {

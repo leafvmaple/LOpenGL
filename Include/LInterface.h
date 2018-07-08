@@ -17,13 +17,6 @@
 #include "LAssert.h"
 #include "LSTL.h"
 
-typedef struct GLVec3
-{
-    GLfloat x;
-    GLfloat y;
-    GLfloat z;
-} GLVec3;
-
 typedef unsigned int GLCOLOR;
 
 struct L3DWINDOWPARAM

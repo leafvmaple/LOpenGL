@@ -17,6 +17,825 @@
       location = "group:Include"
       name = "Include">
       <Group
+         location = "group:glm"
+         name = "glm">
+         <FileRef
+            location = "group:vec4.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:integer.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:vector_relational.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat2x3.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat4x4.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat2x2.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:exponential.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:vec2.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:CMakeLists.txt">
+         </FileRef>
+         <FileRef
+            location = "group:vec3.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:fwd.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat4x3.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat4x2.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat2x4.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:packing.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat3x3.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:mat3x2.hpp">
+         </FileRef>
+         <Group
+            location = "group:ext"
+            name = "ext">
+            <FileRef
+               location = "group:vector_relational.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:vec1.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:vec1.inl">
+            </FileRef>
+            <FileRef
+               location = "group:vector_relational.inl">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:simd"
+            name = "simd">
+            <FileRef
+               location = "group:vector_relational.h">
+            </FileRef>
+            <FileRef
+               location = "group:matrix.h">
+            </FileRef>
+            <FileRef
+               location = "group:packing.h">
+            </FileRef>
+            <FileRef
+               location = "group:common.h">
+            </FileRef>
+            <FileRef
+               location = "group:trigonometric.h">
+            </FileRef>
+            <FileRef
+               location = "group:geometric.h">
+            </FileRef>
+            <FileRef
+               location = "group:integer.h">
+            </FileRef>
+            <FileRef
+               location = "group:platform.h">
+            </FileRef>
+            <FileRef
+               location = "group:exponential.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:mat3x4.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:matrix.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:glm.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:trigonometric.hpp">
+         </FileRef>
+         <FileRef
+            location = "group:geometric.hpp">
+         </FileRef>
+         <Group
+            location = "group:detail"
+            name = "detail">
+            <FileRef
+               location = "group:type_vec.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:func_exponential.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_integer_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_vector_relational.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_packing.inl">
+            </FileRef>
+            <FileRef
+               location = "group:_fixes.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_half.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_vector_relational_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:qualifier.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:func_matrix_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_int.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:_noise.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_half.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:_features.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:func_integer.inl">
+            </FileRef>
+            <FileRef
+               location = "group:_vectorize.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:func_geometric.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_common.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_trigonometric.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat2x4.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat4x2.inl">
+            </FileRef>
+            <FileRef
+               location = "group:_swizzle.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat4x3.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_packing_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec4.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_trigonometric_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat3x3.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat3x2.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:dummy.cpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:setup.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat2x2.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec1.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_common_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat4x4.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_geometric_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat2x3.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec2.inl">
+            </FileRef>
+            <FileRef
+               location = "group:glm.cpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_gentype.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat3x4.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec3.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat4x4_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat2x3.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat4x4.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:func_matrix.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat2x2.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec1.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:_swizzle_func.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec3.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:compute_vector_relational.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec4_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat3x4.inl">
+            </FileRef>
+            <FileRef
+               location = "group:func_exponential_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_gentype.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec2.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat4x3.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat4x2.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_float.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat2x4.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat3x2.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_mat3x3.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_vec4.hpp">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:ext.hpp">
+         </FileRef>
+         <Group
+            location = "group:gtc"
+            name = "gtc">
+            <FileRef
+               location = "group:integer.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_integer.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_inverse.inl">
+            </FileRef>
+            <FileRef
+               location = "group:quaternion.inl">
+            </FileRef>
+            <FileRef
+               location = "group:packing.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_transform.inl">
+            </FileRef>
+            <FileRef
+               location = "group:vec1.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_precision.inl">
+            </FileRef>
+            <FileRef
+               location = "group:bitfield.inl">
+            </FileRef>
+            <FileRef
+               location = "group:ulp.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:round.inl">
+            </FileRef>
+            <FileRef
+               location = "group:packing.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:quaternion_simd.inl">
+            </FileRef>
+            <FileRef
+               location = "group:ulp.inl">
+            </FileRef>
+            <FileRef
+               location = "group:round.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_transform.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_precision.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:bitfield.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:vec1.inl">
+            </FileRef>
+            <FileRef
+               location = "group:integer.inl">
+            </FileRef>
+            <FileRef
+               location = "group:quaternion.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_inverse.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:epsilon.inl">
+            </FileRef>
+            <FileRef
+               location = "group:random.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_access.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_ptr.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:reciprocal.inl">
+            </FileRef>
+            <FileRef
+               location = "group:constants.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:color_space.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:noise.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:color_space.inl">
+            </FileRef>
+            <FileRef
+               location = "group:noise.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_access.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:random.inl">
+            </FileRef>
+            <FileRef
+               location = "group:epsilon.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:constants.inl">
+            </FileRef>
+            <FileRef
+               location = "group:reciprocal.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_ptr.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_aligned.hpp">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:common.hpp">
+         </FileRef>
+         <Group
+            location = "group:gtx"
+            name = "gtx">
+            <FileRef
+               location = "group:vector_angle.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:log_base.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_query.inl">
+            </FileRef>
+            <FileRef
+               location = "group:extend.inl">
+            </FileRef>
+            <FileRef
+               location = "group:integer.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:associated_min_max.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_transform_2d.inl">
+            </FileRef>
+            <FileRef
+               location = "group:hash.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:rotate_vector.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_interpolation.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:functions.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:quaternion.inl">
+            </FileRef>
+            <FileRef
+               location = "group:exterior_product.inl">
+            </FileRef>
+            <FileRef
+               location = "group:gradient_paint.inl">
+            </FileRef>
+            <FileRef
+               location = "group:string_cast.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:color_space_YCoCg.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:type_trait.inl">
+            </FileRef>
+            <FileRef
+               location = "group:extended_min_max.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:euler_angles.inl">
+            </FileRef>
+            <FileRef
+               location = "group:fast_square_root.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:raw_data.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_cross_product.inl">
+            </FileRef>
+            <FileRef
+               location = "group:spline.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:fast_trigonometry.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:optimum_pow.inl">
+            </FileRef>
+            <FileRef
+               location = "group:dual_quaternion.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:closest_point.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:number_precision.inl">
+            </FileRef>
+            <FileRef
+               location = "group:mixed_product.inl">
+            </FileRef>
+            <FileRef
+               location = "group:transform.inl">
+            </FileRef>
+            <FileRef
+               location = "group:bit.inl">
+            </FileRef>
+            <FileRef
+               location = "group:io.inl">
+            </FileRef>
+            <FileRef
+               location = "group:fast_trigonometry.inl">
+            </FileRef>
+            <FileRef
+               location = "group:optimum_pow.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:spline.inl">
+            </FileRef>
+            <FileRef
+               location = "group:raw_data.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_cross_product.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:euler_angles.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:fast_square_root.inl">
+            </FileRef>
+            <FileRef
+               location = "group:color_space_YCoCg.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_trait.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:extended_min_max.inl">
+            </FileRef>
+            <FileRef
+               location = "group:io.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:float_notmalize.inl">
+            </FileRef>
+            <FileRef
+               location = "group:transform.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:bit.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:number_precision.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:mixed_product.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:closest_point.inl">
+            </FileRef>
+            <FileRef
+               location = "group:dual_quaternion.inl">
+            </FileRef>
+            <FileRef
+               location = "group:associated_min_max.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_transform_2d.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:integer.inl">
+            </FileRef>
+            <FileRef
+               location = "group:log_base.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_query.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:vector_angle.inl">
+            </FileRef>
+            <FileRef
+               location = "group:extend.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:gradient_paint.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:quaternion.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:exterior_product.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:string_cast.inl">
+            </FileRef>
+            <FileRef
+               location = "group:functions.inl">
+            </FileRef>
+            <FileRef
+               location = "group:rotate_vector.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_interpolation.inl">
+            </FileRef>
+            <FileRef
+               location = "group:hash.inl">
+            </FileRef>
+            <FileRef
+               location = "group:vector_query.inl">
+            </FileRef>
+            <FileRef
+               location = "group:polar_coordinates.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:orthonormalize.inl">
+            </FileRef>
+            <FileRef
+               location = "group:component_wise.inl">
+            </FileRef>
+            <FileRef
+               location = "group:normalize_dot.inl">
+            </FileRef>
+            <FileRef
+               location = "group:std_based_type.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_factorisation.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_aligned.inl">
+            </FileRef>
+            <FileRef
+               location = "group:vec_swizzle.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:projection.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:compatibility.inl">
+            </FileRef>
+            <FileRef
+               location = "group:scalar_relational.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:wrap.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:rotate_normalized_axis.inl">
+            </FileRef>
+            <FileRef
+               location = "group:texture.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:color_encoding.inl">
+            </FileRef>
+            <FileRef
+               location = "group:norm.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_major_storage.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_operation.inl">
+            </FileRef>
+            <FileRef
+               location = "group:color_space.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:normal.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:intersect.inl">
+            </FileRef>
+            <FileRef
+               location = "group:perpendicular.inl">
+            </FileRef>
+            <FileRef
+               location = "group:easing.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:transform2.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_decompose.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:fast_exponential.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:common.inl">
+            </FileRef>
+            <FileRef
+               location = "group:handed_coordinate_space.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:intersect.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:perpendicular.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:easing.inl">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_operation.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:color_space.inl">
+            </FileRef>
+            <FileRef
+               location = "group:normal.inl">
+            </FileRef>
+            <FileRef
+               location = "group:color_encoding.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_major_storage.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:norm.inl">
+            </FileRef>
+            <FileRef
+               location = "group:texture.inl">
+            </FileRef>
+            <FileRef
+               location = "group:handed_coordinate_space.inl">
+            </FileRef>
+            <FileRef
+               location = "group:common.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:range.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:fast_exponential.inl">
+            </FileRef>
+            <FileRef
+               location = "group:transform2.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_decompose.inl">
+            </FileRef>
+            <FileRef
+               location = "group:scalar_multiplication.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:std_based_type.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:matrix_factorisation.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:orthonormalize.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:normalize_dot.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:component_wise.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:polar_coordinates.inl">
+            </FileRef>
+            <FileRef
+               location = "group:vector_query.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:scalar_relational.inl">
+            </FileRef>
+            <FileRef
+               location = "group:wrap.inl">
+            </FileRef>
+            <FileRef
+               location = "group:compatibility.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:rotate_normalized_axis.hpp">
+            </FileRef>
+            <FileRef
+               location = "group:projection.inl">
+            </FileRef>
+            <FileRef
+               location = "group:type_aligned.hpp">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
          location = "group:io"
          name = "io">
          <FileRef

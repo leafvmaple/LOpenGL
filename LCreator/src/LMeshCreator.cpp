@@ -34,7 +34,7 @@ bool LMeshCreator::Init()
 
 bool LMeshCreator::Create(const char *cszFileName)
 {
-    unsigned int uOffset = 0;
+    GLuint uOffset = 0;
     int nNumFaces = m_Faces.size();
     int nNumVerties = m_Verties.size();
     FILE* pFile = fopen(cszFileName, "wb");
@@ -53,12 +53,12 @@ bool LMeshCreator::Create(const char *cszFileName)
     uOffset += sizeof(FileHead) + sizeof(MeshHead);
     
     MeshHead.Blocks.PositionBlock = uOffset;
-    uOffset += nNumVerties * sizeof(GLVec3);
+    uOffset += nNumVerties * sizeof(glm::vec3);
     
     if (m_Normals.size() > 0)
     {
         MeshHead.Blocks.NormalBlock = uOffset;
-        uOffset += nNumVerties * sizeof(GLVec3);
+        uOffset += nNumVerties * sizeof(glm::vec3);
     }
     
     if (m_Diffuses.size() > 0)
@@ -81,10 +81,10 @@ bool LMeshCreator::Create(const char *cszFileName)
     
     fwrite(&FileHead, sizeof(FileHead), 1, pFile);
     fwrite(&MeshHead, sizeof(MeshHead), 1, pFile);
-    fwrite(&m_Verties[0], sizeof(GLVec3), nNumVerties, pFile);
+    fwrite(&m_Verties[0], sizeof(glm::vec3), nNumVerties, pFile);
     
     if (m_Normals.size() > 0)
-        fwrite(&m_Normals[0], sizeof(GLVec3), nNumVerties, pFile);
+        fwrite(&m_Normals[0], sizeof(glm::vec3), nNumVerties, pFile);
     if (m_Diffuses.size() > 0)
         fwrite(&m_Diffuses[0], sizeof(GLCOLOR), nNumVerties, pFile);
     if (m_Textures.size() > 0)
@@ -97,7 +97,7 @@ bool LMeshCreator::Create(const char *cszFileName)
     return true;
 }
 
-bool LMeshCreator::AddVerties(GLVec3* pVerties, unsigned int nCount /*= 1*/)
+bool LMeshCreator::AddVerties(glm::vec3* pVerties, GLuint nCount /*= 1*/)
 {
     for (int i = 0; i < nCount; i++)
     {
@@ -107,7 +107,7 @@ bool LMeshCreator::AddVerties(GLVec3* pVerties, unsigned int nCount /*= 1*/)
     return true;
 }
 
-bool LMeshCreator::AddDiffuseVerties(GL_VERTEX* pVerties, unsigned int nCount /*= 1*/)
+bool LMeshCreator::AddDiffuseVerties(GL_VERTEX* pVerties, GLuint nCount /*= 1*/)
 {
     for (int i = 0; i < nCount; i++)
     {
@@ -120,7 +120,7 @@ bool LMeshCreator::AddDiffuseVerties(GL_VERTEX* pVerties, unsigned int nCount /*
     return true;
 }
 
-bool LMeshCreator::AddFaces(GLInt3* pFaces, unsigned int nCount /*= 1*/)
+bool LMeshCreator::AddFaces(GLInt3* pFaces, GLuint nCount /*= 1*/)
 {
     for (int i = 0; i < nCount; i++)
     {

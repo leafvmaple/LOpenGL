@@ -16,9 +16,9 @@
 
 typedef struct GLInt3
 {
-    unsigned int x;
-    unsigned int y;
-    unsigned int z;
+    GLuint x;
+    GLuint y;
+    GLuint z;
 } GLInt3;
 
 typedef struct GLUVW3
@@ -39,11 +39,11 @@ typedef struct GLUV2
 
 typedef struct GL_VERTEX
 {
-    GLVec3 Vertex;
+    glm::vec3 Vertex;
     union
     {
-        GLVec3 Normal;
-        GLVec3 Diffuse;
+        glm::vec3 Normal;
+        glm::vec3 Diffuse;
     };
     GLUV2 Texture;
 } GL_VERTEX;
@@ -57,13 +57,13 @@ public:
     bool Init();
     bool Create(const char* cszFileName);
 
-    bool AddVerties(GLVec3* pVerties, unsigned int nCount = 1);
-    bool AddDiffuseVerties(GL_VERTEX* pVerties, unsigned int nCount = 1);
-    bool AddFaces(GLInt3* pFaces, unsigned int nCount = 1);
+    bool AddVerties(glm::vec3* pVerties, GLuint nCount = 1);
+    bool AddDiffuseVerties(GL_VERTEX* pVerties, GLuint nCount = 1);
+    bool AddFaces(GLInt3* pFaces, GLuint nCount = 1);
     
 private:
-    std::vector<GLVec3> m_Verties;
-    std::vector<GLVec3> m_Normals;
+    std::vector<glm::vec3> m_Verties;
+    std::vector<glm::vec3> m_Normals;
     std::vector<GLCOLOR> m_Diffuses;
     std::vector<GLUVW3> m_Textures;
     std::vector<GLInt3> m_Faces;

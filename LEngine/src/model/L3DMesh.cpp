@@ -24,7 +24,7 @@ L3DMesh::~L3DMesh()
     
 }
 
-const VertexFromatOffsetItem* L3DMesh::GetVertexFormat(unsigned int dwFVF)
+const VertexFromatOffsetItem* L3DMesh::GetVertexFormat(GLuint dwFVF)
 {
     const VertexFromatOffsetItem *pReturn = NULL;
     size_t uSize = sizeof(s_VertexFormat) / sizeof(VertexFromatOffsetItem);
@@ -40,9 +40,9 @@ const VertexFromatOffsetItem* L3DMesh::GetVertexFormat(unsigned int dwFVF)
     return pReturn;
 }
 
-unsigned int L3DMesh::GetVertexStride(unsigned int dwFVF)
+GLuint L3DMesh::GetVertexStride(GLuint dwFVF)
 {
-    unsigned int dwStride = 0;
+    GLuint dwStride = 0;
     const VertexFromatOffsetItem *pVertexFromatItem = GetVertexFormat(dwFVF);
     BOOL_ERROR_RETURN(pVertexFromatItem);
     
@@ -85,7 +85,7 @@ bool L3DMesh::LoadMesh(const char* cszFileName)
     return bResult;
 }
 
-bool L3DMesh::UpdateMesh(unsigned int dwSubMesh)
+bool L3DMesh::UpdateMesh(GLuint dwSubMesh)
 {
     if (m_pLMaterial)
         m_pLMaterial->UpdateMaterial(dwSubMesh);
@@ -180,7 +180,7 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         const VertexFromatOffsetItem *pVertexFormat = GetVertexFormat(pLMeshData->dwMeshFVF);
         BOOL_ERROR_BREAK(pVertexFormat);
         
-        unsigned int dwVertexStride = GetVertexStride(pLMeshData->dwMeshFVF);
+        GLuint dwVertexStride = GetVertexStride(pLMeshData->dwMeshFVF);
         
         GLubyte* pbyVertices = new GLubyte[pLMeshData->dwNumVertices * dwVertexStride];
         
@@ -205,7 +205,7 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         }
         
         GLushort* pwIndices = new GLushort[pLMeshData->dwNumFaces * 3];
-        for(unsigned int i = 0; i < pLMeshData->dwNumFaces; i++)
+        for(GLuint i = 0; i < pLMeshData->dwNumFaces; i++)
         {
             pwIndices[i * 3]     = static_cast<GLushort>(pLMeshData->pFaceIndices[i * 3]);
             pwIndices[i * 3 + 1] = static_cast<GLushort>(pLMeshData->pFaceIndices[i * 3 + 1]);
@@ -216,9 +216,9 @@ bool L3DMesh::CreateMesh(const LMESH_DATA* pLMeshData)
         
         glGenVertexArrays(1, &m_nVertexArrObj);
         
-        unsigned int nVertexBufObj = 0;
+        GLuint nVertexBufObj = 0;
         glGenBuffers(1, &nVertexBufObj);
-        unsigned int nElemBufObj = 0;
+        GLuint nElemBufObj = 0;
         glGenBuffers(1, &nElemBufObj);
         
         glBindVertexArray(m_nVertexArrObj);

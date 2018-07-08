@@ -18,14 +18,14 @@ class L3DMaterial;
 
 struct VertexFromatOffsetItem
 {
-    const static unsigned int s_dwMaxVertexElement = 8;
-    unsigned int dwFVF;
-    unsigned int dwNumElement;
-    unsigned int dwSrcOffset[s_dwMaxVertexElement];
-    unsigned int dwSrcStride[s_dwMaxVertexElement];
-    unsigned int dwDestOffset[s_dwMaxVertexElement];
-    unsigned int dwDestStride[s_dwMaxVertexElement];
-    unsigned int dwElementFVF[s_dwMaxVertexElement];
+    const static GLuint s_dwMaxVertexElement = 8;
+    GLuint dwFVF;
+    GLuint dwNumElement;
+    GLuint dwSrcOffset[s_dwMaxVertexElement];
+    GLuint dwSrcStride[s_dwMaxVertexElement];
+    GLuint dwDestOffset[s_dwMaxVertexElement];
+    GLuint dwDestStride[s_dwMaxVertexElement];
+    GLuint dwElementFVF[s_dwMaxVertexElement];
 };
 
 static VertexFromatOffsetItem s_VertexFormat[] = {
@@ -105,84 +105,84 @@ private:
 #pragma pack(push, 1)
     struct MeshDataBlocks
     {
-        unsigned int PositionBlock;
-        unsigned int NormalBlock;
-        unsigned int DiffuseBlock;
-        unsigned int TextureUVW1Block;
-        unsigned int TextureUVW2Block;
-        unsigned int TextureUVW3Block;
-        unsigned int FacesIndexBlock;
-        unsigned int SubsetIndexBlock;
-        unsigned int SkinInfoBlock;
-        unsigned int LODInfoBlock;
-        unsigned int FlexibleBodyBlock;
-        unsigned int BBoxBlock;
-        unsigned int BlendMeshBlock;
-        unsigned int ExtendBlock[17];
+        GLuint PositionBlock;
+        GLuint NormalBlock;
+        GLuint DiffuseBlock;
+        GLuint TextureUVW1Block;
+        GLuint TextureUVW2Block;
+        GLuint TextureUVW3Block;
+        GLuint FacesIndexBlock;
+        GLuint SubsetIndexBlock;
+        GLuint SkinInfoBlock;
+        GLuint LODInfoBlock;
+        GLuint FlexibleBodyBlock;
+        GLuint BBoxBlock;
+        GLuint BlendMeshBlock;
+        GLuint ExtendBlock[17];
     };
 
     struct _MeshHead
     {
-        unsigned int dwNumVertices;
-        unsigned int dwNumFaces;
-        unsigned int dwNumSubset;
+        GLuint dwNumVertices;
+        GLuint dwNumFaces;
+        GLuint dwNumSubset;
         union
         {
             MeshDataBlocks Blocks;
-            unsigned int dwBlocks[30];
+            GLuint dwBlocks[30];
         };
     };
 
     struct _MeshFileHead
     {
         TFileHeader KSFileHeader_NotUse;
-        unsigned int dwFileMask;
-        unsigned int dwBlockLength;
-        unsigned int dwVersion;
-        unsigned int AnimationBlock_NotUse;
-        unsigned int ExtendBlock_NotUse[10];
-        unsigned int MeshCount_NotUse;
-        const static unsigned int s_dwFileMask = 0x4d455348;
-        const static unsigned int s_dwCurrentVersion = 0;
+        GLuint dwFileMask;
+        GLuint dwBlockLength;
+        GLuint dwVersion;
+        GLuint AnimationBlock_NotUse;
+        GLuint ExtendBlock_NotUse[10];
+        GLuint MeshCount_NotUse;
+        const static GLuint s_dwFileMask = 0x4d455348;
+        const static GLuint s_dwCurrentVersion = 0;
     };
 #pragma pack(pop)
 
     struct LMESH_DATA
     {
-        unsigned int    dwID;
+        GLuint          dwID;
         std::string     strFileName;
-        unsigned int    dwOption;
-        unsigned int    dwOptionEx;
+        GLuint          dwOption;
+        GLuint          dwOptionEx;
 
-        unsigned int    dwNumVertices;
-        unsigned int    dwNumFaces;
-        unsigned int    dwNumSubset;
-        unsigned int    dwMeshFVF;
+        GLuint          dwNumVertices;
+        GLuint          dwNumFaces;
+        GLuint          dwNumSubset;
+        GLuint          dwMeshFVF;
 
-        GLVec3          *pPos;
-        GLVec3          *pNormals;
+        glm::vec3       *pPos;
+        glm::vec3       *pNormals;
         GLCOLOR         *pDiffuse;
-        GLVec3          *pUV1;
-        GLVec3          *pUV2;
-        GLVec3          *pUV3;
+        glm::vec3       *pUV1;
+        glm::vec3       *pUV2;
+        glm::vec3       *pUV3;
 
-        unsigned int    *pFaceIndices;
-        unsigned int    *pSubsetIndices;
+        GLuint          *pFaceIndices;
+        GLuint          *pSubsetIndices;
 
-        GLubyte*           pbyFileBuffer;
+        GLubyte         *pbyFileBuffer;
     };
 
     L3DMaterial* m_pLMaterial;
     
-    unsigned int m_nVertexArrObj;
-    unsigned int m_dwNumFaces;
+    GLuint m_nVertexArrObj;
+    GLuint m_dwNumFaces;
     
-    static const VertexFromatOffsetItem* GetVertexFormat(unsigned int dwFVF);
-    static unsigned int GetVertexStride(unsigned int dwFVF);
+    static const VertexFromatOffsetItem* GetVertexFormat(GLuint dwFVF);
+    static GLuint GetVertexStride(GLuint dwFVF);
     
 public:
     bool LoadMesh(const char* cszFileName);
-    bool UpdateMesh(unsigned int dwSubMesh);
+    bool UpdateMesh(GLuint dwSubMesh);
     
 private:
     bool LoadMeshData(const char* cszFileName, LMESH_DATA* pLMeshData);

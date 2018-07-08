@@ -104,7 +104,7 @@ bool L3DModel::UpdateDisplay()
 
     do 
     {
-        for (unsigned int u = 0; u < m_dwSubsetCount; u++)
+        for (GLuint u = 0; u < m_dwSubsetCount; u++)
         {
             bRetCode = UpdateMesh(u);
             BOOL_ERROR_BREAK(bRetCode);
@@ -116,14 +116,14 @@ bool L3DModel::UpdateDisplay()
     return bResult;
 }
 
-bool L3DModel::UpdateMesh(unsigned int uIndex)
+bool L3DModel::UpdateMesh(GLuint uIndex)
 {
     if (m_p3DMesh)
         m_p3DMesh->UpdateMesh(uIndex);
     return true;
 }
 
-bool L3DModel::UpdateMaterial(unsigned int uIndex)
+bool L3DModel::UpdateMaterial(GLuint uIndex)
 {
     return false;
 }
