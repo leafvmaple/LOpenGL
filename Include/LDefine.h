@@ -29,11 +29,11 @@ typedef struct L3DMATERIAL {
 } L3DMATERIAL;
 
 #define L3DCOLOR_ARGB(a,r,g,b) \
-    ((DWORD)((((a)&0xff)<<24)|(((r)&0xff)<<16)|(((g)&0xff)<<8)|((b)&0xff)))
+    ((GLuint)((((a)&0xff)<<24)|(((r)&0xff)<<16)|(((g)&0xff)<<8)|((b)&0xff)))
 #define L3DCOLOR_RGBA(r,g,b,a) L3DCOLOR_ARGB(a,r,g,b)
 
 #define L3DCOLOR_COLORVALUE(r,g,b,a) \
-    L3DCOLOR_RGBA((DWORD)((r)*255.f), (DWORD)((g)*255.f), (DWORD)((b)*255.f), (DWORD)((a)*255.f))
+    L3DCOLOR_RGBA((GLuint)((r)*255.f), (GLuint)((g)*255.f), (GLuint)((b)*255.f), (GLuint)((a)*255.f))
 
 #define L3DCOLOR_COLORFLOAT(r,g,b,a) \
     (LCOLOR_RGBA_FLOAT((r)/255.f,(g)/255.f,(b)/255.f,(a)/255.f))

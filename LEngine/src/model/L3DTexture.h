@@ -115,8 +115,9 @@ public:
     
     bool LoadTexture(const char* cszFileName);
     bool LoadTexture(const char* cszFileName, _TEXTURE* pTextureInfo, GLubyte*& pbyTexture);
-    
     bool UpdateTexture(GLuint uIndex);
+    
+    GLuint GetTextureID() const;
     
 private:
     GLuint m_nTexture;

@@ -64,7 +64,7 @@ bool LMeshCreator::Create(const char *cszFileName)
     if (m_Diffuses.size() > 0)
     {
         MeshHead.Blocks.DiffuseBlock = uOffset;
-        uOffset += nNumVerties * sizeof(DWORD);
+        uOffset += nNumVerties * sizeof(GLuint);
     }
     
     if (m_Textures.size() > 0)

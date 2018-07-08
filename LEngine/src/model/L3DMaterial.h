@@ -18,6 +18,7 @@
 #define MATERIAL_OPTION_VERSION_2        (1 << 18)
 
 class L3DTexture;
+class L3DShader;
 
 class L3DSubsetMaterial
 {
@@ -48,6 +49,7 @@ private:
     const static int cNumColorCast = 8;
     GLuint m_dwOption;
     L3DMATERIAL m_Material;
+    L3DShader* m_p3DShader;
     std::vector<L3DTexture*> m_vecTexture;
     
     LCOLOR_RGBA_FLOAT m_ColorCast[cNumColorCast];

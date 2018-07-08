@@ -34,9 +34,13 @@ int main()
 
     LMaterialCreator MaterialCreator;
 
-    LTextureCreator TextureCreator;
-    TextureCreator.SetImagePath("wall.jpg");
-
-    MaterialCreator.AddTexture(TextureCreator);
+    LTextureCreator TextureCreator01;
+    TextureCreator01.SetImagePath("container.jpg");
+    MaterialCreator.AddTexture(TextureCreator01);
+    
+    LTextureCreator TextureCreator02;
+    TextureCreator02.SetImagePath("awesomeface.png");
+    MaterialCreator.AddTexture(TextureCreator02);
+    
     MaterialCreator.Create("../LClient/res/model/Rect.mtl");
 }

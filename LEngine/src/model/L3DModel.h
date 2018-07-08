@@ -29,18 +29,14 @@ public:
     bool LoadTexture(const char* cszFileName);
     bool LoadMaterial(const char* cszFileName);
     bool LoadParticle(const char* cszFileName);
-    bool LoadShader(const char *pVertexShaderSource,
-                    const char *pFragmentShaderSource);
 
 public:
     bool UpdateDisplay();
     bool UpdateMesh(unsigned int uIndex);
     bool UpdateMaterial(unsigned int uIndex);
-    bool UpdateShader();
 
 private:
     L3DMesh* m_p3DMesh;
-    L3DShader* m_p3DShader;
     L3DTexture* m_pLTexture;
 
     unsigned int m_dwSubsetCount;

@@ -56,12 +56,13 @@ bool L3DTexture::LoadTexture(const char* cszFileName)
         int nHeight = 0;
         int nChannels = 0;
         GLubyte* pTexture = stbi_load(cszFileName, &nWidth, &nHeight, &nChannels, 0);
-        BOOL_ERROR_BREAK(pTexture)
-
-            glTexImage2D(GL_TEXTURE_2D,
-            0, GL_RGB, nWidth, nHeight,
-            0, GL_RGB, GL_UNSIGNED_BYTE,
-            pTexture);
+        BOOL_ERROR_BREAK(pTexture);
+        
+        GLuint uColorType = (nChannels == 3) ? GL_RGB : GL_RGBA;
+        glTexImage2D(GL_TEXTURE_2D,
+                     0, GL_RGB, nWidth, nHeight,
+                     0, uColorType, GL_UNSIGNED_BYTE,
+                     pTexture);
         glGenerateMipmap(GL_TEXTURE_2D);
 
         stbi_image_free(pTexture);
@@ -138,4 +139,9 @@ bool L3DTexture::UpdateTexture(GLuint uIndex)
     glActiveTexture(GL_TEXTURE0 + uIndex);
     glBindTexture(GL_TEXTURE_2D, m_nTexture);
     return true;
+}
+
+GLuint L3DTexture::GetTextureID() const
+{
+    return m_nTexture;
 }

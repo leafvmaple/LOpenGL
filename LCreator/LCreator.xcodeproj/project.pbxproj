@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4905786920F0462C009AF9F9 /* LCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4905786820F0462C009AF9F9 /* LCreator.cpp */; };
 		4905786D20F04B82009AF9F9 /* LMeshCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4905786C20F04B82009AF9F9 /* LMeshCreator.cpp */; };
+		49AE6F0420F21E8900465464 /* LTextureCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AE6F0120F21E8900465464 /* LTextureCreator.cpp */; };
+		49AE6F0520F21E8900465464 /* LMaterialCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AE6F0220F21E8900465464 /* LMaterialCreator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,10 @@
 		4905786820F0462C009AF9F9 /* LCreator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LCreator.cpp; sourceTree = "<group>"; };
 		4905786B20F04B6A009AF9F9 /* LMeshCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMeshCreator.h; sourceTree = "<group>"; };
 		4905786C20F04B82009AF9F9 /* LMeshCreator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LMeshCreator.cpp; sourceTree = "<group>"; };
+		49AE6F0020F21E8800465464 /* LTextureCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTextureCreator.h; sourceTree = "<group>"; };
+		49AE6F0120F21E8900465464 /* LTextureCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LTextureCreator.cpp; sourceTree = "<group>"; };
+		49AE6F0220F21E8900465464 /* LMaterialCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LMaterialCreator.cpp; sourceTree = "<group>"; };
+		49AE6F0320F21E8900465464 /* LMaterialCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMaterialCreator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,10 @@
 		4905786720F045FF009AF9F9 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				49AE6F0220F21E8900465464 /* LMaterialCreator.cpp */,
+				49AE6F0320F21E8900465464 /* LMaterialCreator.h */,
+				49AE6F0120F21E8900465464 /* LTextureCreator.cpp */,
+				49AE6F0020F21E8800465464 /* LTextureCreator.h */,
 				4905786820F0462C009AF9F9 /* LCreator.cpp */,
 				4905786B20F04B6A009AF9F9 /* LMeshCreator.h */,
 				4905786C20F04B82009AF9F9 /* LMeshCreator.cpp */,
@@ -123,7 +133,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AE6F0520F21E8900465464 /* LMaterialCreator.cpp in Sources */,
 				4905786D20F04B82009AF9F9 /* LMeshCreator.cpp in Sources */,
+				49AE6F0420F21E8900465464 /* LTextureCreator.cpp in Sources */,
 				4905786920F0462C009AF9F9 /* LCreator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +194,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Include";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../LEngine/src/model",
+					"$(SRCROOT)/../Include",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -235,7 +250,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Include";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../LEngine/src/model",
+					"$(SRCROOT)/../Include",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;

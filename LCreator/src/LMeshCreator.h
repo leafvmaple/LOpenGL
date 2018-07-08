@@ -23,16 +23,16 @@ typedef struct GLInt3
 
 typedef struct GLUVW3
 {
-    DWORD u;
-    DWORD v;
-    DWORD w;
-    GLUVW3(DWORD u,DWORD v,DWORD w) : u(u), v(v), w(w) {}
+    GLuint u;
+    GLuint v;
+    GLuint w;
+    GLUVW3(GLuint u, GLuint v, GLuint w) : u(u), v(v), w(w) {}
 } GLUVW3;
 
 typedef struct GLUV2
 {
-    DWORD u;
-    DWORD v;
+    GLuint u;
+    GLuint v;
     
     operator GLUVW3() {return GLUVW3(u, v, 0);}
 } GLUV2;

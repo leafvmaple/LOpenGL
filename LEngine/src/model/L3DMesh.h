@@ -169,7 +169,7 @@ private:
         unsigned int    *pFaceIndices;
         unsigned int    *pSubsetIndices;
 
-        BYTE*           pbyFileBuffer;
+        GLubyte*           pbyFileBuffer;
     };
 
     L3DMaterial* m_pLMaterial;

@@ -10,15 +10,20 @@
 #include "L3DTexture.h"
 #include "LInterface.h"
 #include "io/LFileReader.h"
+#include "shader/L3DShader.h"
 
 L3DSubsetMaterial::L3DSubsetMaterial()
 : m_dwOption(0)
+, m_p3DShader(nullptr)
 {
     m_vecTexture.clear();
 }
 L3DSubsetMaterial::~L3DSubsetMaterial()
 {
-    
+    if (m_p3DShader)
+    {
+        SAFE_DELETE(m_p3DShader);
+    }
 }
 
 bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*& pbyMaterial)
@@ -28,7 +33,14 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
     
     do
     {
-        GLuint dwMaterialOptionCount = 0;
+        m_p3DShader = new L3DShader;
+        BOOL_ERROR_BREAK(m_p3DShader);
+        
+        bRetCode = m_p3DShader->LoadShader("res/shader/default.vs", "res/shader/default.fs");
+        BOOL_ERROR_BREAK(bRetCode);
+        
+        bRetCode = m_p3DShader->UpdateShader(); // Important！！！
+        BOOL_ERROR_BREAK(bRetCode);
         
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Ambient);
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Diffuse);
@@ -37,6 +49,8 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Power);
         NORMALIZE_MAT_POWER(m_Material.Power);
         pbyMaterial = LFileReader::Convert(pbyMaterial, m_dwOption);
+        
+        GLuint dwMaterialOptionCount = 0;
         pbyMaterial = LFileReader::Convert(pbyMaterial, dwMaterialOptionCount);
         
         for (GLuint j = 0; j < dwMaterialOptionCount; j++)
@@ -63,6 +77,10 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
 
             bRetCode = p3DTexture->LoadTexture(szTextureName, pTextureInfo, pbyMaterial);
             BOOL_ERROR_BREAK(bRetCode);
+            
+            char szSLTexture[FILENAME_MAX];
+            sprintf(szSLTexture, "%s%02d", "slTexture", dwTextIndex + 1);
+            m_p3DShader->setInt(szSLTexture, dwTextIndex);
 
             m_vecTexture.push_back(p3DTexture);
         }
@@ -96,11 +114,13 @@ bool L3DSubsetMaterial::LoadOption(GLubyte*& pbyMaterial)
 
 bool L3DSubsetMaterial::UpdateSubsetMaterial()
 {
-
     for (int i = 0; i < m_vecTexture.size(); i++)
     {
         m_vecTexture[i]->UpdateTexture(i);
     }
+    
+    if (m_p3DShader)
+        m_p3DShader->UpdateShader();
     
     return true;
 }
