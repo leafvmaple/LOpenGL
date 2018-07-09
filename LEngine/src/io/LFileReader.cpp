@@ -2,6 +2,7 @@
 #include <iostream>
 #include "LAssert.h"
 #include "io/LFileReader.h"
+#include "lstring.h"
 
 #ifdef WIN32
 #include <io.h>
@@ -10,27 +11,20 @@
 bool LFileReader::Reader(const char* pszFileName, GLubyte** ppBuffer, size_t* puLen)
 {
 	bool bResult = false;
-	FILE* pFile = NULL;
-	GLubyte* pBuffer = NULL;
-	size_t uFileLen;
-	
+	FILE* pFile = nullptr;
+
 	do 
 	{
 		BOOL_ERROR_BREAK(ppBuffer);
-        
-#ifdef WIN32
-		fopen_s(&pFile, pszFileName, "rb");
+		
+		lfopen(pFile, pszFileName, "rb");
 		BOOL_ERROR_BREAK(pFile);
-#else
-        pFile = fopen(pszFileName, "rb");
-        BOOL_ERROR_BREAK(pFile);
-#endif
 
 		fseek(pFile, 0, SEEK_END);
-		uFileLen = ftell(pFile);
+		size_t uFileLen = ftell(pFile);
 		fseek(pFile, 0, SEEK_SET);
 
-		pBuffer = new unsigned char[uFileLen];
+		GLubyte* pBuffer = new GLubyte[uFileLen];
 		BOOL_ERROR_BREAK(pBuffer);
 
 		*puLen = fread(pBuffer, 1, uFileLen, pFile);
@@ -49,7 +43,8 @@ bool LFileReader::Reader(const char* pszFileName, GLubyte** ppBuffer, size_t* pu
 
 bool LFileReader::IsExist(const char* cszFileName)
 {
-    FILE* pFile = fopen(cszFileName, "rb");
+	FILE* pFile = nullptr;
+	lfopen(pFile, cszFileName, "rb");
     if (pFile)
     {
         fclose(pFile);
