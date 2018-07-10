@@ -19,6 +19,7 @@
 
 class L3DTexture;
 class L3DShader;
+class L3DCamera;
 
 class L3DSubsetMaterial
 {
@@ -33,6 +34,7 @@ public:
     bool LoadOption(GLubyte*& pbyMaterial);
     
     bool UpdateSubsetMaterial();
+    bool UpdatePosition(L3DCamera *p3DCamera);
     
 private:
     enum MATERIAL_OPTION
@@ -62,6 +64,7 @@ class L3DMaterial
 public:
     bool LoadLMaterial(const char* cszFileName);
     bool UpdateMaterial(GLuint dwSubMaterial);
+    bool UpdatePosition(L3DCamera* p3DCamera);
     
 private:
     GLuint m_dwNumMaterials;

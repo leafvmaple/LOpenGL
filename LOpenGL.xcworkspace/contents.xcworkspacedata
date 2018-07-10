@@ -16,6 +16,9 @@
    <Group
       location = "group:Include"
       name = "Include">
+      <FileRef
+         location = "group:lstring.h">
+      </FileRef>
       <Group
          location = "group:glm"
          name = "glm">
@@ -908,9 +911,6 @@
       </Group>
       <FileRef
          location = "group:LSTL.h">
-      </FileRef>
-      <FileRef
-         location = "group:LEngine.h">
       </FileRef>
       <Group
          location = "group:KHR"

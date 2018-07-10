@@ -11,6 +11,9 @@
 
 #include "LInterface.h"
 
+class L3DModel;
+class L3DCamera;
+
 class L3DEngine : public IL3DEngine
 {
 public:
@@ -25,7 +28,7 @@ public:
     virtual bool IsActive();
 
 public:
-    bool AttachObject(ILModel* pAction);
+    bool AttachObject(L3DModel* pAction);
 
 private:
     L3DWINDOWPARAM m_WindowParam;
@@ -33,7 +36,8 @@ private:
     bool m_bActive;
     GLFWwindow* m_pWindow;
 
-    std::list<ILModel*> m_ModelList;
+    L3DCamera* m_p3DCamera;
+    std::list<L3DModel*> m_ModelList;
 };
 
 #endif /* LEngine_h */

@@ -97,6 +97,13 @@ bool L3DModel::LoadParticle(const char* cszFileName)
     return false;
 }
 
+bool L3DModel::UpdatePosition(L3DCamera* p3DCamera)
+{
+    if (m_p3DMesh)
+        m_p3DMesh->UpdatePosition(p3DCamera);
+    return true;
+}
+
 bool L3DModel::UpdateDisplay()
 {
     bool bResult = false;

@@ -11,6 +11,7 @@
 #include "LInterface.h"
 #include "io/LFileReader.h"
 #include "shader/L3DShader.h"
+#include "camera/L3DCamera.h"
 
 L3DSubsetMaterial::L3DSubsetMaterial()
 : m_dwOption(0)
@@ -18,6 +19,7 @@ L3DSubsetMaterial::L3DSubsetMaterial()
 {
     m_vecTexture.clear();
 }
+
 L3DSubsetMaterial::~L3DSubsetMaterial()
 {
     if (m_p3DShader)
@@ -80,7 +82,7 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
             
             char szSLTexture[FILENAME_MAX];
             sprintf(szSLTexture, "%s%02d", "slTexture", dwTextIndex + 1);
-            m_p3DShader->setInt(szSLTexture, dwTextIndex);
+            m_p3DShader->SetInt(szSLTexture, dwTextIndex);
 
             m_vecTexture.push_back(p3DTexture);
         }
@@ -123,6 +125,12 @@ bool L3DSubsetMaterial::UpdateSubsetMaterial()
         m_p3DShader->UpdateShader();
     
     return true;
+}
+
+bool L3DSubsetMaterial::UpdatePosition(L3DCamera *p3DCamera)
+{
+    if (m_p3DShader)
+        m_p3DShader->SetMatrix("slViewMatrix", p3DCamera->GetViewMatrix());
 }
 
 bool L3DMaterial::LoadLMaterial(const char *cszFileName)
@@ -186,4 +194,16 @@ bool L3DMaterial::UpdateMaterial(GLuint dwSubMaterial)
     } while (0);
     
     return bResult;
+}
+
+bool L3DMaterial::UpdatePosition(L3DCamera *p3DCamera)
+{
+    for (GLuint i = 0; i < m_dwNumMaterials; i++)
+    {
+        m_pMaterialSubset[i].UpdatePosition(p3DCamera);
+        
+        //m_bHasDetail = nHasDetail || m_bHasDetail;
+        //m_bSortAsSFX = nIsSortAsSFX || m_bSortAsSFX;
+    }
+    return true;
 }

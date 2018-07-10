@@ -15,6 +15,7 @@
 #include "io/LFileStruct.h"
 
 class L3DMaterial;
+class L3DCamera;
 
 struct VertexFromatOffsetItem
 {
@@ -183,6 +184,7 @@ private:
 public:
     bool LoadMesh(const char* cszFileName);
     bool UpdateMesh(GLuint dwSubMesh);
+    bool UpdatePosition(L3DCamera* p3DCamera);
     
 private:
     bool LoadMeshData(const char* cszFileName, LMESH_DATA* pLMeshData);

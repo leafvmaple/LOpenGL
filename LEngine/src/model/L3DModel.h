@@ -7,6 +7,7 @@
 class L3DMesh;
 class L3DShader;
 class L3DTexture;
+class L3DCamera;
 
 class L3DModel : public ILModel
 {
@@ -31,6 +32,7 @@ public:
     bool LoadParticle(const char* cszFileName);
 
 public:
+    bool UpdatePosition(L3DCamera* p3DCamera);
     bool UpdateDisplay();
     bool UpdateMesh(GLuint uIndex);
     bool UpdateMaterial(GLuint uIndex);

@@ -96,6 +96,13 @@ bool L3DMesh::UpdateMesh(GLuint dwSubMesh)
     return true;
 }
 
+bool L3DMesh::UpdatePosition(L3DCamera *p3DCamera)
+{
+    if (m_pLMaterial)
+        m_pLMaterial->UpdatePosition(p3DCamera);
+    return true;
+}
+
 bool L3DMesh::LoadMeshData(const char* cszFileName, LMESH_DATA* pLMeshData)
 {
     bool bResult = false;

@@ -50,3 +50,4 @@ xcuserdata/
 *.xcuserstate
 
 !CMakeLists.txt
+settings.json

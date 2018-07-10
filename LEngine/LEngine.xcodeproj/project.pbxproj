@@ -20,6 +20,8 @@
 		4947F1F920E39970002F8909 /* L3DModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 4947F1F020E39970002F8909 /* L3DModel.h */; };
 		4947F1FA20E39970002F8909 /* L3DShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4947F1F220E39970002F8909 /* L3DShader.h */; };
 		4947F1FB20E39970002F8909 /* L3DShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4947F1F320E39970002F8909 /* L3DShader.cpp */; };
+		49AE6F0820F4C8A000465464 /* LGloablShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AE6F0720F4C8A000465464 /* LGloablShader.cpp */; };
+		49AE6F0C20F4CCA600465464 /* L3DCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49AE6F0B20F4CCA600465464 /* L3DCamera.cpp */; };
 		49EE96C320DA4FE90071C153 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */; };
 		49FD5EDC20E34E2F0001802B /* libGLAD.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD5EDB20E34E2F0001802B /* libGLAD.dylib */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,11 @@
 		4947F1F020E39970002F8909 /* L3DModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L3DModel.h; sourceTree = "<group>"; };
 		4947F1F220E39970002F8909 /* L3DShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = L3DShader.h; sourceTree = "<group>"; };
 		4947F1F320E39970002F8909 /* L3DShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = L3DShader.cpp; sourceTree = "<group>"; };
+		49AE6F0620F4C88500465464 /* LGlobalShader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGlobalShader.h; sourceTree = "<group>"; };
+		49AE6F0720F4C8A000465464 /* LGloablShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LGloablShader.cpp; sourceTree = "<group>"; };
+		49AE6F0A20F4CC9500465464 /* L3DCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L3DCamera.h; sourceTree = "<group>"; };
+		49AE6F0B20F4CCA600465464 /* L3DCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = L3DCamera.cpp; sourceTree = "<group>"; };
+		49AE6F0D20F4CE9800465464 /* LEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LEngine.h; path = /Users/leafmac/Documents/Github/LOpenGL/LEngine/src/LEngine.h; sourceTree = "<absolute>"; };
 		49EE968120DA37F90071C153 /* libLEngine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libLEngine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EE96C220DA4FE90071C153 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		49FD5EDB20E34E2F0001802B /* libGLAD.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLAD.dylib; path = ../../../../../../usr/local/lib/libGLAD.dylib; sourceTree = "<group>"; };
@@ -62,6 +69,8 @@
 		4947F1E820E39970002F8909 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				49AE6F0D20F4CE9800465464 /* LEngine.h */,
+				49AE6F0920F4CC8100465464 /* camera */,
 				4947F1E920E39970002F8909 /* LInterface.cpp */,
 				4947F1EA20E39970002F8909 /* LEngine.cpp */,
 				4947F1EB20E39970002F8909 /* io */,
@@ -100,8 +109,19 @@
 			children = (
 				4947F1F220E39970002F8909 /* L3DShader.h */,
 				4947F1F320E39970002F8909 /* L3DShader.cpp */,
+				49AE6F0620F4C88500465464 /* LGlobalShader.h */,
+				49AE6F0720F4C8A000465464 /* LGloablShader.cpp */,
 			);
 			path = shader;
+			sourceTree = "<group>";
+		};
+		49AE6F0920F4CC8100465464 /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				49AE6F0A20F4CC9500465464 /* L3DCamera.h */,
+				49AE6F0B20F4CCA600465464 /* L3DCamera.cpp */,
+			);
+			path = camera;
 			sourceTree = "<group>";
 		};
 		49EE967820DA37F90071C153 = {
@@ -202,8 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4947F1FB20E39970002F8909 /* L3DShader.cpp in Sources */,
+				49AE6F0820F4C8A000465464 /* LGloablShader.cpp in Sources */,
 				4947F1F420E39970002F8909 /* LInterface.cpp in Sources */,
 				4905787020F0C8DA009AF9F9 /* L3DMaterial.cpp in Sources */,
+				49AE6F0C20F4CCA600465464 /* L3DCamera.cpp in Sources */,
 				4905784E20EE39B0009AF9F9 /* L3DMesh.cpp in Sources */,
 				4947F1F520E39970002F8909 /* LEngine.cpp in Sources */,
 				4947F1F720E39970002F8909 /* LFileReader.cpp in Sources */,

@@ -86,19 +86,25 @@ bool L3DShader::CreateShader(const char* pShaderPath, int nShaderType, int* pSha
     return bResult;
 }
 
-void L3DShader::setBool(const char* szValueName, bool value) const
+void L3DShader::SetBool(const char* szValueName, bool value) const
 {         
     glUniform1i(glGetUniformLocation(m_nShaderProgram, szValueName), (int)value); 
 }
 
-void L3DShader::setInt(const char* szValueName, int value) const
+void L3DShader::SetInt(const char* szValueName, int value) const
 { 
     glUniform1i(glGetUniformLocation(m_nShaderProgram, szValueName), value); 
 }
 
-void L3DShader::setFloat(const char* szValueName, float value) const
+void L3DShader::SetFloat(const char* szValueName, float value) const
 { 
     glUniform1f(glGetUniformLocation(m_nShaderProgram, szValueName), value); 
+}
+
+void L3DShader::SetMatrix(const char *szValueName, glm::mat4 value) const
+{
+    glUniformMatrix4fv(glGetUniformLocation(m_nShaderProgram, szValueName),
+                       1, GL_FALSE, glm::value_ptr(value));
 }
 
 bool L3DShader::CheckCompileErrors(GLuint nShader, int nShaderType)

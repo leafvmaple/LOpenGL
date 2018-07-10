@@ -26,7 +26,8 @@ void ProcessInput(GLFWwindow *pWindow)
 
 L3DEngine::L3DEngine()
 : m_bActive(false)
-, m_pWindow(NULL)
+, m_pWindow(nullptr)
+, m_p3DCamera(nullptr)
 {
     memset(&m_WindowParam, 0, sizeof(m_WindowParam));
 }
@@ -92,10 +93,10 @@ bool L3DEngine::Update(float fDeltaTime)
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         
-        std::list<ILModel*>::iterator itModel;
+        std::list<L3DModel*>::iterator itModel;
         for (itModel = m_ModelList.begin(); itModel != m_ModelList.end(); itModel++)
         {
-            L3DModel* pObject = dynamic_cast<L3DModel*>(*itModel);
+            L3DModel* pObject = *itModel;
             BOOL_ERROR_CONTINUE(pObject);
 
             pObject->UpdateDisplay();
@@ -115,7 +116,7 @@ bool L3DEngine::IsActive()
     return m_bActive && !glfwWindowShouldClose(m_pWindow);
 }
 
-bool L3DEngine::AttachObject(ILModel* pAction)
+bool L3DEngine::AttachObject(L3DModel* pAction)
 {
     bool bResult = false;
 
