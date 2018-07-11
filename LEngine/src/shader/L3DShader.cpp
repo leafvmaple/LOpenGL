@@ -1,3 +1,5 @@
+#include<glm/gtc/type_ptr.hpp>
+
 #include "L3DShader.h"
 #include "LInterface.h"
 #include "io/LFileReader.h"
@@ -63,7 +65,7 @@ bool L3DShader::CreateShader(const char* pShaderPath, int nShaderType, int* pSha
     do 
     {
         size_t uBuffLen = 0;
-        unsigned char* pBuff = new unsigned char[FILE_BUFF_LEN];
+		GLubyte* pBuff = new GLubyte[FILE_BUFF_LEN];
         bRetCode = LFileReader::Reader(pShaderPath, &pBuff, &uBuffLen);
         BOOL_ERROR_BREAK(bRetCode);
         

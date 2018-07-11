@@ -7,6 +7,8 @@
 //
 
 #include <stdio.h>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "LAssert.h"
 #include "L3DCamera.h"
 
@@ -93,4 +95,5 @@ bool L3DCamera::ComputeViewMatrix()
 bool L3DCamera::ComputePerspectiveMatrix()
 {
     m_MatrixProject = glm::perspective(glm::radians(45.0f), m_fWidth / m_fHeight, 0.1f, 100.0f);
+	return true;
 }

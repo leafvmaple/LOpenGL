@@ -12,6 +12,7 @@
 #include "LEngine.h"
 #include "LAssert.h"
 #include "model/L3DModel.h"
+#include "camera/L3DCamera.h"
 
 void FrameBufferSizeFunc(GLFWwindow* pWindow, int nWidth, int nHeight)
 {
@@ -40,6 +41,7 @@ L3DEngine::~L3DEngine()
 bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
 {
     bool bResult = false;
+	bool bRetCode = false;
     
     do
     {
@@ -59,13 +61,19 @@ bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
                                      WindowParam.lpszWindowName,
                                      NULL, NULL);
         BOOL_ERROR_BREAK(m_pWindow);
+
+		m_p3DCamera = new L3DCamera;
+		BOOL_ERROR_BREAK(m_p3DCamera);
+
+		bRetCode = m_p3DCamera->Init(WindowParam.Width, WindowParam.Height);
+		BOOL_ERROR_BREAK(bRetCode);
         
         glfwMakeContextCurrent(m_pWindow);
         glfwSetFramebufferSizeCallback(m_pWindow, FrameBufferSizeFunc);
         
-        glEnable(GL_DEPTH_TEST);
-        
         BOOL_ERROR_BREAK(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
+		glEnable(GL_DEPTH_TEST);
+
         m_bActive = true;
         
         bResult = true;

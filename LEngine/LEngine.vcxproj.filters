@@ -34,6 +34,12 @@
     <Filter Include="Header Files\Common">
       <UniqueIdentifier>{4509c00c-7739-4932-b01f-95e113852ad0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Camera">
+      <UniqueIdentifier>{d70cbff6-fc95-4cba-814c-65bcb1196595}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{5895b1d4-9883-4b3a-a294-e4ee4847eafe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LEngine.cpp">
@@ -60,6 +66,9 @@
     <ClCompile Include="src\model\L3DMaterial.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\camera\L3DCamera.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\model\L3DModel.h">
@@ -82,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="src\model\L3DMaterial.h">
       <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\camera\L3DCamera.h">
+      <Filter>Header Files\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

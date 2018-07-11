@@ -71,8 +71,8 @@ int main()
         //0, 3, 4
     };
     
-    MeshCreator.AddVerties(vertices, VERTEX_TYPE_POSITION | VERTEX_TYPE_TEXTURE);
-    MeshCreator.AddFaces(reinterpret_cast<GLInt3*>(indices), sizeof(indices) / sizeof(GLInt3));
+    MeshCreator.AddVerties(vertices, VERTEX_TYPE_POSITION | VERTEX_TYPE_TEXTURE, sizeof(vertices));
+    //MeshCreator.AddFaces(reinterpret_cast<GLInt3*>(indices), sizeof(indices) / sizeof(GLInt3));
     MeshCreator.Create("../LClient/res/model/Rect.mesh");
 
     LMaterialCreator MaterialCreator;

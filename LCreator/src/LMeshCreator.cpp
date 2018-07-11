@@ -99,35 +99,36 @@ bool LMeshCreator::Create(const char *cszFileName)
 
 bool LMeshCreator::AddVerties(float* pVerties, GLuint uType, GLuint nCount /*= 1*/)
 {
-    for (GLuint i = 0; i < nCount; i++)
+	GLuint uIndex = 0;
+    while (uIndex < nCount)
     {
         if (uType & VERTEX_TYPE_POSITION)
         {
             m_Verties.push_back(*((glm::vec3*)pVerties));
-            pVerties += sizeof(glm::vec3);
-            i += sizeof(glm::vec3);
+            pVerties += 3;
+			uIndex += sizeof(glm::vec3);
         }
         
         if (uType & VERTEX_TYPE_NORMAL)
         {
             m_Verties.push_back(*((glm::vec3*)pVerties));
-            pVerties += sizeof(glm::vec3);
-            i += sizeof(glm::vec3);
+            pVerties += 3;
+			uIndex += sizeof(glm::vec3);
         }
         
         if (uType & VERTEX_TYPE_DEFFUSE)
         {
             m_Diffuses.push_back(L3DCOLOR_COLORVEC3((*((glm::vec3*)pVerties)), 1));
-            pVerties += sizeof(glm::vec3);
-            i += sizeof(glm::vec3);
+            pVerties += 3;
+			uIndex += sizeof(glm::vec3);
         }
         
         if (uType & VERTEX_TYPE_TEXTURE)
         {
             glm::vec3 vec3 = glm::vec3(*((glm::vec2*)pVerties), 1);
             m_Textures.push_back(vec3);
-            pVerties += sizeof(glm::vec2);
-            i += sizeof(glm::vec2);
+            pVerties += 2;
+			uIndex += sizeof(glm::vec2);
         }
         
     }

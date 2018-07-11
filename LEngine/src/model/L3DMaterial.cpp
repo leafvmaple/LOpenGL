@@ -6,6 +6,8 @@
 //  Copyright © 2018 LeafMaple. All rights reserved.
 //
 
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "L3DMaterial.h"
 #include "L3DTexture.h"
 #include "LInterface.h"
@@ -83,9 +85,16 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
             char szSLTexture[FILENAME_MAX];
             sprintf(szSLTexture, "%s%02d", "slTexture", dwTextIndex + 1);
             m_p3DShader->SetInt(szSLTexture, dwTextIndex);
-            
-            glm::mat4 matModel;
-            matModel = glm::rotate(matModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+
+			// 注意，我们将矩阵向我们要进行移动场景的反方向移动。
+			glm::mat4 matView = glm::translate(matView, glm::vec3(0.0f, 0.0f, -3.0f));
+			m_p3DShader->SetMatrix("slViewMatrix", matView);
+
+			glm::mat4 matProj = glm::perspective(glm::radians(45.0f), 800.f / 600.f, 0.1f, 100.0f);
+			m_p3DShader->SetMatrix("slProjMatrix", matProj);
+
+			glm::mat4 matModel = glm::rotate(matModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
             m_p3DShader->SetMatrix("slModelMatrix", matModel);
 
             m_vecTexture.push_back(p3DTexture);

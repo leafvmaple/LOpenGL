@@ -30,6 +30,13 @@ struct VertexFromatOffsetItem
 };
 
 static VertexFromatOffsetItem s_VertexFormat[] = {
+	{ L3DFVF_XYZ | L3DFVF_TEX1, 2,
+	0,   3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+	12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+	0,  12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+	12,  8, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+	L3DFVF_XYZ, L3DFVF_TEX1, ELEMENT_FVF_END },
+
     {L3DFVF_XYZ | L3DFVF_NORMAL | L3DFVF_TEX1, 3,   
     0,   1,  3, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
     12, 12, 12, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
@@ -176,6 +183,7 @@ private:
     L3DMaterial* m_pLMaterial;
     
     GLuint m_nVertexArrObj;
+	GLuint m_dwNumVertices;
     GLuint m_dwNumFaces;
     
     static const VertexFromatOffsetItem* GetVertexFormat(GLuint dwFVF);
