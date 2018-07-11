@@ -5,7 +5,6 @@
 L3DShader::L3DShader()
 : m_nShaderProgram(0)
 {
-
     
 }
 

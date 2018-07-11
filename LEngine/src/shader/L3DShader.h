@@ -12,7 +12,6 @@ public:
     L3DShader();
     ~L3DShader();
 
-    
     void Uninit();
 
     bool LoadShader(const char* pVertexPath, const char* pFragmentPath);

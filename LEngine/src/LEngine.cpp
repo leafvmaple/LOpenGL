@@ -63,6 +63,8 @@ bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
         glfwMakeContextCurrent(m_pWindow);
         glfwSetFramebufferSizeCallback(m_pWindow, FrameBufferSizeFunc);
         
+        glEnable(GL_DEPTH_TEST);
+        
         BOOL_ERROR_BREAK(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
         m_bActive = true;
         
@@ -91,7 +93,7 @@ bool L3DEngine::Update(float fDeltaTime)
         ProcessInput(m_pWindow);
         
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         std::list<L3DModel*>::iterator itModel;
         for (itModel = m_ModelList.begin(); itModel != m_ModelList.end(); itModel++)

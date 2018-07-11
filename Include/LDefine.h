@@ -36,6 +36,9 @@ typedef struct L3DMATERIAL {
 #define L3DCOLOR_COLORVALUE(r,g,b,a) \
     L3DCOLOR_RGBA((GLuint)((r)*255.f), (GLuint)((g)*255.f), (GLuint)((b)*255.f), (GLuint)((a)*255.f))
 
+#define L3DCOLOR_COLORVEC3(v,a) \
+L3DCOLOR_RGBA((GLuint)((v.x)*255.f), (GLuint)((v.y)*255.f), (GLuint)((v.z)*255.f), (GLuint)((a)*255.f))
+
 #define L3DCOLOR_COLORFLOAT(r,g,b,a) \
     (LCOLOR_RGBA_FLOAT((r)/255.f,(g)/255.f,(b)/255.f,(a)/255.f))
 

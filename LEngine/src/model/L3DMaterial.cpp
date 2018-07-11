@@ -83,6 +83,10 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
             char szSLTexture[FILENAME_MAX];
             sprintf(szSLTexture, "%s%02d", "slTexture", dwTextIndex + 1);
             m_p3DShader->SetInt(szSLTexture, dwTextIndex);
+            
+            glm::mat4 matModel;
+            matModel = glm::rotate(matModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+            m_p3DShader->SetMatrix("slModelMatrix", matModel);
 
             m_vecTexture.push_back(p3DTexture);
         }
@@ -130,7 +134,11 @@ bool L3DSubsetMaterial::UpdateSubsetMaterial()
 bool L3DSubsetMaterial::UpdatePosition(L3DCamera *p3DCamera)
 {
     if (m_p3DShader)
+    {
         m_p3DShader->SetMatrix("slViewMatrix", p3DCamera->GetViewMatrix());
+        m_p3DShader->SetMatrix("slProjMatrix", p3DCamera->GetProjMatrix());
+    }
+    return true;
 }
 
 bool L3DMaterial::LoadLMaterial(const char *cszFileName)

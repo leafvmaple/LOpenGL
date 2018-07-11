@@ -21,32 +21,13 @@ typedef struct GLInt3
     GLuint z;
 } GLInt3;
 
-typedef struct GLUVW3
+enum VERTEX_TYPE
 {
-    GLuint u;
-    GLuint v;
-    GLuint w;
-    GLUVW3(GLuint u, GLuint v, GLuint w) : u(u), v(v), w(w) {}
-} GLUVW3;
-
-typedef struct GLUV2
-{
-    GLuint u;
-    GLuint v;
-    
-    operator GLUVW3() {return GLUVW3(u, v, 0);}
-} GLUV2;
-
-typedef struct GL_VERTEX
-{
-    glm::vec3 Vertex;
-    union
-    {
-        glm::vec3 Normal;
-        glm::vec3 Diffuse;
-    };
-    GLUV2 Texture;
-} GL_VERTEX;
+    VERTEX_TYPE_POSITION = 1,
+    VERTEX_TYPE_NORMAL = 1 << 1,
+    VERTEX_TYPE_DEFFUSE = 1 << 2,
+    VERTEX_TYPE_TEXTURE = 1 << 3,
+};
 
 class LMeshCreator
 {
@@ -57,15 +38,15 @@ public:
     bool Init();
     bool Create(const char* cszFileName);
 
-    bool AddVerties(glm::vec3* pVerties, GLuint nCount = 1);
-    bool AddDiffuseVerties(GL_VERTEX* pVerties, GLuint nCount = 1);
+    bool AddVerties(float* pVerties, GLuint uType, GLuint nCount = 1);
     bool AddFaces(GLInt3* pFaces, GLuint nCount = 1);
     
 private:
+    
     std::vector<glm::vec3> m_Verties;
     std::vector<glm::vec3> m_Normals;
     std::vector<GLCOLOR> m_Diffuses;
-    std::vector<GLUVW3> m_Textures;
+    std::vector<glm::vec3> m_Textures;
     std::vector<GLInt3> m_Faces;
 };
 
