@@ -3,6 +3,18 @@
 
 #include <assert.h>
 
+#define BOOL_ERROR_EXIT(Condition)   \
+	if (!(Condition)) {              \
+		goto Exit0;                  \
+	}
+
+#define BOOL_ERROR_LOG_EXIT(Condition, LOG, ...)   \
+	if (!(Condition)) {                            \
+		printf(LOG, __VA_ARGS__);                  \
+		goto Exit0;                                \
+	}
+
+
 #define BOOL_ERROR_RETURN(Condition) \
 	if (!(Condition)) {              \
 		return 0;                    \
