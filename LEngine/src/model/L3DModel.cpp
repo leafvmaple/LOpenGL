@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "L3DModel.h"
-#include "shader/L3DShader.h"
+#include "L3DShader.h"
 #include "L3DTexture.h"
 #include "L3DMesh.h"
 

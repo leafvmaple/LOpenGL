@@ -11,8 +11,8 @@
 #include "L3DMaterial.h"
 #include "L3DTexture.h"
 #include "LInterface.h"
+#include "L3DShader.h"
 #include "io/LFileReader.h"
-#include "shader/L3DShader.h"
 #include "camera/L3DCamera.h"
 
 L3DSubsetMaterial::L3DSubsetMaterial()
