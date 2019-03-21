@@ -86,13 +86,17 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
             sprintf(szSLTexture, "%s%02d", "slTexture", dwTextIndex + 1);
             m_p3DShader->SetInt(szSLTexture, dwTextIndex);
 
-			glm::mat4 matView = glm::translate(matView, glm::vec3(0.0f, 0.0f, -3.0f));
+			glm::mat4 matView  = glm::mat4(1.0f);
+			glm::mat4 matProj  = glm::mat4(1.0f);
+			glm::mat4 matModel = glm::mat4(1.0f);
+
+			matView = glm::translate(matView, glm::vec3(0.0f, 0.0f, -3.0f));
 			m_p3DShader->SetMatrix("slViewMatrix", matView);
 
-			glm::mat4 matProj = glm::perspective(glm::radians(45.0f), 800.f / 600.f, 0.1f, 100.0f);
+			matProj = glm::perspective(glm::radians(45.0f), 800.f / 600.f, 0.1f, 100.0f);
 			m_p3DShader->SetMatrix("slProjMatrix", matProj);
 
-			glm::mat4 matModel = glm::rotate(matModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+			matModel = glm::rotate(matModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
             m_p3DShader->SetMatrix("slModelMatrix", matModel);
 
             m_vecTexture.push_back(p3DTexture);
