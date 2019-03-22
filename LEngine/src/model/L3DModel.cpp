@@ -24,16 +24,13 @@ bool L3DModel::Init(const char* cszFileName)
     bool bResult = false;
     bool bRetCode = false;
 
-    do 
-    {
-        m_dwSubsetCount = 1;
+    m_dwSubsetCount = 1;
 
-        bRetCode = LoadModel(cszFileName);
-        BOOL_ERROR_BREAK(bRetCode);
+    bRetCode = LoadModel(cszFileName);
+    BOOL_ERROR_EXIT(bRetCode);
 
-        bResult = true;
-    } while (0);
-
+    bResult = true;
+Exit0:
     return bResult;
 }
 
@@ -48,18 +45,15 @@ bool L3DModel::LoadModel(const char* cszFileName)
 {
     bool bResult = false;
     bool bRetCode = false;
-    
-    do
-    {
-        const LoadModelFunc* pMeshFunc = GetLoadModelFunc(cszFileName);
-        BOOL_ERROR_BREAK(pMeshFunc);
-        
-        bRetCode = (this->*(pMeshFunc->fnLoadMesh))(cszFileName);
-        BOOL_ERROR_BREAK(bRetCode);
-        
-        bResult = true;
-    } while (0);
-    
+
+    const LoadModelFunc* pMeshFunc = GetLoadModelFunc(cszFileName);
+    BOOL_ERROR_EXIT(pMeshFunc);
+
+    bRetCode = (this->*(pMeshFunc->fnLoadMesh))(cszFileName);
+    BOOL_ERROR_EXIT(bRetCode);
+
+    bResult = true;
+Exit0:
     return bResult;
 }
 
@@ -67,18 +61,15 @@ bool L3DModel::LoadMesh(const char* cszFileName)
 {
     bool bResult = false;
     bool bRetCode = false;
-    
-    do
-    {
-        m_p3DMesh = new L3DMesh;
-        BOOL_ERROR_BREAK(m_p3DMesh);
-        
-        bRetCode = m_p3DMesh->LoadMesh(cszFileName);
-        BOOL_ERROR_BREAK(bRetCode);
-        
-        bResult = true;
-    } while (0);
-    
+
+    m_p3DMesh = new L3DMesh;
+    BOOL_ERROR_EXIT(m_p3DMesh);
+
+    bRetCode = m_p3DMesh->LoadMesh(cszFileName);
+    BOOL_ERROR_EXIT(bRetCode);
+
+    bResult = true;
+Exit0:
     return bResult;
 }
 
@@ -109,17 +100,13 @@ bool L3DModel::UpdateDisplay()
     bool bResult = false;
     bool bRetCode = false;
 
-    do 
+    for (GLuint u = 0; u < m_dwSubsetCount; u++)
     {
-        for (GLuint u = 0; u < m_dwSubsetCount; u++)
-        {
-            bRetCode = UpdateMesh(u);
-            BOOL_ERROR_BREAK(bRetCode);
-        }
+        bRetCode = UpdateMesh(u);
+    }
 
-        bResult = true;
-    } while (0);
-
+    bResult = true;
+Exit0:
     return bResult;
 }
 

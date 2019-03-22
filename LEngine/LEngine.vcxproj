@@ -87,8 +87,8 @@ copy "$(TargetDir)$(TargetName).lib" "$(SolutionDir)Lib"</Command>
     <ClCompile Include="src\model\L3DMaterial.cpp" />
     <ClCompile Include="src\model\L3DMesh.cpp" />
     <ClCompile Include="src\model\L3DModel.cpp" />
+    <ClCompile Include="src\model\L3DShader.cpp" />
     <ClCompile Include="src\model\L3DTexture.cpp" />
-    <ClCompile Include="src\shader\L3DShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GLAD\GLAD.vcxproj">
@@ -107,8 +107,8 @@ copy "$(TargetDir)$(TargetName).lib" "$(SolutionDir)Lib"</Command>
     <ClInclude Include="src\model\L3DMaterial.h" />
     <ClInclude Include="src\model\L3DMesh.h" />
     <ClInclude Include="src\model\L3DModel.h" />
+    <ClInclude Include="src\model\L3DShader.h" />
     <ClInclude Include="src\model\L3DTexture.h" />
-    <ClInclude Include="src\shader\L3DShader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

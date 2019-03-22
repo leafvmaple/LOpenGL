@@ -16,6 +16,7 @@
 
 class L3DMaterial;
 class L3DCamera;
+class L3DShader;
 
 struct VertexFromatOffsetItem
 {
@@ -181,6 +182,9 @@ private:
     };
 
     L3DMaterial* m_pLMaterial;
+    L3DShader*   m_pLShader;
+
+    glm::mat4 m_matTrans;
     
     GLuint m_nVertexArrObj;
 	GLuint m_dwNumVertices;
@@ -192,6 +196,9 @@ private:
 public:
     bool LoadMesh(const char* cszFileName);
     bool UpdateMesh(GLuint dwSubMesh);
+
+    bool SetTranslation(glm::mat4 matTrans);
+
     bool UpdatePosition(L3DCamera* p3DCamera);
     
 private:

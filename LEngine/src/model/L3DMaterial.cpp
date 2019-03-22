@@ -34,92 +34,64 @@ bool L3DSubsetMaterial::LoadLSubsetMaterial(const char* pcszDirectory, GLubyte*&
 {
     bool bResult = false;
     bool bRetCode = false;
-    
-    do
+
+    pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Ambient);
+    pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Diffuse);
+    pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Specular);
+    pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Emissive);
+    pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Power);
+    NORMALIZE_MAT_POWER(m_Material.Power);
+    pbyMaterial = LFileReader::Convert(pbyMaterial, m_dwOption);
+        
+    GLuint dwMaterialOptionCount = 0;
+    pbyMaterial = LFileReader::Convert(pbyMaterial, dwMaterialOptionCount);
+        
+    for (GLuint j = 0; j < dwMaterialOptionCount; j++)
     {
-        m_p3DShader = new L3DShader;
-        BOOL_ERROR_BREAK(m_p3DShader);
-        
-        bRetCode = m_p3DShader->LoadShader("res/shader/default.vs", "res/shader/default.fs");
+        bRetCode = LoadOption(pbyMaterial);
         BOOL_ERROR_BREAK(bRetCode);
-        
-        bRetCode = m_p3DShader->UpdateShader(); // Important！！！
+    }
+
+    GLuint dwNumUsedTexture = 0;
+    pbyMaterial = LFileReader::Convert(pbyMaterial, dwNumUsedTexture);
+
+    for (GLuint dwTextIndex = 0; dwTextIndex < dwNumUsedTexture; dwTextIndex++)
+    {
+        L3DTexture::_TEXTURE* pTextureInfo = NULL;
+        pbyMaterial = LFileReader::Convert(pbyMaterial, pTextureInfo);
+
+        char szTextureName[FILENAME_MAX];
+        sprintf(szTextureName, "%s%s", pcszDirectory, pTextureInfo->szTextureFileName);
+        while(char* pszIndex = strchr(szTextureName, '\\'))
+            *pszIndex = '/';
+
+        L3DTexture* p3DTexture = new L3DTexture;
+        BOOL_ERROR_BREAK(p3DTexture);
+
+        bRetCode = p3DTexture->LoadTexture(szTextureName, pTextureInfo, pbyMaterial);
         BOOL_ERROR_BREAK(bRetCode);
+
+        m_vecTexture.push_back(p3DTexture);
+    }
         
-        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Ambient);
-        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Diffuse);
-        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Specular);
-        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Emissive);
-        pbyMaterial = LFileReader::Convert(pbyMaterial, m_Material.Power);
-        NORMALIZE_MAT_POWER(m_Material.Power);
-        pbyMaterial = LFileReader::Convert(pbyMaterial, m_dwOption);
-        
-        GLuint dwMaterialOptionCount = 0;
-        pbyMaterial = LFileReader::Convert(pbyMaterial, dwMaterialOptionCount);
-        
-        for (GLuint j = 0; j < dwMaterialOptionCount; j++)
+    if (m_dwOption & MATERIAL_OPTION_VERSION_2)
+    {
+        if (m_dwOption & MATERIAL_OPTION_INCLUDEALLDEFAULTCOLORCAST)
         {
-            bRetCode = LoadOption(pbyMaterial);
-            BOOL_ERROR_BREAK(bRetCode);
+            pbyMaterial = LFileReader::Copy<LCOLOR_RGBA_FLOAT, L3DSubsetMaterial::cNumColorCast>(pbyMaterial, m_ColorCast);
         }
-
-        GLuint dwNumUsedTexture = 0;
-        pbyMaterial = LFileReader::Convert(pbyMaterial, dwNumUsedTexture);
-
-        for (GLuint dwTextIndex = 0; dwTextIndex < dwNumUsedTexture; dwTextIndex++)
+        else
         {
-            L3DTexture::_TEXTURE* pTextureInfo = NULL;
-            pbyMaterial = LFileReader::Convert(pbyMaterial, pTextureInfo);
-
-            char szTextureName[FILENAME_MAX];
-            sprintf(szTextureName, "%s%s", pcszDirectory, pTextureInfo->szTextureFileName);
-            while(char* pszIndex = strchr(szTextureName, '\\'))
-                *pszIndex = '/';
-
-            L3DTexture* p3DTexture = new L3DTexture;
-            BOOL_ERROR_BREAK(p3DTexture);
-
-            bRetCode = p3DTexture->LoadTexture(szTextureName, pTextureInfo, pbyMaterial);
-            BOOL_ERROR_BREAK(bRetCode);
+            pbyMaterial = LFileReader::Convert(pbyMaterial, m_ColorCast[0]);
+            m_dwOption |= MATERIAL_OPTION_INCLUDEALLDEFAULTCOLORCAST;
+        }
             
-            char szSLTexture[FILENAME_MAX];
-            sprintf(szSLTexture, "%s%02d", "slTexture", dwTextIndex + 1);
-            m_p3DShader->SetInt(szSLTexture, dwTextIndex);
-
-			glm::mat4 matView  = glm::mat4(1.0f);
-			glm::mat4 matProj  = glm::mat4(1.0f);
-			glm::mat4 matModel = glm::mat4(1.0f);
-
-			matView = glm::translate(matView, glm::vec3(0.0f, 0.0f, -3.0f));
-			m_p3DShader->SetMatrix("slViewMatrix", matView);
-
-			matProj = glm::perspective(glm::radians(45.0f), 800.f / 600.f, 0.1f, 100.0f);
-			m_p3DShader->SetMatrix("slProjMatrix", matProj);
-
-			matModel = glm::rotate(matModel, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-            m_p3DShader->SetMatrix("slModelMatrix", matModel);
-
-            m_vecTexture.push_back(p3DTexture);
-        }
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_fSpecPower);
+        pbyMaterial = LFileReader::Convert(pbyMaterial, m_fEmssPower);
+    }
         
-        if (m_dwOption & MATERIAL_OPTION_VERSION_2)
-        {
-            if (m_dwOption & MATERIAL_OPTION_INCLUDEALLDEFAULTCOLORCAST)
-            {
-                pbyMaterial = LFileReader::Copy<LCOLOR_RGBA_FLOAT, L3DSubsetMaterial::cNumColorCast>(pbyMaterial, m_ColorCast);
-            }
-            else
-            {
-                pbyMaterial = LFileReader::Convert(pbyMaterial, m_ColorCast[0]);
-                m_dwOption |= MATERIAL_OPTION_INCLUDEALLDEFAULTCOLORCAST;
-            }
-            
-            pbyMaterial = LFileReader::Convert(pbyMaterial, m_fSpecPower);
-            pbyMaterial = LFileReader::Convert(pbyMaterial, m_fEmssPower);
-        }
-        
-        bResult = true;
-    } while (0);
+    bResult = true;
+Exit0:
     
     return bResult;
 }
@@ -142,14 +114,10 @@ bool L3DSubsetMaterial::UpdateSubsetMaterial()
     return true;
 }
 
-bool L3DSubsetMaterial::UpdatePosition(L3DCamera *p3DCamera)
+
+size_t L3DSubsetMaterial::GetTextureCount()
 {
-    if (m_p3DShader)
-    {
-        m_p3DShader->SetMatrix("slViewMatrix", p3DCamera->GetViewMatrix());
-        m_p3DShader->SetMatrix("slProjMatrix", p3DCamera->GetProjMatrix());
-    }
-    return true;
+    return m_vecTexture.size();
 }
 
 bool L3DMaterial::LoadLMaterial(const char *cszFileName)
@@ -215,14 +183,12 @@ bool L3DMaterial::UpdateMaterial(GLuint dwSubMaterial)
     return bResult;
 }
 
-bool L3DMaterial::UpdatePosition(L3DCamera *p3DCamera)
+size_t L3DMaterial::GetTextureCount()
 {
-    for (GLuint i = 0; i < m_dwNumMaterials; i++)
-    {
-        m_pMaterialSubset[i].UpdatePosition(p3DCamera);
-        
-        //m_bHasDetail = nHasDetail || m_bHasDetail;
-        //m_bSortAsSFX = nIsSortAsSFX || m_bSortAsSFX;
-    }
-    return true;
+    int nResult = 0;
+
+    for (int i = 0; i < m_dwNumMaterials; i++) 
+        nResult += m_pMaterialSubset[i].GetTextureCount();
+
+    return nResult;
 }

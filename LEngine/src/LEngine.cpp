@@ -110,6 +110,7 @@ bool L3DEngine::Update(float fDeltaTime)
             BOOL_ERROR_CONTINUE(pObject);
 
             pObject->UpdateDisplay();
+            pObject->UpdatePosition(m_p3DCamera);
         }
         
         glfwSwapBuffers(m_pWindow);

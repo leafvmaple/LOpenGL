@@ -19,12 +19,6 @@
     <Filter Include="Source Files\Model">
       <UniqueIdentifier>{7fe3b7f7-7ebf-4462-8270-16ab50e6908c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Shader">
-      <UniqueIdentifier>{d4d2f2eb-8a95-41c1-aa7f-1a68a4ddfd56}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Shader">
-      <UniqueIdentifier>{58931c25-dd60-403c-bbc9-2dbbc7ece8c1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\IO">
       <UniqueIdentifier>{119958b2-0077-4404-9e8b-95c08e6710f6}</UniqueIdentifier>
     </Filter>
@@ -54,9 +48,6 @@
     <ClCompile Include="src\io\LFileReader.cpp">
       <Filter>Source Files\IO</Filter>
     </ClCompile>
-    <ClCompile Include="src\shader\L3DShader.cpp">
-      <Filter>Source Files\Shader</Filter>
-    </ClCompile>
     <ClCompile Include="src\model\L3DTexture.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
@@ -69,6 +60,9 @@
     <ClCompile Include="src\camera\L3DCamera.cpp">
       <Filter>Source Files\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="src\model\L3DShader.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\model\L3DModel.h">
@@ -76,9 +70,6 @@
     </ClInclude>
     <ClInclude Include="src\io\LFileReader.h">
       <Filter>Header Files\IO</Filter>
-    </ClInclude>
-    <ClInclude Include="src\shader\L3DShader.h">
-      <Filter>Header Files\Shader</Filter>
     </ClInclude>
     <ClInclude Include="src\model\L3DTexture.h">
       <Filter>Header Files\Model</Filter>
@@ -94,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="src\camera\L3DCamera.h">
       <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\L3DShader.h">
+      <Filter>Header Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -38,7 +38,7 @@ public:
     bool UpdateMaterial(GLuint uIndex);
 
 private:
-    L3DMesh* m_p3DMesh;
+    L3DMesh*    m_p3DMesh;
     L3DTexture* m_pLTexture;
 
     GLuint m_dwSubsetCount;

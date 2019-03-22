@@ -34,7 +34,7 @@ public:
     bool LoadOption(GLubyte*& pbyMaterial);
     
     bool UpdateSubsetMaterial();
-    bool UpdatePosition(L3DCamera *p3DCamera);
+    size_t GetTextureCount();
     
 private:
     enum MATERIAL_OPTION
@@ -64,7 +64,8 @@ class L3DMaterial
 public:
     bool LoadLMaterial(const char* cszFileName);
     bool UpdateMaterial(GLuint dwSubMaterial);
-    bool UpdatePosition(L3DCamera* p3DCamera);
+
+    size_t GetTextureCount();
     
 private:
     GLuint m_dwNumMaterials;

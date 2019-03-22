@@ -28,7 +28,8 @@ L3DCamera::~L3DCamera()
 
 bool L3DCamera::Init(float fWidth, float fHeight)
 {
-    m_fSightDis  = 500.f;
+    m_fSightDis  = 5.f;
+    m_vTarget    = glm::vec3(0.f, 0.f, 0.f);
     m_vUp        = glm::vec3(0.f, 1.f, 0.f);
     m_fWidth     = fWidth;
     m_fHeight    = fHeight;
@@ -81,8 +82,6 @@ bool L3DCamera::UpdateSightDistance(float fSightDis)
 
 bool L3DCamera::ComputeViewMatrix()
 {
-    glm::vec3 vFont(0.f, 0.f, -m_fSightDis);
-    
     m_vFront.x = cos(glm::radians(m_fPitch)) * cos(glm::radians(m_fYaw)) * m_fSightDis;
     m_vFront.y = sin(glm::radians(m_fPitch)) * m_fSightDis;
     m_vFront.z = cos(glm::radians(m_fPitch)) * sin(glm::radians(m_fYaw)) * m_fSightDis;
