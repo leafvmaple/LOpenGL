@@ -81,6 +81,7 @@ copy "$(TargetDir)$(TargetName).lib" "$(SolutionDir)Lib"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\camera\L3DCamera.cpp" />
+    <ClCompile Include="src\input\L3DInput.cpp" />
     <ClCompile Include="src\io\LFileReader.cpp" />
     <ClCompile Include="src\LEngine.cpp" />
     <ClCompile Include="src\LInterface.cpp" />
@@ -102,6 +103,7 @@ copy "$(TargetDir)$(TargetName).lib" "$(SolutionDir)Lib"</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera\L3DCamera.h" />
+    <ClInclude Include="src\input\L3DInput.h" />
     <ClInclude Include="src\io\LFileReader.h" />
     <ClInclude Include="src\io\LFileStruct.h" />
     <ClInclude Include="src\model\L3DMaterial.h" />

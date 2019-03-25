@@ -12,6 +12,7 @@
 #include "LEngine.h"
 #include "LAssert.h"
 #include "model/L3DModel.h"
+#include "input/L3DInput.h"
 #include "camera/L3DCamera.h"
 
 void FrameBufferSizeFunc(GLFWwindow* pWindow, int nWidth, int nHeight)
@@ -22,6 +23,7 @@ void FrameBufferSizeFunc(GLFWwindow* pWindow, int nWidth, int nHeight)
 L3DEngine::L3DEngine()
 : m_bActive(false)
 , m_pWindow(nullptr)
+, m_p3DInput(nullptr)
 , m_p3DCamera(nullptr)
 {
     memset(&m_WindowParam, 0, sizeof(m_WindowParam));
@@ -53,6 +55,12 @@ bool L3DEngine::Init(L3DWINDOWPARAM& WindowParam)
                                     WindowParam.lpszWindowName,
                                     NULL, NULL);
     BOOL_ERROR_EXIT(m_pWindow);
+
+    m_p3DInput = new L3DInput;
+    BOOL_ERROR_EXIT(m_p3DInput);
+
+    bRetCode = m_p3DInput->Init(m_pWindow);
+    BOOL_ERROR_EXIT(bRetCode);
 
 	m_p3DCamera = new L3DCamera;
     BOOL_ERROR_EXIT(m_p3DCamera);

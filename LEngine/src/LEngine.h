@@ -12,6 +12,7 @@
 #include "LInterface.h"
 
 class L3DModel;
+class L3DInput;
 class L3DCamera;
 
 class L3DEngine : public IL3DEngine
@@ -37,7 +38,9 @@ private:
     bool m_bActive;
     GLFWwindow* m_pWindow;
 
+    L3DInput*  m_p3DInput;
     L3DCamera* m_p3DCamera;
+
     std::list<L3DModel*> m_ModelList;
 };
 

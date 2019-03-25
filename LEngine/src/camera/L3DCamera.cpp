@@ -44,37 +44,34 @@ bool L3DCamera::Init(float fWidth, float fHeight)
 
 bool L3DCamera::UpdateYawPitchRoll(float fYaw, float fPitch, float fRoll)
 {
-    bool bResult = false;
-    bool bRetCode = false;
-    
-    do
-    {
-        m_fYaw   += fYaw;
-        m_fPitch += fPitch;
-        m_fRoll  += fRoll;
-        
-        bRetCode = ComputeViewMatrix();
-        BOOL_ERROR_BREAK(bRetCode);
-        
-        bResult = true;
-    } while (0);
-    
-    return bResult;
+    m_fYaw += fYaw;
+    m_fPitch += fPitch;
+    m_fRoll += fRoll;
+
+    ComputeViewMatrix();
+
+    return true;
 }
 
 bool L3DCamera::UpdateSightDistance(float fSightDis)
 {
+    bool bResult = false;
+    bool bRetCode = false;
+
     m_fSightDis += fSightDis;
     m_fSightDis = glm::max(m_fSightDis, 3.f);
     
     ComputeViewMatrix();
-    
+
     return true;
 }
 
 
 bool L3DCamera::MoveCamera(L3DCAMERA_MOVE nMoveState, float fDeltaTime)
 {
+    bool bResult = false;
+    bool bRetCode = false;
+
     switch (nMoveState)
     {
     case L3DCAMERA_MOVE_FORWARD:
@@ -94,7 +91,7 @@ bool L3DCamera::MoveCamera(L3DCAMERA_MOVE nMoveState, float fDeltaTime)
     }
 
     ComputeViewMatrix();
-
+    
     return true;
 }
 

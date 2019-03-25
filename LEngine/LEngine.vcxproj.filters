@@ -34,6 +34,12 @@
     <Filter Include="Source Files\Camera">
       <UniqueIdentifier>{5895b1d4-9883-4b3a-a294-e4ee4847eafe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{1b8c272c-1fc9-450a-9bcb-7298f85a4262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{b67c0584-734d-4537-9deb-b565bdef6bcc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LEngine.cpp">
@@ -63,6 +69,9 @@
     <ClCompile Include="src\model\L3DShader.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\input\L3DInput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\model\L3DModel.h">
@@ -88,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="src\model\L3DShader.h">
       <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\input\L3DInput.h">
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
