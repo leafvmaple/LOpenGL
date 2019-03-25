@@ -29,6 +29,7 @@ public:
 
 public:
     bool AttachObject(L3DModel* pAction);
+    bool ProcessInput(GLFWwindow *pWindow, float fDeltaTime);
 
 private:
     L3DWINDOWPARAM m_WindowParam;

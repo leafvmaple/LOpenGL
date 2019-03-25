@@ -5,11 +5,17 @@
 //  Created by LeafMaple on 2018/07/10.
 //  Copyright © 2018 LeafMaple. All rights reserved.
 //
-
-#ifndef L3DCamera_h
-#define L3DCamera_h
+#pragma once
 
 #include "glm/glm.hpp"
+
+enum L3DCAMERA_MOVE
+{
+    L3DCAMERA_MOVE_FORWARD,
+    L3DCAMERA_MOVE_BACK,
+    L3DCAMERA_MOVE_LEFT,
+    L3DCAMERA_MOVE_RIGHT,
+};
 
 class L3DCamera
 {
@@ -20,8 +26,10 @@ public:
     bool Init(float fWidth, float fHeight);
     bool UpdateYawPitchRoll(float fYaw, float fPitch, float fRoll);
     bool UpdateSightDistance(float fSightDis);
-    
-    glm::vec3 SetTarget(glm::vec3);
+
+    bool MoveCamera(L3DCAMERA_MOVE nMoveState, float fDeltaTime);
+
+    bool SetTarget(glm::vec3 vTarget);
     
     glm::mat4 GetViewMatrix();
     glm::mat4 GetProjMatrix();
@@ -33,6 +41,7 @@ private:
     float m_fRoll;
     float m_fWidth;
     float m_fHeight;
+    float m_fCameraSpeed;
     
     glm::vec3 m_vPosition;
     glm::vec3 m_vTarget;
@@ -46,4 +55,3 @@ private:
     bool ComputePerspectiveMatrix();
 };
 
-#endif /* L3DCamera_h */

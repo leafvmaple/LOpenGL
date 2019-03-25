@@ -17,6 +17,7 @@ L3DCamera::L3DCamera()
 , m_fYaw(0.f)
 , m_fPitch(0.f)
 , m_fRoll(0.f)
+, m_fCameraSpeed(0.f)
 {
     
 }
@@ -33,21 +34,12 @@ bool L3DCamera::Init(float fWidth, float fHeight)
     m_vUp        = glm::vec3(0.f, 1.f, 0.f);
     m_fWidth     = fWidth;
     m_fHeight    = fHeight;
+    m_fCameraSpeed = 5.f;
     
     ComputeViewMatrix();
     ComputePerspectiveMatrix();
     
     return true;
-}
-
-glm::mat4 L3DCamera::GetViewMatrix()
-{
-    return m_MatrixView;
-}
-
-glm::mat4 L3DCamera::GetProjMatrix()
-{
-    return m_MatrixProject;
 }
 
 bool L3DCamera::UpdateYawPitchRoll(float fYaw, float fPitch, float fRoll)
@@ -78,6 +70,48 @@ bool L3DCamera::UpdateSightDistance(float fSightDis)
     ComputeViewMatrix();
     
     return true;
+}
+
+
+bool L3DCamera::MoveCamera(L3DCAMERA_MOVE nMoveState, float fDeltaTime)
+{
+    switch (nMoveState)
+    {
+    case L3DCAMERA_MOVE_FORWARD:
+        m_vTarget -= m_fCameraSpeed * m_vFront * fDeltaTime;
+        break;
+    case L3DCAMERA_MOVE_BACK:
+        m_vTarget += m_fCameraSpeed * m_vFront * fDeltaTime;
+        break;
+    case L3DCAMERA_MOVE_LEFT:
+        m_vTarget += glm::normalize(glm::cross(m_vFront, m_vUp)) * m_fCameraSpeed * fDeltaTime;
+        break;
+    case L3DCAMERA_MOVE_RIGHT:
+        m_vTarget -= glm::normalize(glm::cross(m_vFront, m_vUp)) * m_fCameraSpeed * fDeltaTime;
+        break;
+    default:
+        break;
+    }
+
+    ComputeViewMatrix();
+
+    return true;
+}
+
+bool L3DCamera::SetTarget(glm::vec3 vTarget)
+{
+    m_vTarget = vTarget;
+    return true;
+}
+
+glm::mat4 L3DCamera::GetViewMatrix()
+{
+    return m_MatrixView;
+}
+
+glm::mat4 L3DCamera::GetProjMatrix()
+{
+    return m_MatrixProject;
 }
 
 bool L3DCamera::ComputeViewMatrix()
