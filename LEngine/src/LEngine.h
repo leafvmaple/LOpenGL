@@ -30,7 +30,6 @@ public:
 
 public:
     bool AttachObject(L3DModel* pAction);
-    bool ProcessInput(GLFWwindow *pWindow, float fDeltaTime);
 
 private:
     L3DWINDOWPARAM m_WindowParam;
@@ -42,6 +41,10 @@ private:
     L3DCamera* m_p3DCamera;
 
     std::list<L3DModel*> m_ModelList;
+
+private:
+    bool UpdateInput(float fDeltaTime);
+    bool UpdateCamera(float fDeltaTime);
 };
 
 #endif /* LEngine_h */

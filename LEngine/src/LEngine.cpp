@@ -93,9 +93,15 @@ void L3DEngine::Uninit()
 bool L3DEngine::Update(float fDeltaTime)
 {
     bool bResult = false;
+    bool bRetCode = false;
 
     BOOL_ERROR_EXIT(m_pWindow);
-    ProcessInput(m_pWindow, fDeltaTime);
+
+    bRetCode = UpdateInput(fDeltaTime);
+    BOOL_ERROR_EXIT(bRetCode);
+
+    bRetCode = UpdateCamera(fDeltaTime);
+    BOOL_ERROR_EXIT(bRetCode);
 
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -134,23 +140,51 @@ Exit0:
     return bResult;
 }
 
-bool L3DEngine::ProcessInput(GLFWwindow *pWindow, float fDeltaTime)
+
+bool L3DEngine::UpdateInput(float fDeltaTime)
 {
     int bResult = false;
 
-    BOOL_ERROR_EXIT(pWindow);
+    BOOL_ERROR_EXIT(m_p3DInput);
+    BOOL_ERROR_EXIT(m_pWindow);
+
+    //if (m_p3DInput->IsKeyDown(GLFW_KEY_ESCAPE));
+    //    glfwSetWindowShouldClose(m_pWindow, true);
+
+    m_p3DInput->Update(fDeltaTime);
+
+    bResult = true;
+Exit0:
+    return bResult;
+}
+
+bool L3DEngine::UpdateCamera(float fDeltaTime)
+{
+    int bResult = false;
+    float fYaw = 0.f;
+    float fPitch = 0.f;
+    float fRoll = 0.f;
+    float fSightDis = 0.f;
+
+    BOOL_ERROR_EXIT(m_p3DInput);
     BOOL_ERROR_EXIT(m_p3DCamera);
 
-    if (glfwGetKey(pWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(pWindow, true);
+    fYaw -= (m_p3DInput->MouseDragX(GLFW_MOUSE_BUTTON_LEFT))*  10.0f * fDeltaTime;
+    fPitch -= (m_p3DInput->MouseDragY(GLFW_MOUSE_BUTTON_LEFT)) * 10.0f * fDeltaTime;
+    fSightDis -= (m_p3DInput->MouseScrollY()) * 10.f * fDeltaTime;
 
-    if (glfwGetKey(pWindow, GLFW_KEY_W) == GLFW_PRESS)
+    if (fYaw || fPitch || fRoll)
+        m_p3DCamera->UpdateYawPitchRoll(fYaw, fPitch, fRoll);
+    if (fSightDis)
+        m_p3DCamera->UpdateSightDistance(fSightDis);
+
+    if (m_p3DInput->IsKeyDown(GLFW_KEY_W))
         m_p3DCamera->MoveCamera(L3DCAMERA_MOVE_FORWARD, fDeltaTime);
-    if (glfwGetKey(pWindow, GLFW_KEY_S) == GLFW_PRESS)
+    if (m_p3DInput->IsKeyDown(GLFW_KEY_S))
         m_p3DCamera->MoveCamera(L3DCAMERA_MOVE_BACK, fDeltaTime);
-    if (glfwGetKey(pWindow, GLFW_KEY_A) == GLFW_PRESS)
+    if (m_p3DInput->IsKeyDown(GLFW_KEY_A))
         m_p3DCamera->MoveCamera(L3DCAMERA_MOVE_LEFT, fDeltaTime);
-    if (glfwGetKey(pWindow, GLFW_KEY_D) == GLFW_PRESS)
+    if (m_p3DInput->IsKeyDown(GLFW_KEY_D))
         m_p3DCamera->MoveCamera(L3DCAMERA_MOVE_RIGHT, fDeltaTime);
 
     bResult = true;

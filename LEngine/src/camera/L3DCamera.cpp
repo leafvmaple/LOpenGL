@@ -34,7 +34,7 @@ bool L3DCamera::Init(float fWidth, float fHeight)
     m_vUp        = glm::vec3(0.f, 1.f, 0.f);
     m_fWidth     = fWidth;
     m_fHeight    = fHeight;
-    m_fCameraSpeed = 5.f;
+    m_fCameraSpeed = 1.f;
     
     ComputeViewMatrix();
     ComputePerspectiveMatrix();
